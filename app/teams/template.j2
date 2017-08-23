@@ -1,0 +1,36 @@
+{%- set
+  theme_colors = {
+    'resolved' : '2DC72D',
+    'critical' : '8C1A1A',
+    'severe' : '8C1A1A',
+    'warning' : 'FF9A0B'
+  }
+-%}
+
+{
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "themeColor": "{% if alert_status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.alert_severity] }} {% endif %}",
+    "summary": "{{ msg_text.alert_summary }}",
+    "title": "Prometheus alarm {% if alert_status=='resolved' %} (Resolved) {% endif %}",
+    "sections": [{
+        "activityTitle": "{{ msg_text.alert_summary }}",
+        "facts": [{
+            "name": "Alarm",
+            "value": "{{ msg_text.alert_name }}"
+        }, {
+            "name": "In host",
+            "value": "{{ msg_text.alert_instance }}"
+        }, {
+            "name": "Severity",
+            "value": "{{ msg_text.alert_severity }}"
+        }, {
+            "name": "Description",
+            "value": "{{ msg_text.alert_description }}"
+        }, {
+            "name": "Status",
+            "value": "{{ msg_text.alert_status }}"
+        }],
+           "markdown": true
+        }]
+}

@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import argparse
+
+sys.path.append(os.path.abspath('./app'))
+from server import run
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Receives alert notifications '
+                                     'from Prometheus Alertmanager '
+                                     '(https://github.com/prometheus/alertmanager) '
+                                     'and sends it to Microsoft Teams using configured connectors ')
+
+    parser.add_argument('-c', '--configpath', help='config INI file path', required=True)
+    parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
+
+    args = parser.parse_args()
+
+    run(args.configpath, args.templatepath)

@@ -1,0 +1,47 @@
+from setuptools import setup, find_packages
+from pip.req import parse_requirements
+
+
+def read_requirements_file():
+    requirements = []
+    for r in parse_requirements('requirements.txt', session='hack'):
+        if r.match_markers():
+            requirements.append(str(r.req))
+
+    return requirements
+
+
+with open('README.md') as f:
+    readme = f.read()
+
+with open('LICENSE') as f:
+    license = f.read()
+
+
+setup(name='prom2teams',
+      version='1.0',
+      description='Project that redirects Prometheus Alert Manager '
+      'notifications to Microsoft Teams',
+      long_description=readme,
+      install_requires=read_requirements_file(),
+      setup_requires=[
+        'flake8'
+      ],
+      scripts=['bin/prom2teams'],
+      url='http://github.com/idealista/prom2teams',
+      author='Idealista, S.A.U',
+      author_email='labs@idealista.com',
+      license=license,
+      packages=find_packages(exclude=('tests', 'docs')),
+      keywords='microsoft teams prometheus alert',
+      classifiers=[
+        'Development Status :: 4 - Beta',
+        'Topic :: Utilities',
+        'Topic :: Communications :: Chat',
+        'License :: OSI Approved :: Apache Software License',
+        'Intended Audience :: Developers',
+        'Intended Audience :: System Administrators',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.6'
+      ],
+      zip_safe=False)
