@@ -29,10 +29,10 @@ Newer versions of _Prometheus/Python/pip_ should work but could also present iss
 
 ### Installing
 
-prom2teams could be installed using pip:
+prom2teams is present on (PyPI)[https://pypi.python.org/pypi/prom2teams], so could be installed using pip3:
 
 ```bash
-$ pip install prom2teams
+$ pip3 install prom2teams
 ```
 
 ## Usage
