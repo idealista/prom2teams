@@ -60,11 +60,9 @@ def run(config_file, template_path):
 
 
 def get_config(provided_config_file):
-    default_config = configparser.ConfigParser()
-    default_config.read_file(open('config.ini'))
-    default_sections = default_config._sections
+    provided_config = configparser.ConfigParser()
 
-    provided_config = configparser.ConfigParser(defaults=default_sections)
+    provided_config.read_file(open('config.ini'))
     provided_config.read_file(open(provided_config_file))
 
     try:
