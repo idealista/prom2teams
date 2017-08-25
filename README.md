@@ -40,7 +40,7 @@ $ pip3 install prom2teams
 
 ```bash
 # To start the server (a config file path must be provided, Jinja2 template is optional):
-$ prom2teams start --configpath <config file path> [--templatepath <Jinja2 template file path>]
+$ prom2teams start --configpath <config file path> --logfilepath <log file path> --loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL) [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help

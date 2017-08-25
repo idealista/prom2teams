@@ -40,13 +40,18 @@ def generate_request_handler(teams_webhook_url, template_path):
             except Exception as e:
                 logger.error('Error processing request: %s', str(e))
                 self.send_error(500, 'Error processing request')
+
     return PrometheusRequestHandler
 
 
-def run(provided_config_file, template_path):
+def run(provided_config_file, template_path, log_file_path, log_level):
     config = get_config('config.ini', provided_config_file)
 
-    fileConfig('logging_config.ini')
+    fileConfig('logging_config.ini',
+               defaults={
+                            'log_file_path': log_file_path,
+                            'log_level': log_level
+               })
 
     host = config['HTTP Server']['Host']
     port = int(config['HTTP Server']['Port'])
