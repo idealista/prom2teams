@@ -43,8 +43,8 @@ def generate_request_handler(teams_webhook_url, template_path):
     return PrometheusRequestHandler
 
 
-def run(config_file, template_path):
-    config = get_config(config_file)
+def run(provided_config_file, template_path):
+    config = get_config('config.ini', provided_config_file)
 
     fileConfig('logging_config.ini')
 
@@ -59,11 +59,14 @@ def run(config_file, template_path):
     httpd.serve_forever()
 
 
-def get_config(provided_config_file):
+def get_config(default_config_file, provided_config_file):
     provided_config = configparser.ConfigParser()
 
-    provided_config.read_file(open('config.ini'))
-    provided_config.read_file(open(provided_config_file))
+    with open(default_config_file) as f_def:
+        provided_config.read_file(f_def)
+
+    with open(provided_config_file) as f_prov:
+        provided_config.read_file(f_prov)
 
     try:
         provided_config['Microsoft Teams']['Connector']
