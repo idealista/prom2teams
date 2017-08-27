@@ -1,5 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
+[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams)
+
 # prom2teams
 
 <img src="assets/example.png" alt="Alert example" style="width: 600px;"/>
