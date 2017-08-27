@@ -61,7 +61,13 @@ def run(provided_config_file, template_path, log_file_path, log_level):
         config['Microsoft Teams']['Connector'],
         template_path)
     httpd = HTTPServer(server_address, request_handler)
-    httpd.serve_forever()
+
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        logger.info('server stopped')
+
+    httpd.server_close()
 
 
 def get_config(default_config_file, provided_config_file):
