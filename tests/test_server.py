@@ -7,7 +7,7 @@ from context import exceptions
 class TestServer(unittest.TestCase):
 
     TEST_CONFIG_FILES_PATH = 'tests/data/'
-    DEFAULT_CONFIG_RELATIVE_PATH = './config.ini'
+    DEFAULT_CONFIG_RELATIVE_PATH = './prom2teams/config.ini'
 
     def test_get_config_with_invalid_path(self):
         invalid_relative_path = self.TEST_CONFIG_FILES_PATH + 'invalid_path'

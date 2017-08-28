@@ -1,5 +1,6 @@
 import logging
 import configparser
+import os
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from logging.config import fileConfig
@@ -12,6 +13,7 @@ from prom2teams.exceptions import MissingConnectorConfigKeyException
 
 
 logger = logging.getLogger()
+dir = os.path.dirname(__file__)
 
 
 def generate_request_handler(teams_webhook_url, template_path):
@@ -50,7 +52,8 @@ def generate_request_handler(teams_webhook_url, template_path):
 
 
 def run(provided_config_file, template_path, log_file_path, log_level):
-    config = get_config('prom2teams/config.ini', provided_config_file)
+    config = get_config(os.path.join(dir, 'config.ini'),
+                        provided_config_file)
 
     load_logging_config(log_file_path, log_level)
 
@@ -72,11 +75,11 @@ def run(provided_config_file, template_path, log_file_path, log_level):
 
 
 def load_logging_config(log_file_path, log_level):
-    config_file = 'prom2teams/logging_console_config.ini'
+    config_file = os.path.join(dir, 'logging_console_config.ini')
     defaults = {'log_level': log_level}
 
     if(log_file_path):
-        config_file = 'prom2teams/logging_file_config.ini'
+        config_file = os.path.join(dir, 'logging_file_config.ini')
         defaults = {
                     'log_level': log_level,
                     'log_file_path': log_file_path
