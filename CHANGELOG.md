@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [1.1.0](https://github.com/idealista/prom2teams/tree/1.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/1.0.0...1.1.0)
 ### Added
 - *[#5](https://github.com/idealista/prom2teams/issues/5) Allow to provide log file path and log level as arguments* @dortegau
 
