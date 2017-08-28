@@ -1,10 +1,12 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
+[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams)
+
 # prom2teams
 
 <img src="assets/example.png" alt="Alert example" style="width: 600px;"/>
 
-**prom2teams** is a HTTP server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+**prom2teams** is an HTTP server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -13,6 +15,7 @@
   - [Config file](#config-file)
 	- [Configuring Prometheus](#configuring-prometheus)
 	- [Templating](#templating)
+- [Testing](#testing)
 - [Built With](#built-with)
 - [Versioning](#versioning)
 - [Authors](#authors)
@@ -38,12 +41,14 @@ $ pip3 install prom2teams
 ## Usage
 
 ```bash
-# To start the server (a config file path must be provided, Jinja2 template is optional):
-$ prom2teams start --configpath <config file path> [--templatepath <Jinja2 template file path>]
+# To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
+$ prom2teams start --configpath <config file path> [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help
 ```
+
+**Note:** default log level is INFO. Messages are redirected to stdout if no log file path is provided.
 
 ### Config file
 
@@ -72,6 +77,15 @@ url: 0.0.0.0:8089
 ### Templating
 
 prom2teams provides a [default template](app/teams/template.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
+
+## Testing
+
+To run the test suite you should type the following:
+
+```bash
+# After cloning prom2 teams :)
+$ python3 -m unittest discover tests
+```
 
 ## Built With
 ![Python 3.6.2](https://img.shields.io/badge/Python-3.6.2-green.svg)
