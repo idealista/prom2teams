@@ -14,8 +14,8 @@ if __name__ == "__main__":
                                      'and sends it to Microsoft Teams using configured connectors ')
 
     parser.add_argument('-c', '--configpath', help='config INI file path', required=True)
-    parser.add_argument('-l', '--logfilepath', help='log file path', required=True)
-    parser.add_argument('-v', '--loglevel', help='log level', required=True)
+    parser.add_argument('-l', '--logfilepath', help='log file path', required=False)
+    parser.add_argument('-v', '--loglevel', help='log level', required=False, default='INFO')
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
 
     args = parser.parse_args()

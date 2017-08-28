@@ -41,17 +41,18 @@ def generate_request_handler(teams_webhook_url, template_path):
                 logger.error('Error processing request: %s', str(e))
                 self.send_error(500, 'Error processing request')
 
+        def log_message(self, format, *args):
+            logger.info("%s - - [%s] %s" % (self.address_string(),
+                                            self.log_date_time_string(),
+                                            format % args))
+
     return PrometheusRequestHandler
 
 
 def run(provided_config_file, template_path, log_file_path, log_level):
     config = get_config('config.ini', provided_config_file)
 
-    fileConfig('logging_config.ini',
-               defaults={
-                            'log_file_path': log_file_path,
-                            'log_level': log_level
-               })
+    load_logging_config(log_file_path, log_level)
 
     host = config['HTTP Server']['Host']
     port = int(config['HTTP Server']['Port'])
@@ -68,6 +69,20 @@ def run(provided_config_file, template_path, log_file_path, log_level):
         logger.info('server stopped')
 
     httpd.server_close()
+
+
+def load_logging_config(log_file_path, log_level):
+    config_file = 'logging_console_config.ini'
+    defaults = {'log_level': log_level}
+
+    if(log_file_path):
+        config_file = 'logging_file_config.ini'
+        defaults = {
+                    'log_level': log_level,
+                    'log_file_path': log_file_path
+        }
+
+    fileConfig(config_file, defaults=defaults)
 
 
 def get_config(default_config_file, provided_config_file):
