@@ -38,6 +38,8 @@ prom2teams is present on [PyPI](https://pypi.python.org/pypi/prom2teams), so cou
 $ pip3 install prom2teams
 ```
 
+**Note:** Only works since v1.1.1 
+
 ## Usage
 
 ```bash

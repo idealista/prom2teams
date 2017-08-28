@@ -24,7 +24,7 @@ with open('LICENSE') as f:
 
 
 setup(name='prom2teams',
-      version='1.1.0',
+      version='1.1.1',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
@@ -34,6 +34,9 @@ setup(name='prom2teams',
         'pypandoc'
       ],
       scripts=['bin/prom2teams'],
+      package_data = {
+        '': ['*.ini', '*.j2',],
+      },
       url='http://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
       author_email='labs@idealista.com',

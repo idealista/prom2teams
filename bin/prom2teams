@@ -4,8 +4,11 @@ import sys
 import os
 import argparse
 
-sys.path.append(os.path.abspath('./app'))
-from server import run
+try:
+    from prom2teams.server import run
+except ImportError:
+    sys.path.append(os.path.abspath('./'))
+    from prom2teams.server import run
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Receives alert notifications '
