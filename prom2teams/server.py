@@ -4,11 +4,11 @@ import configparser
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from logging.config import fileConfig
 
-from teams.client import post
-from teams.json_composer import compose
-from message.parser import parse
+from prom2teams.teams.client import post
+from prom2teams.teams.json_composer import compose
+from prom2teams.message.parser import parse
 
-from exceptions import MissingConnectorConfigKeyException
+from prom2teams.exceptions import MissingConnectorConfigKeyException
 
 
 logger = logging.getLogger()
@@ -50,7 +50,7 @@ def generate_request_handler(teams_webhook_url, template_path):
 
 
 def run(provided_config_file, template_path, log_file_path, log_level):
-    config = get_config('config.ini', provided_config_file)
+    config = get_config('prom2teams/config.ini', provided_config_file)
 
     load_logging_config(log_file_path, log_level)
 
@@ -72,11 +72,11 @@ def run(provided_config_file, template_path, log_file_path, log_level):
 
 
 def load_logging_config(log_file_path, log_level):
-    config_file = 'logging_console_config.ini'
+    config_file = 'prom2teams/logging_console_config.ini'
     defaults = {'log_level': log_level}
 
     if(log_file_path):
-        config_file = 'logging_file_config.ini'
+        config_file = 'prom2teams/logging_file_config.ini'
         defaults = {
                     'log_level': log_level,
                     'log_file_path': log_file_path
