@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [1.1.2](https://github.com/idealista/prom2teams/tree/1.1.2)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.1...1.1.2)
+### Fixed
+- *[#15](https://github.com/idealista/prom2teams/issues/18) Allow to be installed under Python 3.5.x * @dortegau
+
 ## [1.1.1](https://github.com/idealista/prom2teams/tree/1.1.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.0...1.1.1)
 ### Fixed
