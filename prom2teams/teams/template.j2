@@ -16,20 +16,30 @@
     "sections": [{
         "activityTitle": "{{ msg_text.alert_summary }}",
         "facts": [{
+{% if msg_text.alert_alertname %}
             "name": "Alarm",
-            "value": "{{ msg_text.alert_name }}"
+            "value": "{{ msg_text.alert_alertname }}"
         }, {
+{% endif %}
+{% if msg_text.alert_instance %}
             "name": "In host",
             "value": "{{ msg_text.alert_instance }}"
         }, {
+{% endif %}
+{% if msg_text.alert_severity %}
             "name": "Severity",
             "value": "{{ msg_text.alert_severity }}"
         }, {
+{% endif %}
+{% if msg_text.alert_description %}
             "name": "Description",
             "value": "{{ msg_text.alert_description }}"
         }, {
+{% endif %}
+{% if msg_text.alert_status %}
             "name": "Status",
             "value": "{{ msg_text.alert_status }}"
+{% endif %}
         }],
            "markdown": true
         }]
