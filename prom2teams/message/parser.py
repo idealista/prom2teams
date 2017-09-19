@@ -6,7 +6,7 @@ logger = logging.getLogger()
 
 
 def parse(json_str):
-    return_dict = {}
+    alert_fields = {}
     json_values = json.loads(json_str)
 
     json_alerts_attr = json_values['alerts'][0]
@@ -18,16 +18,17 @@ def parse(json_str):
     fields = mandatory_fields + optional_fields
 
     for field in fields:
+        alert_field_key = 'alert_' + field
         if field in json_alerts_attr:
-            return_dict['alert_'+field] = json_alerts_attr[field]
+            alert_fields[alert_field_key] = json_alerts_attr[field]
         elif field in json_alerts_labels_attr:
-            return_dict['alert_'+field] = json_alerts_labels_attr[field]
+            alert_fields[alert_field_key] = json_alerts_labels_attr[field]
         elif field in json_alerts_annotations_attr:
-            return_dict['alert_'+field] = json_alerts_annotations_attr[field]
+            alert_fields[alert_field_key] = json_alerts_annotations_attr[field]
         elif field in mandatory_fields:
-            return_dict['alert_severity'] = 'severe'
-            return_dict['alert_summary'] = 'Incorrect JSON received. At least one mandatory field ('+field+') is absent.'
-            return_dict['alert_status'] = 'incorrect'            
-            return return_dict
+            alert_fields['alert_severity'] = 'severe'
+            alert_fields['alert_summary'] = 'Incorrect JSON received. At least one mandatory field ('+field+') is absent.'
+            alert_fields['alert_status'] = 'incorrect'
+            return alert_fields
 
-    return return_dict
+    return alert_fields
