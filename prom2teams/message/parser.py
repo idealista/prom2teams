@@ -6,8 +6,6 @@ logger = logging.getLogger()
 
 
 def parse(json_str):
-    logger.debug('received: %s', json_str)
-
     json_values = json.loads(json_str)
 
     json_alerts_attr = json_values['alerts'][0]
