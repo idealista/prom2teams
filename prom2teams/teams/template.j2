@@ -12,35 +12,25 @@
     "@context": "http://schema.org/extensions",
     "themeColor": "{% if alert_status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.alert_severity] }} {% endif %}",
     "summary": "{{ msg_text.alert_summary }}",
-    "title": "Prometheus alarm {% if alert_status=='resolved' %} (Resolved) {% endif %}",
+    "title": "Prometheus alarm {% if alert_status=='resolved' %} (Resolved) {% elif alert_status=='incorrect' %} (Incorrect) {% endif %}",
     "sections": [{
         "activityTitle": "{{ msg_text.alert_summary }}",
-        "facts": [{
-{% if msg_text.alert_alertname %}
+        "facts": [{% if msg_text.alert_alertname %}{
             "name": "Alarm",
             "value": "{{ msg_text.alert_alertname }}"
-        }, {
-{% endif %}
-{% if msg_text.alert_instance %}
+        },{% endif %}{% if msg_text.alert_instance %}{
             "name": "In host",
             "value": "{{ msg_text.alert_instance }}"
-        }, {
-{% endif %}
-{% if msg_text.alert_severity %}
+        },{% endif %}{% if msg_text.alert_severity %}{
             "name": "Severity",
             "value": "{{ msg_text.alert_severity }}"
-        }, {
-{% endif %}
-{% if msg_text.alert_description %}
+        },{% endif %}{% if msg_text.alert_description %}{
             "name": "Description",
             "value": "{{ msg_text.alert_description }}"
-        }, {
-{% endif %}
-{% if msg_text.alert_status %}
+        },{% endif %}{
             "name": "Status",
             "value": "{{ msg_text.alert_status }}"
-{% endif %}
         }],
            "markdown": true
-        }]
+    }]
 }
