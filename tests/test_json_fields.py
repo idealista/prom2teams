@@ -4,7 +4,7 @@ import json
 from context import parse
 
 
-class TestServer(unittest.TestCase):
+class TestJSONFields(unittest.TestCase):
 
     TEST_CONFIG_FILES_PATH = 'tests/data/jsons/'
 
