@@ -19,6 +19,7 @@ def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotati
             alert_fields[alert_field_key] = json_alerts_labels_attr[field]
         elif field in json_alerts_annotations_attr:
             alert_fields[alert_field_key] = json_alerts_annotations_attr[field]
+        # If the field isn't in the JSON but it's a mandatory field, then we send an error message
         elif field in mandatory_fields:
             alert_fields['alert_severity'] = 'severe'
             alert_fields['alert_status'] = 'incorrect'
