@@ -6,7 +6,7 @@ from context import parse
 
 class TestServer(unittest.TestCase):
 
-    TEST_CONFIG_FILES_PATH = 'tests/data/jsons'
+    TEST_CONFIG_FILES_PATH = 'tests/data/jsons/'
 
     def test_json_with_all_fields(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok.json') as json_data:
