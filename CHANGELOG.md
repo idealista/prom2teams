@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [1.1.3](https://github.com/idealista/prom2teams/tree/1.1.3)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.2...1.1.3)
+### Fixed
+- *[#21](https://github.com/idealista/prom2teams/issues/21) Made some JSON fields optional, avoiding later crashes* @jnogol
+- *[#23](https://github.com/idealista/prom2teams/issues/23) Deleted redundant log message* @jnogol
+- *[#27](https://github.com/idealista/prom2teams/issues/27) Automatic deploy to PyPi via Travis* @jnogol
+
 ## [1.1.2](https://github.com/idealista/prom2teams/tree/1.1.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.1...1.1.2)
 ### Fixed
