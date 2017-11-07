@@ -2,11 +2,13 @@ language: python
 python:
 - "3.5"
 - "3.6"
+before_install:
+  - sudo apt-get install -y pandoc
 install: "pip install -r requirements.txt"
 script: python -m unittest discover tests
 deploy:
   provider: pypi
-  server: https://testpypi.python.org/pypi
+  server: https://test.pypi.org/legacy/
   on:
     all_branches: true
   user: "idealista"
