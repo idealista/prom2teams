@@ -32,14 +32,17 @@ def generate_request_handler(teams_webhook_url, template_path):
             try:
                 content_length = int(self.headers['Content-Length'])
                 post_data = self.rfile.read(content_length).decode('utf-8')
-
                 logger.debug('Data received: %s', post_data)
-                message = compose(self.template_path, parse(post_data))
-                logger.debug('The message that will be sent is: %s',
-                             str(message))
 
-                post(self.teams_webhook_url, message)
-                self._set_headers(200)
+                alarms = parse(post_data)
+
+                for key, alarm in alarms.items():
+                    sending_alarm = compose(self.template_path, alarm)
+                    logger.debug('The message that will be sent is: %s',
+                                str(sending_alarm))
+                    post(self.teams_webhook_url, sending_alarm)
+                    self._set_headers(200)
+
             except Exception as e:
                 logger.exception('Error processing request: %s', str(e))
                 self.send_error(500, 'Error processing request')

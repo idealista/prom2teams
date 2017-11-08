@@ -31,8 +31,12 @@ def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotati
 def parse(json_str):
     json_values = json.loads(json_str)
 
-    json_alerts_attr = json_values['alerts'][0]
-    json_alerts_labels_attr = json_alerts_attr['labels']
-    json_alerts_annotations_attr = json_alerts_attr['annotations']
+    parsed_alarms = {}
 
-    return check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr)
+    for i, alert in enumerate(json_values['alerts']):
+        json_alerts_attr = alert
+        json_alerts_labels_attr = json_alerts_attr['labels']
+        json_alerts_annotations_attr = json_alerts_attr['annotations']
+        parsed_alarms['alarm_' + str(i)]=check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr)
+
+    return parsed_alarms
