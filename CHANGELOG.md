@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+### Added
+
+- *[#32]((https://github.com/idealista/prom2teams/issues/32) Sets default value for "instance" in alerts* @maglo
+
 ## [1.1.3](https://github.com/idealista/prom2teams/tree/1.1.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.2...1.1.3)
 ### Fixed

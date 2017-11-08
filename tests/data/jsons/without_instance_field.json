@@ -1,0 +1,25 @@
+{
+  "receiver": "test_webhook",
+  "status": "resolved",
+  "alerts": [
+    {
+      "status": "resolved",
+      "labels": {
+        "alertname": "DiskSpace",
+        "device": "rootfs",
+        "fstype": "rootfs",
+        "job": "fsociety",
+        "mountpoint": "/",
+        "severity": "severe"
+      },
+      "annotations": {
+        "summary": "Disk usage alert on CS30.evilcorp"
+      },
+      "startsAt": "2017-05-09T07:01:37.803Z",
+      "endsAt": "2017-05-09T07:08:37.818278068Z",
+      "generatorURL": "my.prometheusserver.url"
+    }
+  ],
+  "externalURL": "my.prometheusalertmanager.url",
+  "version": "4"
+}

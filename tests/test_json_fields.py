@@ -26,6 +26,11 @@ class TestJSONFields(unittest.TestCase):
             alert_fields = parse(json.dumps(json_received))
             self.assertNotIn('Incorrect',str(alert_fields))
 
+    def test_json_without_instance_field(self):
+        with open(self.TEST_CONFIG_FILES_PATH + 'without_instance_field.json') as json_data:
+            json_received = json.load(json_data)
+            alert_fields = parse(json.dumps(json_received))
+            self.assertEqual('none',str(alert_fields['alarm_0']['alert_instance']))
 
 if __name__ == '__main__':
     unittest.main()
