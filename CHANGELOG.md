@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [1.2.0](https://github.com/idealista/prom2teams/tree/1.2.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.3...1.2.0)
+### Added
+- *[#32](https://github.com/idealista/prom2teams/issues/32) Sets default value for "instance" in alerts* @maglo
+
+### Fixed
+- *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alarms* @jnogol
+
 ## [1.1.3](https://github.com/idealista/prom2teams/tree/1.1.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.2...1.1.3)
 ### Fixed
@@ -14,12 +22,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [1.1.2](https://github.com/idealista/prom2teams/tree/1.1.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.1...1.1.2)
 ### Fixed
-- *[#15](https://github.com/idealista/prom2teams/issues/18) Allow to be installed under Python 3.5.x * @dortegau
+- *[#15](https://github.com/idealista/prom2teams/issues/18) Allow to be installed under Python 3.5.x* @dortegau
 
 ## [1.1.1](https://github.com/idealista/prom2teams/tree/1.1.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.0...1.1.1)
 ### Fixed
-- *[#15](https://github.com/idealista/prom2teams/issues/15) Fixing setuptools config and packaging (broken in versions 1.1.0 and 1.0.0) * @dortegau
+- *[#15](https://github.com/idealista/prom2teams/issues/15) Fixing setuptools config and packaging (broken in versions 1.1.0 and 1.0.0)* @dortegau
 
 ## [1.1.0](https://github.com/idealista/prom2teams/tree/1.1.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.0.0...1.1.0)
