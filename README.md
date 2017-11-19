@@ -85,7 +85,7 @@ prom2teams provides a [default template](app/teams/template.j2) built with [Jinj
 To run the test suite you should type the following:
 
 ```bash
-# After cloning prom2 teams :)
+# After cloning prom2teams :)
 $ python3 -m unittest discover tests
 ```
 
