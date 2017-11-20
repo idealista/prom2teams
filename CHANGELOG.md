@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+- *[#32](https://github.com/idealista/prom2teams/issues/32) Support alerts with missing mandatory attributes @lindhor
 
 ## [1.2.0](https://github.com/idealista/prom2teams/tree/1.2.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.3...1.2.0)

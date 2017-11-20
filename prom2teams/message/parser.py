@@ -5,15 +5,12 @@ import logging
 logger = logging.getLogger()
 
 def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr):
-    mandatory_fields = ['alertname', 'status', 'summary']
-    optional_fields = ['severity', 'description', 'instance']
+    mandatory_fields = ['alertname', 'status', 'instance', 'summary']
+    optional_fields = ['severity', 'description']
     fields = mandatory_fields + optional_fields
 
     alert_fields = {}
     
-    # Set the instance to 'none' by default. 
-    alert_fields['alert_instance'] = 'none'
-
     for field in fields:
         alert_field_key = 'alert_' + field
         if field in json_alerts_attr:
@@ -22,13 +19,12 @@ def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotati
             alert_fields[alert_field_key] = json_alerts_labels_attr[field]
         elif field in json_alerts_annotations_attr:
             alert_fields[alert_field_key] = json_alerts_annotations_attr[field]
-        # If the field isn't in the JSON but it's a mandatory field, then we send an error message
+        # If the field isn't in the JSON but it's a mandatory field, then we use default values
         elif field in mandatory_fields:
-            alert_fields['alert_severity'] = 'severe'
-            alert_fields['alert_status'] = 'incorrect'
-            alert_fields['alert_summary'] = 'Incorrect JSON received. At least one mandatory field ('+field+') is absent.'
-            return alert_fields
-
+            if field in json_alerts_attr:
+                alert_fields[alert_field_key] = json_alerts_attr[field]
+            else:
+                alert_fields[alert_field_key] = 'unknown'
     return alert_fields
 
 def parse(json_str):
