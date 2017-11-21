@@ -80,6 +80,11 @@ url: 0.0.0.0:8089
 
 prom2teams provides a [default template](app/teams/template.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
+Some fields are considered mandatory when received from Alert Manager.
+If such a field is not included a default value of 'unknown' is assigned as described below:
+
+Other optional fields are skipped and not included in the Teams message.
+
 ## Testing
 
 To run the test suite you should type the following:
