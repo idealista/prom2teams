@@ -5,8 +5,8 @@ import logging
 logger = logging.getLogger()
 
 def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr):
-    mandatory_fields = ['alertname', 'status', 'summary']
-    optional_fields = ['severity', 'description', 'instance']
+    mandatory_fields = ['alertname', 'status']
+    optional_fields = ['severity', 'summary', 'description', 'instance']
     fields = mandatory_fields + optional_fields
 
     alert_fields = {}
@@ -28,6 +28,9 @@ def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotati
             alert_fields['alert_status'] = 'incorrect'
             alert_fields['alert_summary'] = 'Incorrect JSON received. At least one mandatory field ('+field+') is absent.'
             return alert_fields
+
+    if alert_fields.get('alert_summary') == None:
+        alert_fields['alert_summary'] = alert_fields['alert_alertname']
 
     return alert_fields
 
