@@ -4,10 +4,16 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [1.3.0](https://github.com/idealista/prom2teams/tree/1.3.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/1.2.0...1.3.0)
+### Added
+- *[#32](https://github.com/idealista/prom2teams/issues/32) Support alerts with missing mandatory attributes* @lindhor
+- *[#38](https://github.com/idealista/prom2teams/issues/38) Dockerfile* @jnogol
+
 ## [1.2.0](https://github.com/idealista/prom2teams/tree/1.2.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.3...1.2.0)
 ### Added
-- *[#32](https://github.com/idealista/prom2teams/issues/32) Sets default value for "instance" in alerts* @maglo
+- *[#32](https://github.com/idealista/prom2teams/issues/32) Set default value for "instance" in alerts* @maglo
 
 ### Fixed
 - *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alarms* @jnogol

@@ -44,7 +44,7 @@ $ pip3 install prom2teams
 
 ```bash
 # To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
-$ prom2teams start --configpath <config file path> [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+$ prom2teams --configpath <config file path> [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help
@@ -80,12 +80,17 @@ url: 0.0.0.0:8089
 
 prom2teams provides a [default template](app/teams/template.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
+Some fields are considered mandatory when received from Alert Manager.
+If such a field is not included a default value of 'unknown' is assigned as described below:
+
+Other optional fields are skipped and not included in the Teams message.
+
 ## Testing
 
 To run the test suite you should type the following:
 
 ```bash
-# After cloning prom2 teams :)
+# After cloning prom2teams :)
 $ python3 -m unittest discover tests
 ```
 
