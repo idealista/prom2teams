@@ -1,3 +1,5 @@
 ## Requirements
 requests
 jinja2
+flask
+flask-restplus
