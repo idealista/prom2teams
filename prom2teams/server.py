@@ -1,6 +1,7 @@
 import logging
 import configparser
 import os
+import warnings
 
 from logging.config import fileConfig
 from flask import Flask, request
@@ -34,6 +35,8 @@ def run(provided_config_file, template_path, log_file_path, log_level):
     @api.route('/')
     class AlarmSenderDeprecated(Resource):
         def post(self):
+            deprecated_message = "Call to deprecated function. It will be removed in future versions. Please view the README file."
+            show_deprecated_warning(deprecated_message)
             json_str = request.get_json()
             webhook_url = config['Microsoft Teams']['Connector']
             send_alarms_to_teams(json_str, webhook_url, template_path)
@@ -65,14 +68,27 @@ def load_logging_config(log_file_path, log_level):
 
 def get_config(provided_config_file):
     provided_config = configparser.ConfigParser()
+    default_config_path = os.path.join(dir, 'config.ini')
+
     try:
+
+        with open(default_config_path) as f_default:
+            provided_config.read_file(f_default)
+
         with open(provided_config_file) as f_prov:
             provided_config.read_file(f_prov)
+
         if not provided_config.options('Microsoft Teams'):
             raise MissingConnectorConfigKeyException('missing connector key in provided config')
 
     except configparser.NoSectionError:
         raise MissingConnectorConfigKeyException('missing required Microsoft Teams / '
                                                  'connector key in provided config')
-
     return provided_config
+
+
+def show_deprecated_warning(message):
+    warnings.simplefilter('always', DeprecationWarning)
+    warnings.warn(message=message, category=DeprecationWarning)
+    warnings.simplefilter('default', DeprecationWarning)
+

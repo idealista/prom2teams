@@ -29,7 +29,7 @@ class TestServer(unittest.TestCase):
                                         'without_overriding_defaults.ini'
         config = server.get_config(provided_config_relative_path)
 
-        self.assertEqual(config.get('HTTP Server', 'Host'), '1.1.1.1')
+        self.assertEqual(config.get('HTTP Server', 'Host'), '0.0.0.0')
         self.assertEqual(config.get('HTTP Server', 'Port'), '8089')
         self.assertTrue(config.get('Microsoft Teams', 'Connector'))
 
