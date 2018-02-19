@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 import sys
 import os
 import argparse
+
 
 try:
     from prom2teams.server import run
@@ -22,5 +22,4 @@ if __name__ == "__main__":
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
 
     args = parser.parse_args()
-
     run(args.configpath, args.templatepath, args.logfilepath, args.loglevel)

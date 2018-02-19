@@ -10,7 +10,6 @@ def check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotati
     fields = mandatory_fields + optional_fields
 
     alert_fields = {}
-    
     for field in fields:
         alert_field_key = 'alert_' + field
         if field in json_alerts_attr:

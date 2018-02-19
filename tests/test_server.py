@@ -1,11 +1,10 @@
 import unittest
 
-from context import server
-from context import exceptions
+from .context import server
+from .context import exceptions
 
 
 class TestServer(unittest.TestCase):
-
     TEST_CONFIG_FILES_PATH = 'tests/data/'
     DEFAULT_CONFIG_RELATIVE_PATH = './prom2teams/config.ini'
 
@@ -41,7 +40,6 @@ class TestServer(unittest.TestCase):
         self.assertEqual(config.get('HTTP Server', 'Host'), '1.1.1.1')
         self.assertEqual(config.get('HTTP Server', 'Port'), '9089')
         self.assertTrue(config.get('Microsoft Teams', 'Connector'))
-
 
     def test_connectors_configured(self):
         provided_config_relative_path = self.TEST_CONFIG_FILES_PATH + \

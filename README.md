@@ -62,8 +62,11 @@ Host: <host ip> # default: 0.0.0.0
 Port: <host port> # default: 8089
 
 [Microsoft Teams]
-Connector: <webhook url> # required value
+connector1: <webhook url> # required value
+connector2: <webhook url> # required value
+...
 ```
+
 
 ### Configuring Prometheus
 

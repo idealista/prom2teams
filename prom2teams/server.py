@@ -16,7 +16,9 @@ from prom2teams.exceptions import MissingConnectorConfigKeyException
 logger = logging.getLogger()
 dir = os.path.dirname(__file__)
 
+
 def run(provided_config_file, template_path, log_file_path, log_level):
+    warnings.simplefilter('once', PendingDeprecationWarning)
     config = get_config(provided_config_file)
     load_logging_config(log_file_path, log_level)
     host = config['HTTP Server']['Host']
@@ -35,7 +37,8 @@ def run(provided_config_file, template_path, log_file_path, log_level):
     @api.route('/')
     class AlarmSenderDeprecated(Resource):
         def post(self):
-            deprecated_message = "Call to deprecated function. It will be removed in future versions. Please view the README file."
+            deprecated_message = "Call to deprecated function. It will be removed in future versions. " \
+                                 "Please view the README file."
             show_deprecated_warning(deprecated_message)
             json_str = request.get_json()
             webhook_url = config['Microsoft Teams']['Connector']
@@ -57,7 +60,7 @@ def send_alarms_to_teams(json, teams_webhook_url, template_path):
 def load_logging_config(log_file_path, log_level):
     config_file = os.path.join(dir, 'logging_console_config.ini')
     defaults = {'log_level': log_level}
-    if(log_file_path):
+    if log_file_path:
         config_file = os.path.join(dir, 'logging_file_config.ini')
         defaults = {
                     'log_level': log_level,
@@ -69,9 +72,7 @@ def load_logging_config(log_file_path, log_level):
 def get_config(provided_config_file):
     provided_config = configparser.ConfigParser()
     default_config_path = os.path.join(dir, 'config.ini')
-
     try:
-
         with open(default_config_path) as f_default:
             provided_config.read_file(f_default)
 
@@ -88,7 +89,4 @@ def get_config(provided_config_file):
 
 
 def show_deprecated_warning(message):
-    warnings.simplefilter('always', DeprecationWarning)
-    warnings.warn(message=message, category=DeprecationWarning)
-    warnings.simplefilter('default', DeprecationWarning)
-
+    warnings.warn(message=message, category=PendingDeprecationWarning)
