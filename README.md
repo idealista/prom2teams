@@ -6,7 +6,7 @@
 
 <img src="assets/example.png" alt="Alert example" style="width: 600px;"/>
 
-**prom2teams** is an HTTP server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+**prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -62,8 +62,8 @@ Host: <host ip> # default: 0.0.0.0
 Port: <host port> # default: 8089
 
 [Microsoft Teams]
-connector1: <webhook url> # required value
-connector2: <webhook url> # required value
+connector1: <webhook url> # At least one connector is required
+connector2: <webhook url> 
 ...
 ```
 
@@ -74,9 +74,11 @@ The [webhook receiver](https://prometheus.io/docs/alerting/configuration/#<webho
 
 The url is formed by the host and port defined in the previous step.
 
+**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.   
+
 ```
 # The prom2teams endpoint to send HTTP POST requests to.
-url: 0.0.0.0:8089
+url: 0.0.0.0:8089/<connector1>
 ```
 
 ### Templating
