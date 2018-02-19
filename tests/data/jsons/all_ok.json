@@ -8,7 +8,7 @@
         "alertname": "DiskSpace",
         "device": "rootfs",
         "fstype": "rootfs",
-        "instance": "idealista.Test",
+        "instance": "cs30.evilcorp",
         "job": "fsociety",
         "mountpoint": "/",
         "severity": "severe"

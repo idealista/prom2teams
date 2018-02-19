@@ -1,6 +1,8 @@
 import json
 import logging
 
+from flask_restplus import reqparse
+
 
 logger = logging.getLogger()
 
@@ -33,5 +35,5 @@ def parse(json_values):
         json_alerts_attr = alert
         json_alerts_labels_attr = json_alerts_attr['labels']
         json_alerts_annotations_attr = json_alerts_attr['annotations']
-        parsed_alarms['alarm_' + str(i)]=check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr)
+        parsed_alarms['alarm_' + str(i)] = check_fields(json_alerts_attr, json_alerts_labels_attr, json_alerts_annotations_attr)
     return parsed_alarms

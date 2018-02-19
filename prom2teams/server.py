@@ -5,7 +5,7 @@ import warnings
 
 from logging.config import fileConfig
 from flask import Flask, request
-from flask_restplus import Api, Resource
+from flask_restplus import Api, Resource, reqparse
 
 from prom2teams.teams.client import post
 from prom2teams.teams.json_composer import compose
@@ -49,7 +49,10 @@ def run(provided_config_file, template_path, log_file_path, log_level):
 
 
 def send_alarms_to_teams(json, teams_webhook_url, template_path):
-    alarms = parse(json)
+    parser = reqparse.RequestParser()
+    parser.add_argument("alert", action="append")
+    alarms =
+    # alarms = parse(json)
     for key, alarm in alarms.items():
         sending_alarm = compose(template_path, alarm)
         logger.debug('The message that will be sent is: %s',

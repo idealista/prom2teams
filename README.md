@@ -62,8 +62,9 @@ Host: <host ip> # default: 0.0.0.0
 Port: <host port> # default: 8089
 
 [Microsoft Teams]
-connector1: <webhook url> # At least one connector is required
-connector2: <webhook url> 
+# At least one connector is required here
+Connector1: <webhook url> 
+ConnectorTwo: <webhook url>   
 ...
 ```
 
@@ -78,7 +79,7 @@ The url is formed by the host and port defined in the previous step.
 
 ```
 # The prom2teams endpoint to send HTTP POST requests to.
-url: 0.0.0.0:8089/v2/<connector1>
+url: 0.0.0.0:8089/v2/<Connector1>
 ```
 
 ### Templating
