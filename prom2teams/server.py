@@ -49,10 +49,7 @@ def run(provided_config_file, template_path, log_file_path, log_level):
 
 
 def send_alarms_to_teams(json, teams_webhook_url, template_path):
-    parser = reqparse.RequestParser()
-    parser.add_argument("alert", action="append")
-    alarms =
-    # alarms = parse(json)
+    alarms = parse(json)
     for key, alarm in alarms.items():
         sending_alarm = compose(template_path, alarm)
         logger.debug('The message that will be sent is: %s',
