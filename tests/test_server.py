@@ -1,7 +1,7 @@
 import unittest
 
-from .context import server
-from .context import exceptions
+from context import server
+from context import exceptions
 
 
 class TestServer(unittest.TestCase):
