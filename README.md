@@ -78,7 +78,7 @@ The url is formed by the host and port defined in the previous step.
 
 ```
 # The prom2teams endpoint to send HTTP POST requests to.
-url: 0.0.0.0:8089/<connector1>
+url: 0.0.0.0:8089/v2/<connector1>
 ```
 
 ### Templating
