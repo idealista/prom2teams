@@ -11,26 +11,26 @@
 {
     "@type": "MessageCard",
     "@context": "http://schema.org/extensions",
-    "themeColor": "{% if alert_status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.alert_severity] }} {% endif %}",
-    "summary": "{{ msg_text.alert_summary }}",
-    "title": "Prometheus alarm {% if alert_status=='resolved' %} (Resolved) {% elif alert_status=='unknown' %} (status unknown) {% endif %}",
+    "themeColor": "{% if status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.severity] }} {% endif %}",
+    "summary": "{{ msg_text.summary }}",
+    "title": "Prometheus alarm {% if status=='resolved' %} (Resolved) {% elif status=='unknown' %} (status unknown) {% endif %}",
     "sections": [{
-        "activityTitle": "{{ msg_text.alert_summary }}",
-        "facts": [{% if msg_text.alert_alertname %}{
+        "activityTitle": "{{ msg_text.summary }}",
+        "facts": [{% if msg_text.name %}{
             "name": "Alarm",
-            "value": "{{ msg_text.alert_alertname }}"
-        },{% endif %}{% if msg_text.alert_instance %}{
+            "value": "{{ msg_text.name }}"
+        },{% endif %}{% if msg_text.instance %}{
             "name": "In host",
-            "value": "{{ msg_text.alert_instance }}"
-        },{% endif %}{% if msg_text.alert_severity %}{
+            "value": "{{ msg_text.instance }}"
+        },{% endif %}{% if msg_text.severity %}{
             "name": "Severity",
-            "value": "{{ msg_text.alert_severity }}"
-        },{% endif %}{% if msg_text.alert_description %}{
+            "value": "{{ msg_text.severity }}"
+        },{% endif %}{% if msg_text.description %}{
             "name": "Description",
-            "value": "{{ msg_text.alert_description }}"
+            "value": "{{ msg_text.description }}"
         },{% endif %}{
             "name": "Status",
-            "value": "{{ msg_text.alert_status }}"
+            "value": "{{ msg_text.status }}"
         }],
            "markdown": true
     }]

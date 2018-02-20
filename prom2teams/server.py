@@ -5,16 +5,22 @@ import warnings
 
 from logging.config import fileConfig
 from flask import Flask, request
-from flask_restplus import Api, Resource, reqparse
+from flask_restplus import Api, Resource
 
 from prom2teams.teams.client import post
 from prom2teams.teams.json_composer import compose
-from prom2teams.message.parser import parse
+from prom2teams.message.alarm_mapper import AlarmMapper
 from prom2teams.exceptions import MissingConnectorConfigKeyException
 
+app = Flask(__name__)
+app.config.SWAGGER_UI_JSONEDITOR = True
+api = Api(app, version='2.0', title='Prom2Teams API',
+          description='A swagger interface for Prom2Teams webservices',)
 
 logger = logging.getLogger()
 dir = os.path.dirname(__file__)
+
+from .model import message
 
 
 def run(provided_config_file, template_path, log_file_path, log_level):
@@ -24,14 +30,15 @@ def run(provided_config_file, template_path, log_file_path, log_level):
     host = config['HTTP Server']['Host']
     port = int(config['HTTP Server']['Port'])
 
-    app = Flask(__name__)
-    api = Api(app)
     @api.route('/v2/<string:connector>')
+    @api.doc(params={'connector': 'Name of connector to use'})
     class AlarmSender(Resource):
+        @api.expect(message)
         def post(self, connector):
-            json_str = request.get_json()
+            json = request.get_json()
+            alarms = AlarmMapper.map_to_alarms(json)
             webhook_url = config['Microsoft Teams'][connector]
-            send_alarms_to_teams(json_str, webhook_url, template_path)
+            send_alarms_to_teams(alarms, webhook_url, template_path)
             return 'OK', 201
 
     @api.route('/')
@@ -40,20 +47,20 @@ def run(provided_config_file, template_path, log_file_path, log_level):
             deprecated_message = "Call to deprecated function. It will be removed in future versions. " \
                                  "Please view the README file."
             show_deprecated_warning(deprecated_message)
-            json_str = request.get_json()
+            json = request.get_json()
+            alarms = AlarmMapper.map_to_alarms(json)
             webhook_url = config['Microsoft Teams']['Connector']
-            send_alarms_to_teams(json_str, webhook_url, template_path)
+            send_alarms_to_teams(alarms, webhook_url, template_path)
             return 'OK', 201
 
     app.run(host=host, port=port, debug=False)
 
 
-def send_alarms_to_teams(json, teams_webhook_url, template_path):
-    alarms = parse(json)
-    for key, alarm in alarms.items():
-        sending_alarm = compose(template_path, alarm)
-        logger.debug('The message that will be sent is: %s',
-                     str(sending_alarm))
+def send_alarms_to_teams(alarms, teams_webhook_url, template_path):
+
+    for alarm in alarms:
+        sending_alarm = compose(template_path, AlarmMapper.map_alarm_to_json(alarm))
+        logger.debug('The message that will be sent is: %s', str(sending_alarm))
         post(teams_webhook_url, sending_alarm)
 
 

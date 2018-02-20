@@ -9,9 +9,7 @@ DEFAULT_TEMPLATE_NAME = 'template.j2'
 
 def compose(template_path, msg_text):
     template = get_template(template_path)
-    rendered_template = template.render(
-        alert_status=msg_text['alert_status'],
-        msg_text=msg_text)
+    rendered_template = template.render(status=msg_text['status'], msg_text=msg_text)
     return rendered_template
 
 
