@@ -52,6 +52,7 @@ $ prom2teams --help
 
 **Note:** default log level is INFO. Messages are redirected to stdout if no log file path is provided.
 
+
 ### Config file
 
 The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
@@ -89,6 +90,13 @@ Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned as described below:
 
 Other optional fields are skipped and not included in the Teams message.
+
+#### Swagger UI
+
+Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API documentation.
+
+<img src="assets/swagger.png" alt="Swagger UI"/>
+ 
 
 ## Testing
 
