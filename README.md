@@ -95,8 +95,7 @@ Other optional fields are skipped and not included in the Teams message.
 
 Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API documentation.
 
-<img src="assets/swagger.png" alt="Swagger UI"/>
- 
+<img src="assets/swagger.png" alt="Swagger UI" style="width: 600px;"/>
 
 ## Testing
 
