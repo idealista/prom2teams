@@ -2,11 +2,11 @@ import logging
 import configparser
 import os
 import warnings
-import prom2teams.model
+import prom2teams.web_service.model
 
 from logging.config import fileConfig
 from prom2teams.exceptions import MissingConnectorConfigKeyException
-from .api import run_app
+from prom2teams.web_service.api import run_app
 
 
 logger = logging.getLogger()
@@ -20,7 +20,7 @@ def run(provided_config_file, template_path, log_file_path, log_level):
     host = config['HTTP Server']['Host']
     port = int(config['HTTP Server']['Port'])
 
-    run_app(config, template_path, host, port, prom2teams.model.message, logger)
+    run_app(config, template_path, host, port, prom2teams.web_service.model.message, logger)
 
 
 def load_logging_config(log_file_path, log_level):

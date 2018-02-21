@@ -1,5 +1,5 @@
 from flask_restplus import fields
-from .api import api
+from prom2teams.web_service.api import api
 
 annotations = api.model('annotations', {
     'description': fields.String(default='disk usage 93% on rootfs device'),
@@ -32,9 +32,3 @@ message = api.model('message', {
     'externalURL': fields.String(default='my.prometheusalertmanager.url'),
     'version': fields.String(default='4')
 })
-
-
-
-
-
-

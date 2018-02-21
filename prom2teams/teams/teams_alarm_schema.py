@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields
 
 
-class AlarmSchema(Schema):
+class TeamsAlarmSchema(Schema):
     status = fields.Str()
     severity = fields.Str()
     summary = fields.Str()
@@ -9,7 +9,7 @@ class AlarmSchema(Schema):
     description = fields.Str()
     name = fields.Str()
 
-class Alarm:
+class TeamsAlarm:
     def __init__(self, name, status, severity, summary, instance, description):
         self.name = name
         self.status = status
@@ -17,13 +17,3 @@ class Alarm:
         self.summary = summary
         self.instance = instance
         self.description = description
-
-
-
-
-
-
-
-
-
-
