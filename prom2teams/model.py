@@ -1,5 +1,5 @@
 from flask_restplus import fields
-from .server import api
+from .api import api
 
 annotations = api.model('annotations', {
     'description': fields.String(default='disk usage 93% on rootfs device'),
