@@ -42,31 +42,33 @@ $ pip3 install prom2teams
 
 ## Usage
 
+  - To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
 ```bash
-# To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
-$ prom2teams --configpath <config file path> [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+$ prom2teams --configpath <config file path> [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+```
+    The config file can be provided also using an env var ***APP_CONFIG_FILE***
 
-# To show the help message:
+    For production environment it's recommended to use a WSGI web application. In this case you can use the [wsgi](bin/prom2teams_uwsgi) version
+
+  - To show the help message:
+```bash
 $ prom2teams --help
 ```
 
-**Note:** default log level is INFO. Messages are redirected to stdout if no log file path is provided.
+**Note:** default log level is DEBUG. Messages are redirected to stdout.
 
 
 ### Config file
 
-The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
+Take a look to the [settings](config/settings.py) file for the default properties. All these properties can be overrided.
+To start the service you must provide a new config file with at least one Microsoft Teams connector
 
 ```
-[HTTP Server]
-Host: <host ip> # default: 0.0.0.0
-Port: <host port> # default: 8089
-
-[Microsoft Teams]
-# At least one connector is required here
-Connector: <webhook url> 
-AnotherConnector: <webhook url>   
-...
+MICROSOFT_TEAMS = {
+    Connector: <webhook url>,
+    AnotherConnector: <webhook url>,
+    ...
+}
 ```
 
 ### Configuring Prometheus
@@ -78,13 +80,13 @@ The url is formed by the host and port defined in the previous step.
 **Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.   
 
 ```
-# The prom2teams endpoint to send HTTP POST requests to.
+// The prom2teams endpoint to send HTTP POST requests to.
 url: 0.0.0.0:8089/v2/<Connector1>
 ```
 
 ### Templating
 
-prom2teams provides a [default template](app/teams/template.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
+prom2teams provides a [default template](resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
 Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned as described below:
@@ -93,16 +95,20 @@ Other optional fields are skipped and not included in the Teams message.
 
 #### Swagger UI
 
-Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API documentation.
+Accessing to `<Host>:<Port>` (e.g. `localhost:8001`) in a web browser shows the API v1 documentation.
 
-<img src="assets/swagger.png" alt="Swagger UI" style="width: 600px;"/>
+<img src="assets/swaggerv1.png" alt="Swagger UI" style="width: 600px;"/>
+
+Accessing to `<Host>:<Port>/v2` (e.g. `localhost:8001/v2`) in a web browser shows the API v2 documentation.
+
+<img src="assets/swaggerv2.png" alt="Swagger UI" style="width: 600px;"/>
 
 ## Testing
 
 To run the test suite you should type the following:
 
 ```bash
-# After cloning prom2teams :)
+// After cloning prom2teams :)
 $ python3 -m unittest discover tests
 ```
 

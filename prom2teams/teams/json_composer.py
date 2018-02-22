@@ -2,12 +2,13 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 
+from prom2teams import root
 
-DEFAULT_TEMPLATE_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_TEMPLATE_NAME = 'template.j2'
+DEFAULT_TEMPLATE_DIR = root = os.path.abspath(os.path.join(root, 'resources/templates'))
+DEFAULT_TEMPLATE_NAME = 'teams.j2'
 
 
-def compose_all(template_path, alarms_json):
+def compose_all(alarms_json, template_path=None):
     template = get_template(template_path)
     rendered_templates = [template.render(status=json_alarm['status'], msg_text=json_alarm)
                           for json_alarm in alarms_json]

@@ -9,6 +9,7 @@ class TeamsAlarmSchema(Schema):
     description = fields.Str()
     name = fields.Str()
 
+
 class TeamsAlarm:
     def __init__(self, name, status, severity, summary, instance, description):
         self.name = name

@@ -1,7 +1,6 @@
 import requests
 
-from prom2teams.web_service.exceptions import MicrosoftTeamsRequestException
-
+from .exceptions import MicrosoftTeamsRequestException
 
 session = requests.Session()
 session.headers.update({'Content-Type': 'application/json'})
@@ -14,5 +13,5 @@ def post(teams_webhook_url, message):
                             ' Returned status code: {}.' \
                             ' Returned data: {}'
         raise MicrosoftTeamsRequestException(exception_msg.format(teams_webhook_url,
-                                                 str(response.status_code),
-                                                 str(response.text)))
+                                             str(response.status_code),
+                                             str(response.text)))
