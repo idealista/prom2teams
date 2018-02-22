@@ -3,6 +3,7 @@ import configparser
 import logging.config
 import os
 
+import sys
 import yaml
 from flask import Flask, Blueprint
 
@@ -26,7 +27,6 @@ def _config_command_line():
                                                  'and sends it to Microsoft Teams using configured connectors ')
 
     parser.add_argument('-c', '--configpath', help='config INI file path', required=False)
-    parser.add_argument('-l', '--logfilepath', help='log file path', required=False)
     parser.add_argument('-v', '--loglevel', help='log level', required=False)
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
     return parser.parse_args()
@@ -72,18 +72,16 @@ def _config_app(application):
         command_line_args = _config_command_line()
         if command_line_args.configpath:
             application.config.from_pyfile(command_line_args.configpath)
-        if command_line_args.logfilepath:
-            application.config['LOG_FILE_PATH'] = command_line_args.logfilepath
         if command_line_args.loglevel:
             application.config['LOG_LEVEL'] = command_line_args.loglevel
         if command_line_args.templatepath:
             application.config['TEMPLATE_PATH'] = command_line_args.templatepath
 
-        if not application.config['MICROSOFT_TEAMS']:
+        if 'MICROSOFT_TEAMS' not in application.config:
             raise MissingConnectorConfigKeyException('missing connector key in config')
 
-    except configparser.NoSectionError:
-        raise MissingConnectorConfigKeyException('missing required Microsoft Teams / connector key')
+    except MissingConnectorConfigKeyException:
+        sys.exit('No Microsoft Teams connector available')
 
 
 def _register_api(application, api, namespace, blueprint):
