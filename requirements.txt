@@ -1,3 +1,7 @@
 ## Requirements
-requests
-jinja2
+requests==2.9.1
+Jinja2==2.10
+Flask==0.12.2
+flask-restplus==0.10.1
+marshmallow==2.15.0
+

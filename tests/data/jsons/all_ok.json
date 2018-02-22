@@ -14,7 +14,7 @@
         "severity": "severe"
       },
       "annotations": {
-        "description": "disk usage 73% on rootfs device",
+        "description": "disk usage 93% on rootfs device",
         "summary": "Disk usage alert on CS30.evilcorp"
       },
       "startsAt": "2017-05-09T07:01:37.803Z",

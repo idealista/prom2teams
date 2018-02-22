@@ -85,6 +85,13 @@ env/
 venv/
 ENV/
 
+#Pycharm stuff
+*.settings
+*.project
+*.classpath
+*.idea
+*.iml
+
 # Spyder project settings
 .spyderproject
 .spyproject

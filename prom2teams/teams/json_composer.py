@@ -7,12 +7,11 @@ DEFAULT_TEMPLATE_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_TEMPLATE_NAME = 'template.j2'
 
 
-def compose(template_path, msg_text):
+def compose_all(template_path, alarms_json):
     template = get_template(template_path)
-    rendered_template = template.render(
-        alert_status=msg_text['alert_status'],
-        msg_text=msg_text)
-    return rendered_template
+    rendered_templates = [template.render(status=json_alarm['status'], msg_text=json_alarm)
+                          for json_alarm in alarms_json]
+    return rendered_templates
 
 
 def get_template(template_path):

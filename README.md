@@ -6,7 +6,7 @@
 
 <img src="assets/example.png" alt="Alert example" style="width: 600px;"/>
 
-**prom2teams** is an HTTP server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+**prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -52,6 +52,7 @@ $ prom2teams --help
 
 **Note:** default log level is INFO. Messages are redirected to stdout if no log file path is provided.
 
+
 ### Config file
 
 The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
@@ -62,7 +63,10 @@ Host: <host ip> # default: 0.0.0.0
 Port: <host port> # default: 8089
 
 [Microsoft Teams]
-Connector: <webhook url> # required value
+# At least one connector is required here
+Connector: <webhook url> 
+AnotherConnector: <webhook url>   
+...
 ```
 
 ### Configuring Prometheus
@@ -71,9 +75,11 @@ The [webhook receiver](https://prometheus.io/docs/alerting/configuration/#<webho
 
 The url is formed by the host and port defined in the previous step.
 
+**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.   
+
 ```
 # The prom2teams endpoint to send HTTP POST requests to.
-url: 0.0.0.0:8089
+url: 0.0.0.0:8089/v2/<Connector1>
 ```
 
 ### Templating
@@ -84,6 +90,12 @@ Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned as described below:
 
 Other optional fields are skipped and not included in the Teams message.
+
+#### Swagger UI
+
+Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API documentation.
+
+<img src="assets/swagger.png" alt="Swagger UI" style="width: 600px;"/>
 
 ## Testing
 
