@@ -6,7 +6,7 @@ from tests.context import MessageSchema, compose_all, map_prom_alerts_to_teams_a
 
 class TestJSONFields(unittest.TestCase):
 
-    TEST_CONFIG_FILES_PATH = 'data/jsons/'
+    TEST_CONFIG_FILES_PATH = 'tests/data/jsons/'
 
     def test_json_with_all_fields(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok.json') as json_data:
