@@ -4,3 +4,7 @@ class MicrosoftTeamsRequestException(Exception):
 
 class MissingConnectorConfigKeyException(Exception):
     pass
+
+
+class MissingTemplatePathException(Exception):
+    pass
