@@ -1,12 +1,12 @@
 from flask_restplus import fields
-from prom2teams.web_service.api import api
+from . import api_v2
 
-annotations = api.model('annotations', {
+annotations = api_v2.model('annotations', {
     'description': fields.String(default='disk usage 93% on rootfs device'),
     'summary': fields.String(default='Disk usage alert on CS30.evilcorp')
 })
 
-labels = api.model('labels', {
+labels = api_v2.model('labels', {
     'alertname': fields.String(default='DiskSpace'),
     'fstype': fields.String(default='rootfs'),
     'device': fields.String(default='rootfs'),
@@ -16,7 +16,7 @@ labels = api.model('labels', {
     'severity': fields.String(default='severe')
 })
 
-alert = api.model('alert', {
+alert = api_v2.model('alert', {
     'status': fields.String(default='Resolved'),
     'startsAt': fields.String(default='2017-05-09T07:01:37.803Z'),
     'endsAt': fields.String(default='2017-05-09T07:01:37.803Z'),
@@ -25,7 +25,7 @@ alert = api.model('alert', {
     'annotations': fields.Nested(annotations)
 })
 
-message = api.model('message', {
+message = api_v2.model('message', {
     'receiver': fields.String(default='test_webhook'),
     'status': fields.String(default='Resolved'),
     'alerts': fields.List(fields.Nested(alert)),

@@ -1,2 +1,0 @@
-class MicrosoftTeamsRequestException(Exception):
-    pass

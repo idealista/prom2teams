@@ -84,6 +84,7 @@ celerybeat-schedule
 env/
 venv/
 ENV/
+.env.leave
 
 #Pycharm stuff
 *.settings
