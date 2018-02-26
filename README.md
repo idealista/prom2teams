@@ -9,7 +9,7 @@
 **prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
 - [Getting Started](#getting-started)
-	- [Prerequisities](#prerequisities)
+	- [Prerequisities](#prerequisites)
 	- [Installing](#installing)
 - [Usage](#usage)
   - [Config file](#config-file)
@@ -42,8 +42,10 @@ $ pip3 install prom2teams
 
 ## Usage
 
+**Important:** Config path must be provided with at least one Microsoft Teams Connector. Check the options to know how you can supply it.
+
 ```bash
-# To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
+# To start the server (config file path , log file path, log level and Jinja2 template path are optional arguments):
 $ prom2teams [--configpath <config file path>] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
@@ -80,7 +82,6 @@ env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 ```
 
 **Note:** default log level is DEBUG. Messages are redirected to stdout. To enable file log, set the env APP_ENVIRONMENT=(pro|pre)
-
 
 
 ### Config file
@@ -121,7 +122,7 @@ url: 0.0.0.0:8089/v2/<Connector1>
 
 ### Templating
 
-prom2teams provides a [default template](resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.9/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
+prom2teams provides a [default template](resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.10/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
 Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned as described below:
