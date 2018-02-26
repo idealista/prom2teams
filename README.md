@@ -42,33 +42,68 @@ $ pip3 install prom2teams
 
 ## Usage
 
-  - To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
 ```bash
-$ prom2teams --configpath <config file path> [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
-```
-    The config file can be provided also using an env var ***APP_CONFIG_FILE***
+# To start the server (a config file path must be provided, log file path, log level and Jinja2 template path are optional arguments):
+$ prom2teams [--configpath <config file path>] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
-    For production environment it's recommended to use a WSGI web application. In this case you can use the [wsgi](bin/prom2teams_uwsgi) version
-
-  - To show the help message:
-```bash
+# To show the help message:
 $ prom2teams --help
 ```
 
-**Note:** default log level is DEBUG. Messages are redirected to stdout.
+Another options to start the service are:
+
+```bash
+export APP_CONFIG_FILE=<config file path>
+$ prom2teams
+```
+
+For production environments you should prefer using a WSGI server. You can launch instead:
+
+```bash
+$ prom2teams_uwsgi <path to uwsgi ini config>
+```
+
+And uwsgi would look like:
+
+```
+[uwsgi]
+module = bin.wsgi
+master = true
+processes = 5
+#socket = 0.0.0.0:8001
+#protocol = http
+socket = /tmp/prom2teams.sock
+chmod-socket = 660
+vacuum = true
+env = APP_ENVIRONMENT=pro
+env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
+```
+
+**Note:** default log level is DEBUG. Messages are redirected to stdout. To enable file log, set the env APP_ENVIRONMENT=(pro|pre)
+
 
 
 ### Config file
 
-Take a look to the [settings](config/settings.py) file for the default properties. All these properties can be overrided.
-To start the service you must provide a new config file with at least one Microsoft Teams connector
+The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
 
 ```
-MICROSOFT_TEAMS = {
-    Connector: <webhook url>,
-    AnotherConnector: <webhook url>,
-    ...
-}
+[Microsoft Teams]
+# At least one connector is required here
+Connector: <webhook url> 
+AnotherConnector: <webhook url>   
+...
+
+[HTTP Server]
+Host: <host ip> # default: localhost
+Port: <host port> # default: 8089
+
+[Log]
+Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
+Path: <log file path>  # default: /var/log/prom2teams/prom2teams.log
+
+[Template]
+Path: <Jinja2 template path> # default: app resources template
 ```
 
 ### Configuring Prometheus
@@ -97,11 +132,11 @@ Other optional fields are skipped and not included in the Teams message.
 
 Accessing to `<Host>:<Port>` (e.g. `localhost:8001`) in a web browser shows the API v1 documentation.
 
-<img src="assets/swaggerv1.png" alt="Swagger UI" style="width: 600px;"/>
+<img src="assets/swagger_v1.png" alt="Swagger UI" style="width: 600px;"/>
 
 Accessing to `<Host>:<Port>/v2` (e.g. `localhost:8001/v2`) in a web browser shows the API v2 documentation.
 
-<img src="assets/swaggerv2.png" alt="Swagger UI" style="width: 600px;"/>
+<img src="assets/swagger_v2.png" alt="Swagger UI" style="width: 600px;"/>
 
 ## Testing
 

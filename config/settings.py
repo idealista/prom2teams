@@ -1,7 +1,7 @@
 APP_NAME = 'prom2teams'
 # Flask settings
-DEBUG = True
-SERVER_NAME = 'localhost:8001'
+DEBUG = False
+SERVER_NAME = 'localhost:8089'
 
 # Flask-Restplus settings
 SWAGGER_UI_DOC_EXPANSION = 'list'

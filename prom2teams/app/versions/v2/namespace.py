@@ -9,7 +9,8 @@ ns = api_v2.namespace(name='', description='Version 2 connections')
 
 
 @ns.route('/<string:connector>')
-@api_v2.doc(params={'connector': 'Name of connector to use'})
+@api_v2.doc(params={'connector': 'Name of connector to use'},
+            responses={201: 'OK'})
 class AlertReceiver(Resource):
 
     def __init__(self, *args, **kwargs):

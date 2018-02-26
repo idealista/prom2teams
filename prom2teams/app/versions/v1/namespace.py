@@ -11,6 +11,7 @@ ns = api_v1.namespace(name='', description='Version 1 connections')
 
 
 @ns.route('/')
+@api_v1.doc(responses={201: 'OK'})
 class AlertReceiver(Resource):
 
     def __init__(self, *args, **kwargs):
