@@ -9,7 +9,8 @@
         "mountpoint": "/"
       },
       "annotations": {
-        "description": "disk usage 73% on rootfs device"
+        "description": "disk usage 73% on rootfs device",
+        "severity": "severe"
       },
       "startsAt": "2017-05-09T07:01:37.803Z",
       "endsAt": "2017-05-09T07:08:37.818278068Z",

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+if [[ -n $1 ]]; then
+   config=$1
+else
+   echo "Provide a uwsgi ini file (without module and chdir flag)"
+   exit 1
+fi
+
+uwsgi $config --chdir `dirname "$0"` --module wsgi

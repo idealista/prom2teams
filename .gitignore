@@ -84,6 +84,14 @@ celerybeat-schedule
 env/
 venv/
 ENV/
+.env.leave
+
+#Pycharm stuff
+*.settings
+*.project
+*.classpath
+*.idea
+*.iml
 
 # Spyder project settings
 .spyderproject

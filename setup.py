@@ -24,7 +24,7 @@ with open('LICENSE') as f:
 
 
 setup(name='prom2teams',
-      version='1.3.0',
+      version='2.0.0',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
@@ -33,10 +33,14 @@ setup(name='prom2teams',
         'flake8',
         'pypandoc'
       ],
-      scripts=['bin/prom2teams'],
-      package_data = {
-        '': ['*.ini', '*.j2',],
+      scripts=[
+          'bin/prom2teams',
+          'bin/prom2teams_uwsgi'
+      ],
+      package_data={
+        '': ['*.ini', '*.j2'],
       },
+      include_package_data=True,
       url='http://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
       author_email='labs@idealista.com',

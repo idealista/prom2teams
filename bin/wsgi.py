@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys
 import os
 
@@ -9,6 +8,6 @@ except ImportError:
     sys.path.append(os.path.abspath('./'))
     from prom2teams.app.api import app as application
 
+
 if __name__ == "__main__":
-    _host, _port = application.config['SERVER_NAME'].split(':', 1)
-    application.run(host=_host, port=int(_port))
+    application.run()

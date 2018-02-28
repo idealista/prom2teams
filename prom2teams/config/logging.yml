@@ -1,0 +1,29 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class : logging.handlers.RotatingFileHandler
+    formatter: simple
+    filename: /tmp/prom2teams.log
+    maxBytes: 2097152 #200MB
+    backupCount: 5
+    encoding: utf8
+loggers:
+  prom2teams:
+    level: DEBUG
+    handlers: [console]
+    propagate: no
+  prom2teams_app:
+    level: INFO
+    handlers: [console]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console]

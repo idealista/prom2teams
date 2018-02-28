@@ -1,2 +1,0 @@
-class MissingConnectorConfigKeyException(Exception):
-    pass
