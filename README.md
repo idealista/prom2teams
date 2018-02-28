@@ -69,7 +69,6 @@ And uwsgi would look like:
 
 ```
 [uwsgi]
-module = bin.wsgi
 master = true
 processes = 5
 #socket = 0.0.0.0:8001
@@ -80,6 +79,8 @@ vacuum = true
 env = APP_ENVIRONMENT=pro
 env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 ```
+
+Consider not provide `chdir` property neither `module` property.
 
 **Note:** default log level is DEBUG. Messages are redirected to stdout. To enable file log, set the env APP_ENVIRONMENT=(pro|pre)
 
@@ -122,7 +123,7 @@ url: 0.0.0.0:8089/v2/<Connector1>
 
 ### Templating
 
-prom2teams provides a [default template](resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.10/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
+prom2teams provides a [default template](prom2teams/resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.10/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
 Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned as described below:

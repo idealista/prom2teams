@@ -20,7 +20,7 @@ loggers:
     level: DEBUG
     handlers: [console]
     propagate: no
-  prom2teams.app:
+  prom2teams_app:
     level: INFO
     handlers: [console]
     propagate: no
