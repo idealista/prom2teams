@@ -64,7 +64,7 @@ def setup_logging(application):
         for logger in config['loggers']:
             config['loggers'][logger]['level'] = application.config['LOG_LEVEL']
         config['root']['level'] = application.config['LOG_LEVEL']
-        config['loggers']['prom2teams.app']['level'] = 'INFO'
+        config['loggers']['prom2teams_app']['level'] = 'INFO'
 
         environment = os.getenv('APP_ENVIRONMENT', 'None')
         if environment == 'pro' or environment == 'pre':
@@ -81,10 +81,10 @@ def setup_logging(application):
 def config_app(application):
     try:
         # Load the default configuration
-        application.config.from_object('config.settings')
+        application.config.from_object('prom2teams.config.settings')
 
         # Load the configuration from the instance folder
-        instance = os.path.join(root, 'instance')
+        instance = os.path.join(os.path.join(root, os.pardir), 'instance')
         config = os.path.join(instance, 'config.py')
         if os.path.isdir(instance) and os.path.exists(config):
             application.config.from_pyfile(config)

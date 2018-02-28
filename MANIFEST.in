@@ -1,7 +1,5 @@
 include README.md
 include LICENSE
 include requirements.txt
-include config.ini
-include logging_console_config.ini
-include logging_file_config.ini
-include prom2teams/teams/template.j2
+include */config/*
+recursive-include */resources/ *

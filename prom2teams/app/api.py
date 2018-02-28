@@ -8,7 +8,7 @@ from .versions.v1.namespace import ns as ns_v1
 from .versions.v2 import api_v2
 from .versions.v2.namespace import ns as ns_v2
 
-log = logging.getLogger(__name__)
+log = logging.getLogger('prom2teams_app')
 
 app = Flask(__name__)
 

@@ -33,10 +33,14 @@ setup(name='prom2teams',
         'flake8',
         'pypandoc'
       ],
-      scripts=['bin/prom2teams', 'bin/prom2teams_uwsgi'],
-      package_data = {
-        '': ['*.ini', '*.j2',],
+      scripts=[
+          'bin/prom2teams',
+          'bin/prom2teams_uwsgi'
+      ],
+      package_data={
+        '': ['*.ini', '*.j2'],
       },
+      include_package_data=True,
       url='http://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
       author_email='labs@idealista.com',
