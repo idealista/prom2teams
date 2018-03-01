@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams)
+[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) [![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/idealista/prom2teams/) [![Docker Build Status](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 
 # prom2teams
 
@@ -92,7 +92,7 @@ The config file is an [INI file](https://docs.python.org/3/library/configparser.
 ```
 [Microsoft Teams]
 # At least one connector is required here
-Connector: <webhook url> 
+Connector: <webhook url>
 AnotherConnector: <webhook url>   
 ...
 
