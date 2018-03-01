@@ -4,7 +4,7 @@
 
 # prom2teams
 
-<img src="assets/example.png" alt="Alert example" style="width: 600px;"/>
+<img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
 
 **prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
@@ -59,7 +59,13 @@ export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
 
-For production environments you should prefer using a WSGI server. You can launch instead:
+### Production
+
+For production environments you should prefer using a WSGI server. [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/)
+dependency is installed for an easy usage. Some considerations must be taken to use it:
+
+The binary `prom2teams_uwsgi` launches the app using the uwsgi server. Due to some incompatibilities with [wheel](https://github.com/pypa/wheel)
+you must install `prom2teams` using `sudo pip install --no-binary :all: prom2teams` (https://github.com/pypa/wheel/issues/92)
 
 ```bash
 $ prom2teams_uwsgi <path to uwsgi ini config>
@@ -82,6 +88,10 @@ env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 
 Consider not provide `chdir` property neither `module` property.
 
+Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.5/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
+
+Another approach is to provide yourself the `module` file [module example](bin/wsgi.py) and the `bin` uwsgi call [uwsgi example](bin/prom2teams_uwsgi)
+
 **Note:** default log level is DEBUG. Messages are redirected to stdout. To enable file log, set the env APP_ENVIRONMENT=(pro|pre)
 
 
@@ -92,7 +102,7 @@ The config file is an [INI file](https://docs.python.org/3/library/configparser.
 ```
 [Microsoft Teams]
 # At least one connector is required here
-Connector: <webhook url> 
+Connector: <webhook url>
 AnotherConnector: <webhook url>   
 ...
 
@@ -134,11 +144,11 @@ Other optional fields are skipped and not included in the Teams message.
 
 Accessing to `<Host>:<Port>` (e.g. `localhost:8001`) in a web browser shows the API v1 documentation.
 
-<img src="assets/swagger_v1.png" alt="Swagger UI" style="width: 600px;"/>
+<img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/swagger_v1.png" alt="Swagger UI" style="width: 600px;"/>
 
 Accessing to `<Host>:<Port>/v2` (e.g. `localhost:8001/v2`) in a web browser shows the API v2 documentation.
 
-<img src="assets/swagger_v2.png" alt="Swagger UI" style="width: 600px;"/>
+<img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/swagger_v2.png" alt="Swagger UI" style="width: 600px;"/>
 
 ## Testing
 
