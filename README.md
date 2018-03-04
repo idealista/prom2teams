@@ -109,7 +109,7 @@ AnotherConnector: <webhook url>
 [HTTP Server]
 Host: <host ip> # default: localhost
 Port: <host port> # default: 8089
-Name: <host name> # default: prom2teams
+Name: <host name> # default: localhost:8089
 
 [Log]
 Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
