@@ -10,4 +10,6 @@ except ImportError:
 
 
 if __name__ == "__main__":
-    application.run()
+    host = application.config['HOST']
+    port = application.config['PORT']
+    application.run(host=host, port=port)

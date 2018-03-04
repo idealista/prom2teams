@@ -80,7 +80,7 @@ processes = 5
 #socket = 0.0.0.0:8001
 #protocol = http
 socket = /tmp/prom2teams.sock
-chmod-socket = 660
+chmod-socket = 777
 vacuum = true
 env = APP_ENVIRONMENT=pro
 env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
@@ -109,6 +109,7 @@ AnotherConnector: <webhook url>
 [HTTP Server]
 Host: <host ip> # default: localhost
 Port: <host port> # default: 8089
+Name: <host name> # default: prom2teams
 
 [Log]
 Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
