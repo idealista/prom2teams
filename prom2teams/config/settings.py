@@ -1,4 +1,6 @@
 APP_NAME = 'prom2teams'
+HOST = 'localhost'
+PORT = 8089
 # Flask settings
 DEBUG = False
 SERVER_NAME = 'localhost:8089'
