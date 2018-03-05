@@ -1,9 +1,10 @@
-FROM python:3.5-slim-jessie
+FROM python:3.6-slim-stretch
 
 LABEL maintainer="labs@idealista.com"
 
 EXPOSE 8089
 
+RUN apt-get update && apt-get install -y build-essential
 RUN pip install prom2teams
 COPY config.ini /opt/prom2teams/config.ini
 COPY prom2teams_start.sh /opt/prom2teams/prom2teams_start.sh

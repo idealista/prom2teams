@@ -9,4 +9,4 @@ else
    exit 1
 fi
 
-uwsgi $config --chdir `dirname "$0"` --module wsgi
+uwsgi $config --chdir /usr/local/etc/prom2teams --module wsgi
