@@ -34,7 +34,7 @@ def _update_application_configuration(application, configuration):
     if 'Log' in configuration and 'Path' in configuration['Log']:
         application.config['LOG_FILE_PATH'] = configuration['Log']['Path']
     if 'HTTP Server' in configuration:
-        _host, port = application.config['SERVER_NAME'].split(':', 1)
+        _host, _port = application.config['SERVER_NAME'].split(':', 1)
         if 'Host' in configuration['HTTP Server']:
             _host = configuration['HTTP Server']['Host']
             application.config['HOST'] = _host
