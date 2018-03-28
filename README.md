@@ -59,6 +59,20 @@ export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
 
+### Docker image
+
+Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
+
+There are two things you need to bear in mind when creating a Prom2teams container:
+
+- The connector URL must be passed as the environment variable `PROM2TEAMS_CONNECTOR`
+- You need to map container's Prom2teams port to one on your host.
+
+So a sample Docker run command would be:
+```bash
+docker run -it -d -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+```
+
 ### Production
 
 For production environments you should prefer using a WSGI server. [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/)
