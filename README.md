@@ -70,7 +70,7 @@ There are two things you need to bear in mind when creating a Prom2teams contain
 
 So a sample Docker run command would be:
 ```bash
-docker run -it -d -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+$ docker run -it -d -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
 ```
 
 ### Production
