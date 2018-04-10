@@ -3,7 +3,6 @@ HOST = 'localhost'
 PORT = 8089
 # Flask settings
 DEBUG = False
-SERVER_NAME = 'localhost:8089'
 
 # Flask-Restplus settings
 SWAGGER_UI_DOC_EXPANSION = 'list'
