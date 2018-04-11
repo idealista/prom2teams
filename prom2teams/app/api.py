@@ -30,4 +30,4 @@ def init_app(application):
 
 
 init_app(app)
-log.info(app.config['APP_NAME'] + ' started on ' + app.config['SERVER_NAME'])
+log.info('{} started on {}:{}'.format(app.config['APP_NAME'], app.config['HOST'], app.config['PORT']))

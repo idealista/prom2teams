@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+
+## [2.0.3](https://github.com/idealista/prom2teams/tree/2.0.3)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.2...2.0.3)
+### Fixed
+- *[#61](https://github.com/idealista/prom2teams/pull/63) Fix getting 404 errors - SERVER_NAME removed from flask app* @Gkrlo
+
 ## [2.0.2](https://github.com/idealista/prom2teams/tree/2.0.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.1...2.0.2)
 ### Fixed
