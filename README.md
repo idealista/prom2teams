@@ -123,7 +123,6 @@ AnotherConnector: <webhook url>
 [HTTP Server]
 Host: <host ip> # default: localhost
 Port: <host port> # default: 8089
-Name: <host name> # default: localhost:8089
 
 [Log]
 Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
@@ -157,11 +156,11 @@ Other optional fields are skipped and not included in the Teams message.
 
 #### Swagger UI
 
-Accessing to `<Host>:<Port>` (e.g. `localhost:8001`) in a web browser shows the API v1 documentation.
+Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API v1 documentation.
 
 <img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/swagger_v1.png" alt="Swagger UI" style="width: 600px;"/>
 
-Accessing to `<Host>:<Port>/v2` (e.g. `localhost:8001/v2`) in a web browser shows the API v2 documentation.
+Accessing to `<Host>:<Port>/v2` (e.g. `localhost:8089/v2`) in a web browser shows the API v2 documentation.
 
 <img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/swagger_v2.png" alt="Swagger UI" style="width: 600px;"/>
 
