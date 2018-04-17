@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.0.4](https://github.com/idealista/prom2teams/tree/2.0.4)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.3...2.0.4)
+### Fixed
+- *[#65](https://github.com/idealista/prom2teams/pull/65) Delete pip usage in setup.py due to pip 10 incompatibilities* @jnogol
 
 ## [2.0.3](https://github.com/idealista/prom2teams/tree/2.0.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.2...2.0.3)
