@@ -1,6 +1,10 @@
 from setuptools import setup, find_packages
 
 
+with open('requirements.txt') as req:
+    requirements = req.read().splitlines()
+
+
 with open('README.md') as f:
     try:
         import pypandoc
@@ -18,15 +22,7 @@ setup(name='prom2teams',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
-      install_requires=[
-        "requests == 2.9.1",
-        "Jinja2 == 2.10",
-        "Flask==0.12.2",
-        "flask-restplus==0.10.1",
-        "marshmallow==2.15.0",
-        "pyyaml==3.12",
-        "uwsgi==2.0.16",
-        ],
+      install_requires=requirements,
       setup_requires=[
         'flake8',
         'pypandoc'
