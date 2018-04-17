@@ -3,7 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
-### Changed
+
+## [2.0.4](https://github.com/idealista/prom2teams/tree/2.0.4)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.3...2.0.4)
+### Fixed
 - *[#65](https://github.com/idealista/prom2teams/pull/65) Delete pip usage in setup.py due to pip 10 incompatibilities* @jnogol
 
 ## [2.0.3](https://github.com/idealista/prom2teams/tree/2.0.3)
