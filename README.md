@@ -85,7 +85,7 @@ you must install `prom2teams` using `sudo pip install --no-binary :all: prom2tea
 $ prom2teams_uwsgi <path to uwsgi ini config>
 ```
 
-And uwsgi would look like:
+And `uwsgi` would look like:
 
 ```
 [uwsgi]
@@ -191,7 +191,7 @@ See also the list of [contributors](https://github.com/idealista/prom2teams/cont
 
 ## License
 
-![Apache 2.0 Licence](https://img.shields.io/hexpm/l/plug.svg)
+![Apache 2.0 License](https://img.shields.io/hexpm/l/plug.svg)
 
 This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE](LICENSE) file for details.
 
