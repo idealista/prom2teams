@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.1.2](https://github.com/idealista/prom2teams/tree/2.1.2)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.1...2.1.2)
+### Fixed
+- *[#70](https://github.com/idealista/prom2teams/pull/70) Fix condition in teams_client.py * @Gkrlo
+
 ## [2.1.1](https://github.com/idealista/prom2teams/tree/2.1.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.4...2.1.1)
 ### Added
