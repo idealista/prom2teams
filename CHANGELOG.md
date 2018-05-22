@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.1.0](https://github.com/idealista/prom2teams/tree/2.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.4...2.1.0)
+### Added
+- *[#70](https://github.com/idealista/prom2teams/pull/70) Check the Teams's response "text" attribute ='1' for validating a message was sent correctly* @Gkrlo
+- *[#69](https://github.com/idealista/prom2teams/issues/69) Add resolved to notifications* @jnogol
+
 ## [2.0.4](https://github.com/idealista/prom2teams/tree/2.0.4)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.3...2.0.4)
 ### Fixed
