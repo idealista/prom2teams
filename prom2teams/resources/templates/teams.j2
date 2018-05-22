@@ -12,8 +12,8 @@
     "@type": "MessageCard",
     "@context": "http://schema.org/extensions",
     "themeColor": "{% if status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.severity] }} {% endif %}",
-    "summary": "{{ msg_text.summary }}",
-    "title": "Prometheus alarm {% if status=='resolved' %} (Resolved) {% elif status=='unknown' %} (status unknown) {% endif %}",
+    "summary": "{% if status=='resolved' %}(Resolved) {% endif %}{{ msg_text.summary }}",
+    "title": "Prometheus alarm {% if status=='resolved' %}(Resolved) {% elif status=='unknown' %} (status unknown) {% endif %}",
     "sections": [{
         "activityTitle": "{{ msg_text.summary }}",
         "facts": [{% if msg_text.name %}{

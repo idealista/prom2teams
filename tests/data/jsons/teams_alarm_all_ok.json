@@ -2,8 +2,8 @@
     "@type": "MessageCard",
     "@context": "http://schema.org/extensions",
     "themeColor": " 2DC72D ",
-    "summary": "Disk usage alert on CS30.evilcorp",
-    "title": "Prometheus alarm  (Resolved) ",
+    "summary": "(Resolved) Disk usage alert on CS30.evilcorp",
+    "title": "Prometheus alarm (Resolved) ",
     "sections": [{
         "activityTitle": "Disk usage alert on CS30.evilcorp",
         "facts": [{
