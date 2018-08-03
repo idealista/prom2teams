@@ -18,6 +18,7 @@ def _config_command_line():
                                                  'and sends it to Microsoft Teams using configured connectors ')
 
     parser.add_argument('-c', '--configpath', help='config INI file path', required=False)
+    parser.add_argument('-g', '--groupalerts', help='group alerts with same name into just one alarm', required=False)
     parser.add_argument('-l', '--logfilepath', help='log file path', required=False)
     parser.add_argument('-v', '--loglevel', help='log level', required=False)
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
@@ -107,6 +108,8 @@ def config_app(application):
             application.config['LOG_FILE_PATH'] = command_line_args.logfilepath
         if command_line_args.templatepath:
             application.config['TEMPLATE_PATH'] = command_line_args.templatepath
+        if command_line_args.templatepath:
+            application.config['GROUP_ALERTS'] = command_line_args.groupalerts == "TRUE"
 
         if 'MICROSOFT_TEAMS' not in application.config:
             raise MissingConnectorConfigKeyException('missing connector key in config')
