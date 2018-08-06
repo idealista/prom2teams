@@ -45,7 +45,7 @@ class TestJSONFields(unittest.TestCase):
                 json_expected = json.load(expected_data)
 
                 alerts = MessageSchema().load(json_received).data
-                rendered_data = AlarmSender()._create_alarms(alerts, group_alerts=False)[0]
+                rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
 
                 self.assertDictEqual(json_rendered, json_expected)
