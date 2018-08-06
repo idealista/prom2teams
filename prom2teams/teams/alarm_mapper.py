@@ -33,7 +33,7 @@ def map_and_group(alerts):
     schema = TeamsAlarmSchema()
     grouped_alerts = group_alerts(alerts)
     for alert in grouped_alerts:
-        instances = remove_duplicated_instances(group_alerts[alert])
+        instances = remove_duplicated_instances(grouped_alerts[alert])
         name, status, severity, summary, instance, description = (grouped_alerts[alert][0].name, 'unknown',
                                                                   'unknown', 'unknown',
                                                                   instances, 'unknown')
