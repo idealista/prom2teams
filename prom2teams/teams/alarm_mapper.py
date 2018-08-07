@@ -7,21 +7,12 @@ def map_alarm_to_json(alarm):
     result = schema.dump(alarm)
     return result.data
 
-def map_prom_alerts_to_teams_alarms(alerts):
-    teams_alarms = []
-    schema = TeamsAlarmSchema()
-    for alert in alerts:
-        alarm = TeamsAlarm(alert.name, alert.status, alert.severity,
-                           alert.summary, alert.instance, alert.description)
-        json_alarm = schema.dump(alarm).data
-        teams_alarms.append(json_alarm)
-    return teams_alarms
 
 def map_prom_alerts_to_teams_alarms(alerts):
     teams_alarms = []
     schema = TeamsAlarmSchema()
     for alert in alerts:
-        alarm = TeamsAlarm(alert.name, alert.status, alert.severity,
+        alarm = TeamsAlarm(alert.name, alert.status.lower(), alert.severity,
                            alert.summary, alert.instance, alert.description)
         json_alarm = schema.dump(alarm).data
         teams_alarms.append(json_alarm)
@@ -33,14 +24,22 @@ def map_and_group(alerts):
     schema = TeamsAlarmSchema()
     grouped_alerts = group_alerts(alerts)
     for alert in grouped_alerts:
-        instances = remove_duplicated_instances(grouped_alerts[alert])
-        name, status, severity, summary, instance, description = (grouped_alerts[alert][0].name, 'unknown',
-                                                                  'unknown', 'unknown',
-                                                                  instances, 'unknown')
-        alarm = TeamsAlarm(name, status, severity, summary, instance, description)
+        features = group_features(grouped_alerts[alert])
+        name, description, instance, severity, status, summary = (alert, teams_visualization(features["description"]),
+                                                                  teams_visualization(features["instance"]),
+                                                                  teams_visualization(features["severity"]),
+                                                                  teams_visualization(features["status"]),
+                                                                  teams_visualization(features["summary"]))
+        alarm = TeamsAlarm(name, status.lower(), severity, summary, instance, description)
         json_alarm = schema.dump(alarm).data
         teams_alarms.append(json_alarm)
     return teams_alarms
+
+
+def teams_visualization(feature):
+    feature.sort()
+    # Teams won't print just one new line
+    return ',\n\n\n'.join(feature)
 
 
 def group_alerts(alerts):
@@ -49,8 +48,8 @@ def group_alerts(alerts):
         groups[alert.name].append(alert)
     return dict(groups)
 
-def remove_duplicated_instances(alerts):
-    instances = []
-    for individual_alert in alerts:
-        instances.append(individual_alert.instance)
-    return list(set(instances))
+
+def group_features(alerts):
+    grouped_features = {feature: list(set([individual_alert.__dict__[feature] for individual_alert in alerts]))
+                        for feature in ["description", "instance", "severity", "status", "summary"]}
+    return grouped_features
