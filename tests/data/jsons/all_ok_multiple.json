@@ -27,14 +27,14 @@
         "alertname": "DiskSpace",
         "device": "rootfs",
         "fstype": "rootfs",
-        "instance": "cs30.evilcorp",
+        "instance": "cs31.evilcorp",
         "job": "fsociety",
         "mountpoint": "/",
-        "severity": "severe"
+        "severity": "critical"
       },
       "annotations": {
-        "description": "disk usage 93% on rootfs device",
-        "summary": "Disk usage alert on CS30.evilcorp"
+        "description": "disk usage 94% on rootfs device",
+        "summary": "Disk usage alert on CS31.evilcorp"
       },
       "startsAt": "2017-05-09T07:01:37.803Z",
       "endsAt": "2017-05-09T07:08:37.818278068Z",
