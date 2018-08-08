@@ -57,11 +57,8 @@ class TestJSONFields(unittest.TestCase):
                 json_expected = json.load(expected_data)
 
                 alerts = MessageSchema().load(json_received).data
-                rendered_data = AlarmSender(group_alerts='TRUE')._create_alarms(alerts)[0].replace("\n\n\n", " ")
+                rendered_data = AlarmSender(group_alerts_by='name')._create_alarms(alerts)[0].replace("\n\n\n", " ")
                 json_rendered = json.loads(rendered_data)
-
-                with open('new_json.json', 'w') as outfile:
-                    json.dump(rendered_data, outfile)
 
                 self.assertDictEqual(json_rendered, json_expected)
 

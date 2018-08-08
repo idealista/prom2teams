@@ -19,13 +19,14 @@ def map_prom_alerts_to_teams_alarms(alerts):
     return teams_alarms
 
 
-def map_and_group(alerts):
+def map_and_group(alerts, group_alerts_by):
     teams_alarms = []
     schema = TeamsAlarmSchema()
-    grouped_alerts = group_alerts(alerts)
+    grouped_alerts = group_alerts(alerts, group_alerts_by)
     for alert in grouped_alerts:
         features = group_features(grouped_alerts[alert])
-        name, description, instance, severity, status, summary = (alert, teams_visualization(features["description"]),
+        name, description, instance, severity, status, summary = (teams_visualization(features["name"]),
+                                                                  teams_visualization(features["description"]),
                                                                   teams_visualization(features["instance"]),
                                                                   teams_visualization(features["severity"]),
                                                                   teams_visualization(features["status"]),
@@ -42,14 +43,14 @@ def teams_visualization(feature):
     return ',\n\n\n'.join(feature)
 
 
-def group_alerts(alerts):
+def group_alerts(alerts, group_alerts_by):
     groups = defaultdict(list)
     for alert in alerts:
-        groups[alert.name].append(alert)
+        groups[alert.__dict__[group_alerts_by]].append(alert)
     return dict(groups)
 
 
 def group_features(alerts):
     grouped_features = {feature: list(set([individual_alert.__dict__[feature] for individual_alert in alerts]))
-                        for feature in ["description", "instance", "severity", "status", "summary"]}
+                        for feature in ["name", "description", "instance", "severity", "status", "summary"]}
     return grouped_features

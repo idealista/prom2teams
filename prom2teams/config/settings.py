@@ -16,7 +16,7 @@ LOG_FILE_PATH = '/var/log/' + APP_NAME + '/' + APP_NAME + '.log'
 LOG_LEVEL = 'DEBUG'
 
 # Group alerts setting
-GROUP_ALERTS = False
+GROUP_ALERTS_BY = False
 
 # Api
 API_V1_URL_PREFIX = ''

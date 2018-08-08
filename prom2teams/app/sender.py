@@ -9,15 +9,18 @@ log = logging.getLogger('prom2teams')
 
 class AlarmSender:
 
-    def __init__(self, template_path=None, group_alerts=False):
-        self.group_alerts = group_alerts
+    def __init__(self, template_path=None, group_alerts_by=False):
+        self.group_alerts_by = group_alerts_by
         if template_path:
             self.json_composer = TemplateComposer(template_path)
         else:
             self.json_composer = TemplateComposer()
 
     def _create_alarms(self, alerts):
-        alarms = map_and_group(alerts) if self.group_alerts else map_prom_alerts_to_teams_alarms(alerts)
+        if self.group_alerts_by:
+            alarms = map_and_group(alerts, self.group_alerts_by)
+        else:
+            alarms = map_prom_alerts_to_teams_alarms(alerts)
         return self.json_composer.compose_all(alarms)
 
     def send_alarms(self, alerts, teams_webhook_url):
