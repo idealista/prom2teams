@@ -130,6 +130,9 @@ Path: <log file path>  # default: /var/log/prom2teams/prom2teams.log
 
 [Template]
 Path: <Jinja2 template path> # default: app resources template
+
+[Group Alerts]
+Field: <Field to group alerts by> # alerts won't be grouped by default
 ```
 
 ### Configuring Prometheus

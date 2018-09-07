@@ -39,6 +39,19 @@ class TestServer(unittest.TestCase):
         self.assertEqual(config['Microsoft Teams']['connector2'], 'another_teams_webhook_url')
         self.assertEqual(config['Microsoft Teams']['connector3'], 'definitely_another_teams_webhook_url')
 
+    def test_get_config_for_all_fields(self):
+        provided_config_relative_path = self.TEST_CONFIG_FILES_PATH + 'all_fields.ini'
+        config = configuration._config_provided(provided_config_relative_path)
+
+        self.assertEqual(config.get('HTTP Server', 'Host'), '1.1.1.1')
+        self.assertEqual(config.get('HTTP Server', 'Port'), '9089')
+        self.assertEqual(config.get('Microsoft Teams', 'Connector'), 'some_url')
+        self.assertEqual(config.get('Log', 'Level'), 'TEST')
+        self.assertEqual(config.get('Log', 'Path'), '/var/log/prom2teams/test.log')
+        self.assertEqual(config.get('Template', 'Path'), 'jinja2/template/path')
+        self.assertEqual(config.get('Group Alerts', 'Field'), 'name')
+
+
 
 if __name__ == '__main__':
     unittest.main()
