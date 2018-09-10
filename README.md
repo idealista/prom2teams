@@ -45,8 +45,8 @@ $ pip3 install prom2teams
 **Important:** Config path must be provided with at least one Microsoft Teams Connector. Check the options to know how you can supply it.
 
 ```bash
-# To start the server (config file path , log file path, log level and Jinja2 template path are optional arguments):
-$ prom2teams [--configpath <config file path>] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+# To start the server (config file path , group alerts by, log file path, log level and Jinja2 template path are optional arguments):
+$ prom2teams [--configpath <config file path>] [--groupalertsby ("name"|"description"|"instance"|"severity"|"status"|"summary")] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help
@@ -130,6 +130,9 @@ Path: <log file path>  # default: /var/log/prom2teams/prom2teams.log
 
 [Template]
 Path: <Jinja2 template path> # default: app resources template
+
+[Group Alerts]
+Field: <Field to group alerts by> # alerts won't be grouped by default
 ```
 
 ### Configuring Prometheus
