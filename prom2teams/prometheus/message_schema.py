@@ -1,5 +1,7 @@
 from marshmallow import Schema, fields, post_load
+import logging
 
+log = logging.getLogger('prom2teams')
 
 class MessageSchema(Schema):
     receiver = fields.Str()
@@ -10,6 +12,7 @@ class MessageSchema(Schema):
 
     @post_load
     def get_alerts(self, message):
+        log.debug('JSON received is:\n%s', str(message))
         prom_alerts = []
         for alert in message['alerts']:
             status = alert['status']
