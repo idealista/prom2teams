@@ -43,11 +43,11 @@ class LabelSchema(Schema):
     instance = fields.Str(default='unknown', missing='unknown')
     job = fields.Str()
     mountpoint = fields.Str()
-    severity = fields.Str(default=None, missing=None)
+    severity = fields.Str(default='unknown', missing='unknown')
 
 
 class AnnotationSchema(Schema):
-    description = fields.Str(default=None, missing=None)
+    description = fields.Str(default='unknown', missing='unknown')
     summary = fields.Str(default='unknown', missing='unknown')
 
 

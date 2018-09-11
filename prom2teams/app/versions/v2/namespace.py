@@ -16,13 +16,13 @@ class AlertReceiver(Resource):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.schema = MessageSchema()
-        if 'TEMPLATE_PATH' in app.config:
-            self.sender = AlarmSender(app.config['TEMPLATE_PATH'], app.config['GROUP_ALERTS'])
+        if app.config['TEMPLATE_PATH']:
+            self.sender = AlarmSender(app.config['TEMPLATE_PATH'], app.config['GROUP_ALERTS_BY'])
         else:
-            self.sender = AlarmSender(group_alerts=app.config['GROUP_ALERTS'])
+            self.sender = AlarmSender(group_alerts_by=app.config['GROUP_ALERTS_BY'])
 
     @api_v2.expect(message)
     def post(self, connector):
         alerts = self.schema.load(request.get_json()).data
-        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS'])
+        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS'][connector])
         return 'OK', 201

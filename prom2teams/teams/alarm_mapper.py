@@ -40,7 +40,7 @@ def map_and_group(alerts, group_alerts_by):
 def teams_visualization(feature):
     feature.sort()
     # Teams won't print just one new line
-    return ',\n\n\n'.join(feature)
+    return ',\n\n\n'.join(feature) if feature else 'unknown'
 
 
 def group_alerts(alerts, group_alerts_by):
