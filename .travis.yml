@@ -1,13 +1,13 @@
 language: python
 python:
-- '3.5'
-- '3.6'
+  - '3.5'
+  - '3.6'
 before_install:
-- sudo apt-get install -y pandoc
+  - sudo apt-get install -y pandoc
 install:
-- pip install -r requirements.txt
+  - pip install -r requirements.txt
 script:
-- python -m unittest discover tests
+  - python -m unittest discover tests
 deploy:
   provider: pypi
   user: idealista
