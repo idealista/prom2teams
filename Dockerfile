@@ -1,4 +1,4 @@
-FROM python:3.6-slim-stretch
+FROM python:3.5-slim-stretch
 
 LABEL maintainer="labs@idealista.com"
 
@@ -15,9 +15,9 @@ ADD setup.py /opt/prom2teams/setup.py
 ADD ./bin /opt/prom2teams/bin
 ADD ./prom2teams /opt/prom2teams/prom2teams
 
-ADD ./dockerhub/config.ini /opt/prom2teams/config.ini
-ADD ./dockerhub/replace_config.py /opt/prom2teams/replace_config.py
-ADD ./dockerhub/prom2teams_start.sh /opt/prom2teams/prom2teams_start.sh
+ADD ./docker/config.ini /opt/prom2teams/config.ini
+ADD ./docker/replace_config.py /opt/prom2teams/replace_config.py
+ADD ./docker/prom2teams_start.sh /opt/prom2teams/prom2teams_start.sh
 
 WORKDIR /opt/prom2teams
 RUN python setup.py install

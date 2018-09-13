@@ -3,13 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
-
-## [2.2.0](https://github.com/idealista/prom2teams/tree/2.2.0)
-[Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.2...2.2.0)
 ## Added
 - *[#80](https://github.com/idealista/prom2teams/pull/79) Add the possibility of group alarms by alertname* @manuhortet
 - *[#84](https://github.com/idealista/prom2teams/issues/84) View received message when debugging* @jnogol
 - *Update Flask version to v1.0.2* @manuhortet @jnogol
+
+## Changed
+- *Docker image now install from sources* @jnogol
 
 ## [2.1.2](https://github.com/idealista/prom2teams/tree/2.1.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.1...2.1.2)

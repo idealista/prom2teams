@@ -66,11 +66,12 @@ Every new Prom2teams release, a new Docker image is built in our [Dockerhub](htt
 There are two things you need to bear in mind when creating a Prom2teams container:
 
 - The connector URL must be passed as the environment variable `PROM2TEAMS_CONNECTOR`
+- In case you want to group alerts, you need to pass the field as the environment variable `PROM2TEAMS_GROUP_ALERTS_BY`
 - You need to map container's Prom2teams port to one on your host.
 
 So a sample Docker run command would be:
 ```bash
-$ docker run -it -d -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+$ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
 ```
 
 ### Production
