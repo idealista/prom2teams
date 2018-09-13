@@ -38,7 +38,7 @@ setup(name='prom2teams',
       data_files=[
           ('/usr/local/etc/prom2teams', ['bin/wsgi.py'])
       ],
-      url='http://github.com/idealista/prom2teams',
+      url='https://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
       author_email='labs@idealista.com',
       license=license,
