@@ -29,7 +29,7 @@ class TestJSONFields(unittest.TestCase):
             json_received = json.load(json_data)
             alerts = MessageSchema().load(json_received).data
             alarm = map_prom_alerts_to_teams_alarms(alerts)[0]
-            self.assertNotIn('unknown', str(alarm))
+            self.assertIn("'description': 'unknown'", str(alarm))
 
     def test_json_without_instance_field(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'without_instance_field.json') as json_data:
