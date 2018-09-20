@@ -51,13 +51,13 @@ $ prom2teams [--configpath <config file path>] [--groupalertsby ("name"|"descrip
 # To show the help message:
 $ prom2teams --help
 ```
-
-Another options to start the service are:
+Other options to start the service are:
 
 ```bash
 export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
+**Note:** Grouping alerts only works since v2.2.0
 
 ### Docker image
 
@@ -135,6 +135,7 @@ Path: <Jinja2 template path> # default: app resources template
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
 ```
+**Note:** Grouping alerts only works since v2.2.0
 
 ### Configuring Prometheus
 
