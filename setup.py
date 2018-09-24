@@ -18,7 +18,7 @@ with open('LICENSE') as f:
 
 
 setup(name='prom2teams',
-      version='2.2.1',
+      version='2.2.2',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
