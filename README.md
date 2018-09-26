@@ -57,7 +57,7 @@ Other options to start the service are:
 export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
-**Note:** Grouping alerts works since v2.2.0
+**Note:** Grouping alerts works since v2.2.1
 
 ### Docker image
 
@@ -72,6 +72,14 @@ There are two things you need to bear in mind when creating a Prom2teams contain
 So a sample Docker run command would be:
 ```bash
 $ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+```
+
+#### Provide custom config file
+
+If you prefer to use your own config file, you just need to provide it as a Docker volume to the container and map it to `/opt/prom2teams/config.ini`. Sample:
+
+```bash
+$ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 8089:8089 idealista/prom2teams:VERSION
 ```
 
 ### Production
