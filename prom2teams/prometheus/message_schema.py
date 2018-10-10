@@ -42,7 +42,7 @@ class LabelSchema(Schema):
     fstype = fields.Str()
     instance = fields.Str(default='unknown', missing='unknown')
     job = fields.Str()
-    mountpoint = fields.Str()
+    mounterpoint = fields.Str()
     severity = fields.Str(default='unknown', missing='unknown')
 
 
