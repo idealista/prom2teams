@@ -6,11 +6,11 @@
         "device": "rootfs",
         "fstype": "rootfs",
         "job": "fsociety",
-        "mountpoint": "/"
+        "mountpoint": "/",
+        "severity": "severe"
       },
       "annotations": {
-        "description": "disk usage 73% on rootfs device",
-        "severity": "severe"
+        "description": "disk usage 73% on rootfs device"
       },
       "startsAt": "2017-05-09T07:01:37.803Z",
       "endsAt": "2017-05-09T07:08:37.818278068Z",
