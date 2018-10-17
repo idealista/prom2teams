@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) [![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/idealista/prom2teams/) [![Docker Build Status](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/idealista/prom2teams/)
+[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) [![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 
 # prom2teams
 
@@ -26,7 +26,7 @@
 
 ### Prerequisites
 
-The application has been tested with _Prometheus 1.7.1_, _Python 3.5.0_ and _pip 9.0.1_.
+The application has been tested with _Prometheus 2.2.1_, _Python 3.5.0_ and _pip 9.0.1_.
 
 Newer versions of _Prometheus/Python/pip_ should work but could also present issues.
 
@@ -38,7 +38,7 @@ prom2teams is present on [PyPI](https://pypi.python.org/pypi/prom2teams), so cou
 $ pip3 install prom2teams
 ```
 
-**Note:** Only works since v1.1.1
+**Note:** Works since v1.1.1
 
 ## Usage
 
@@ -46,7 +46,7 @@ $ pip3 install prom2teams
 
 ```bash
 # To start the server (config file path , group alerts by, log file path, log level and Jinja2 template path are optional arguments):
-$ prom2teams [--configpath <config file path>] [--groupalertsby ("name"|"description"|"instance"|"severity"|"status"|"summary")] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+$ prom2teams [--configpath <config file path>] [--groupalertsby ("name"|"description"|"instance"|"severity"|"summary")] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help
@@ -57,11 +57,11 @@ Other options to start the service are:
 export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
-**Note:** Grouping alerts only works since v2.2.0
+**Note:** Grouping alerts works since v2.2.1
 
 ### Docker image
 
-Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
+Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/prom2teams). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
 
 There are two things you need to bear in mind when creating a Prom2teams container:
 
@@ -72,6 +72,14 @@ There are two things you need to bear in mind when creating a Prom2teams contain
 So a sample Docker run command would be:
 ```bash
 $ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+```
+
+#### Provide custom config file
+
+If you prefer to use your own config file, you just need to provide it as a Docker volume to the container and map it to `/opt/prom2teams/config.ini`. Sample:
+
+```bash
+$ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 8089:8089 idealista/prom2teams:VERSION
 ```
 
 ### Production
@@ -135,7 +143,7 @@ Path: <Jinja2 template path> # default: app resources template
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
 ```
-**Note:** Grouping alerts only works since v2.2.0
+**Note:** Grouping alerts works since v2.2.0
 
 ### Configuring Prometheus
 
@@ -155,7 +163,7 @@ url: 0.0.0.0:8089/v2/<Connector1>
 prom2teams provides a [default template](prom2teams/resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.10/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
 
 Some fields are considered mandatory when received from Alert Manager.
-If such a field is not included a default value of 'unknown' is assigned as described below:
+If such a field is not included a default value of 'unknown' is assigned.
 
 Other optional fields are skipped and not included in the Teams message.
 
