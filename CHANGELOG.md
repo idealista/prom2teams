@@ -4,13 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.2.3](https://github.com/idealista/prom2teams/tree/2.2.3)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.2.2...2.2.3)
 ## Changed
-- *[#99](https://github.com/idealista/prom2teams/pull/99 ) Marshmallow update @manuhortet*
+- *[#99](https://github.com/idealista/prom2teams/pull/99) Marshmallow update* @manuhortet
 
 ## [2.2.2](https://github.com/idealista/prom2teams/tree/2.2.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.2.1...2.2.2)
 ## Added
-- *[#94](https://github.com/idealista/prom2teams/pull/94) Always group by status @manuhortet*
+- *[#94](https://github.com/idealista/prom2teams/pull/94) Always group by status* @manuhortet
 
 ## [2.2.1](https://github.com/idealista/prom2teams/tree/2.2.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.2...2.2.1)
@@ -25,7 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [2.1.2](https://github.com/idealista/prom2teams/tree/2.1.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.1...2.1.2)
 ### Fixed
-- *[#70](https://github.com/idealista/prom2teams/pull/70) Fix condition in teams_client.py * @Gkrlo
+- *[#70](https://github.com/idealista/prom2teams/pull/70) Fix condition in teams_client.py* @Gkrlo
 
 ## [2.1.1](https://github.com/idealista/prom2teams/tree/2.1.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.0.4...2.1.1)
