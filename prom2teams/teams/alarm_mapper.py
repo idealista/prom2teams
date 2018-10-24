@@ -5,7 +5,7 @@ from collections import defaultdict
 def map_alarm_to_json(alarm):
     schema = TeamsAlarmSchema()
     result = schema.dump(alarm)
-    return result.data
+    return result
 
 
 def map_prom_alerts_to_teams_alarms(alerts):
@@ -16,7 +16,7 @@ def map_prom_alerts_to_teams_alarms(alerts):
         for alert in alerts[same_status_alerts]:
             alarm = TeamsAlarm(alert.name, alert.status.lower(), alert.severity,
                                alert.summary, alert.instance, alert.description)
-            json_alarm = schema.dump(alarm).data
+            json_alarm = schema.dump(alarm)
             teams_alarms.append(json_alarm)
     return teams_alarms
 
@@ -36,7 +36,7 @@ def map_and_group(alerts, group_alerts_by):
                                                                       teams_visualization(features["status"]),
                                                                       teams_visualization(features["summary"]))
             alarm = TeamsAlarm(name, status.lower(), severity, summary, instance, description)
-            json_alarm = schema.dump(alarm).data
+            json_alarm = schema.dump(alarm)
             teams_alarms.append(json_alarm)
     return teams_alarms
 
