@@ -12,7 +12,7 @@ labels = api_v1.model('labels', {
     'device': fields.String(default='rootfs'),
     'instance': fields.String(default='cs30.evilcorp'),
     'job': fields.String(default='fsociety'),
-    'mounterpoint': fields.String(default='/'),
+    'mountpoint': fields.String(default='/'),
     'severity': fields.String(default='severe')
 })
 
