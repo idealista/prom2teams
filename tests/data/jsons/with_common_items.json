@@ -1,0 +1,41 @@
+{
+      "receiver": "echo",
+      "status": "resolved",
+      "alerts": [
+        {
+          "status": "resolved",
+          "labels": {
+            "alertname": "CPUThrottlingHigh",
+            "container_name": "config-reloader",
+            "namespace": "monitoring",
+            "pod_name": "alertmanager-ot-mon-prometheus-operator-alertmanager-0",
+            "prometheus": "monitoring/ot-mon-prometheus-operator-prometheus",
+            "severity": "warning"
+          },
+          "annotations": {
+            "message": "27% throttling of CPU in namespace monitoring for container config-reloader in pod alertmanager-ot-mon-prometheus-operator-alertmanager-0.",
+            "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh",
+            "summary": "CPU throttling"
+          },
+          "startsAt": "2019-01-28T20:26:23.868893259Z",
+          "endsAt": "2019-01-28T20:27:23.868893259Z",
+          "generatorURL": "http://ot-mon-prometheus-operator-prometheus.monitoring:9090/graph?g0.expr=100+%2A+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_throttled_periods_total%5B5m%5D%29%29+%2F+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_periods_total%5B5m%5D%29%29+%3E+25\u0026g0.tab=1"
+        }
+      ],
+      "groupLabels": {},
+      "commonLabels": {
+        "alertname": "CPUThrottlingHigh",
+        "container_name": "config-reloader",
+        "namespace": "monitoring",
+        "pod_name": "alertmanager-ot-mon-prometheus-operator-alertmanager-0",
+        "prometheus": "monitoring/ot-mon-prometheus-operator-prometheus",
+        "severity": "warning"
+      },
+      "commonAnnotations": {
+        "message": "27% throttling of CPU in namespace monitoring for container config-reloader in pod alertmanager-ot-mon-prometheus-operator-alertmanager-0.",
+        "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh"
+      },
+      "externalURL": "http://ot-mon-prometheus-operator-alertmanager.monitoring:9093",
+      "version": "4",
+      "groupKey": "{}/{alertname=\"CPUThrottlingHigh\"}:{}"
+    }
