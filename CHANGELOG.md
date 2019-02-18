@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ## Changed
 - *[#102](https://github.com/idealista/prom2teams/pull/102) Requests update* @manuhortet
+### Fixed
+- *[#105](https://github.com/idealista/prom2teams/issues/105) marshmallow.exceptions.ValidationError* @gjermy
 
 ## [2.2.3](https://github.com/idealista/prom2teams/tree/2.2.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.2.2...2.2.3)
