@@ -1,0 +1,27 @@
+{
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "themeColor": " 2DC72D ",
+    "summary": "(Resolved) CPU throttling",
+    "title": "Prometheus alarm (Resolved) ",
+    "sections": [{
+        "activityTitle": "CPU throttling",
+        "facts": [{
+            "name": "Alarm",
+            "value": "CPUThrottlingHigh"
+        },{
+            "name": "In host",
+            "value": "unknown"
+        },{
+            "name": "Severity",
+            "value": "warning"
+        },{
+            "name": "Description",
+            "value": "unknown"
+        },{
+            "name": "Status",
+            "value": "resolved"
+        }],
+           "markdown": true
+    }]
+}

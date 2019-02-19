@@ -50,6 +50,19 @@ class TestJSONFields(unittest.TestCase):
 
                 self.assertDictEqual(json_rendered, json_expected)
 
+    def test_with_common_items(self):
+        self.maxDiff = None
+        with open(self.TEST_CONFIG_FILES_PATH + 'with_common_items.json') as json_data:
+            with open(self.TEST_CONFIG_FILES_PATH + 'teams_alarm_with_common_items.json') as expected_data:
+                json_received = json.load(json_data)
+                json_expected = json.load(expected_data)
+
+                alerts = MessageSchema().load(json_received)
+                rendered_data = AlarmSender()._create_alarms(alerts)[0]
+                json_rendered = json.loads(rendered_data)
+
+                self.assertDictEqual(json_rendered, json_expected)
+
     def test_grouping_multiple_alerts(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok_multiple.json') as json_data:
             with open(self.TEST_CONFIG_FILES_PATH + 'teams_alarm_all_ok_multiple.json') as expected_data:

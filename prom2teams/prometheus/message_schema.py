@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, post_load
+from marshmallow import Schema, fields, post_load, EXCLUDE
 import logging
 
 log = logging.getLogger('prom2teams')
@@ -7,8 +7,12 @@ class MessageSchema(Schema):
     receiver = fields.Str()
     status = fields.Str(default='unknown', missing='unknown')
     alerts = fields.Nested('AlertSchema', many=True)
+    groupKey = fields.Str()
     externalURL = fields.Str()
     version = fields.Str()
+    commonAnnotations = fields.Nested('AnnotationSchema', many=False, unknown=EXCLUDE)
+    commonLabels = fields.Nested('LabelSchema', many=False, unknown=EXCLUDE)    
+    groupLabels = fields.Nested('LabelSchema', many=False, unknown=EXCLUDE)    
 
     @post_load
     def get_alerts(self, message):
@@ -29,8 +33,8 @@ class MessageSchema(Schema):
 
 class AlertSchema(Schema):
     status = fields.Str(default='unknown', missing='unknown')
-    labels = fields.Nested('LabelSchema', many=False)
-    annotations = fields.Nested('AnnotationSchema', many=False)
+    labels = fields.Nested('LabelSchema', many=False, unknown=EXCLUDE)
+    annotations = fields.Nested('AnnotationSchema', many=False, unknown=EXCLUDE)
     startsAt = fields.Date()
     endsAt = fields.Date()
     generatorURL = fields.Str()
