@@ -1,0 +1,15 @@
+.git/
+.cache/
+.eggs/
+.github/
+assets/
+build/
+dist/
+prom2teams.egg-info/
+tests/
+
+.travis.yml
+.gitignore
+CHANGELOG.md
+debug.log
+logo.gif
