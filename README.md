@@ -1,6 +1,8 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) [![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
+[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) 
+[![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+[![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 
 # prom2teams
 
@@ -70,6 +72,7 @@ There are two things you need to bear in mind when creating a Prom2teams contain
 - You need to map container's Prom2teams port to one on your host.
 
 So a sample Docker run command would be:
+
 ```bash
 $ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
 ```
@@ -143,6 +146,7 @@ Path: <Jinja2 template path> # default: app resources template
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
 ```
+
 **Note:** Grouping alerts works since v2.2.0
 
 ### Configuring Prometheus
