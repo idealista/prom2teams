@@ -1,6 +1,6 @@
 requests==2.20.1
-Jinja2==2.10
-Flask==1.0.2
+jinja2==2.10
+flask==1.0.2
 flask-restplus==0.10.1
 marshmallow==3.0.0b16
 pyyaml==3.12

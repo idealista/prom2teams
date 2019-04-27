@@ -1,7 +1,7 @@
 <!--
 
 Have you read Idealista's Code of Conduct? By filling an Issue, you are expected to comply with it,
- including treating everyone with respect: https://github.com/idealista/idealista/blob/master/CODE_OF_CONDUCT.md
+ including treating everyone with respect: https://github.com/idealista/prom2teams/blob/master/CODE_OF_CONDUCT.md
 
 -->
 
