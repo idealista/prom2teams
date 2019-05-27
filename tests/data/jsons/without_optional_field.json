@@ -16,8 +16,8 @@
       "annotations": {
         "summary": "Disk usage alert on CS30.evilcorp"
       },
-      "startsAt": "2017-05-09T07:01:37.803Z",
-      "endsAt": "2017-05-09T07:08:37.818278068Z",
+      "startsAt": "2017-05-09T07:01:37.803000Z",
+      "endsAt": "2017-05-09T07:08:37.818278Z",
       "generatorURL": "my.prometheusserver.url"
     }
   ],

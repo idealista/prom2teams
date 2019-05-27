@@ -142,6 +142,9 @@ Path: <Jinja2 template path> # default: app resources template
 
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
+
+[Labels]
+Excluded: <Coma separated list of labels to ignore>
 ```
 **Note:** Grouping alerts works since v2.2.0
 
@@ -165,7 +168,7 @@ prom2teams provides a [default template](prom2teams/resources/templates/teams.j2
 Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned.
 
-Other optional fields are skipped and not included in the Teams message.
+All non-mandatory fields and not in excluded list are injected in `extra_labels` key.
 
 #### Swagger UI
 

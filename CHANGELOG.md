@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.3.1](https://github.com/idealista/prom2teams/tree/2.3.1)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.0...2.3.1)
+## Changed
+- *[#112](https://github.com/idealista/prom2teams/issues/112) Allow custom labels in jinja template*
+- *Update flask-restplus version to v0.12.1*
+- *Update marshmallow version to v3.0.0rc6*
+
 ## [2.3.0](https://github.com/idealista/prom2teams/tree/2.3.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.2.3...2.3.0)
 ## Changed
