@@ -6,12 +6,7 @@ with open('requirements.txt') as req:
 
 
 with open('README.md') as f:
-    try:
-        import pypandoc
-        readme = pypandoc.convert('README.md', 'rst')
-    except (IOError, ImportError) as error:
-        readme = open('README.md').read()
-
+    readme = f.read()
 
 with open('LICENSE') as f:
     license = f.read()
@@ -22,6 +17,7 @@ setup(name='prom2teams',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
+      long_description_type='text/markdown',
       install_requires=requirements,
       setup_requires=[
         'flake8',
