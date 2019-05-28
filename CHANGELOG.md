@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
+## [2.3.2](https://github.com/idealista/prom2teams/tree/2.3.2)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.1...2.3.2)
+## Fixed
+- *Pypi package deployment* @miguel-chacon
+
 ## [2.3.1](https://github.com/idealista/prom2teams/tree/2.3.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.0...2.3.1)
 ## Changed
