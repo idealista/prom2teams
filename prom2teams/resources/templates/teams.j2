@@ -31,7 +31,10 @@
         },{% endif %}{
             "name": "Status",
             "value": "{{ msg_text.status }}"
-        }],
-           "markdown": true
+        }{% if msg_text.extra_labels %}{% for key in msg_text.extra_labels %},{
+            "name": "{{ key }}",
+            "value": "{{ msg_text.extra_labels[key] }}"
+        }{% endfor %}{% endif %}],
+          "markdown": true
     }]
 }

@@ -2,47 +2,35 @@
     "@type": "MessageCard",
     "@context": "http://schema.org/extensions",
     "themeColor": " 2DC72D ",
-    "summary": "(Resolved) CPU throttling",
+    "summary": "(Resolved) Disk usage alert on CS30.evilcorp",
     "title": "Prometheus alarm (Resolved) ",
     "sections": [
         {
-            "activityTitle": "CPU throttling",
+            "activityTitle": "Disk usage alert on CS30.evilcorp",
             "facts": [
                 {
                     "name": "Alarm",
-                    "value": "CPUThrottlingHigh"
+                    "value": "DiskSpace"
                 },
                 {
                     "name": "In host",
-                    "value": "unknown"
+                    "value": "cs30.evilcorp"
                 },
                 {
                     "name": "Severity",
-                    "value": "warning"
+                    "value": "severe"
                 },
                 {
                     "name": "Description",
-                    "value": "unknown"
+                    "value": "disk usage 93% on rootfs device"
                 },
                 {
                     "name": "Status",
                     "value": "resolved"
                 },
                 {
-                    "name": "container_name",
-                    "value": "config-reloader"
-                },
-                {
-                    "name": "pod_name",
-                    "value": "alertmanager-ot-mon-prometheus-operator-alertmanager-0"
-                },
-                {
-                    "name": "namespace",
-                    "value": "monitoring"
-                },
-                {
                     "name": "prometheus",
-                    "value": "monitoring/ot-mon-prometheus-operator-prometheus"
+                    "value": "keep"
                 }
             ],
             "markdown": true

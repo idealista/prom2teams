@@ -2,9 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
-## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [2.3.1](https://github.com/idealista/prom2teams/tree/2.3.1)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.0...2.3.1)
 ## Changed
+- *[#112](https://github.com/idealista/prom2teams/issues/112) Allow custom labels in jinja template* @miguel-chacon
 - *[#110](https://github.com/idealista/prom2teams/pull/110) Using Alpine Linux instead of Debian Slim in Docker Image* @dortegau
+- *Update flask-restplus version to v0.12.1* @miguel-chacon
+- *Update marshmallow version to v3.0.0rc6* @miguel-chacon
 
 ## [2.3.0](https://github.com/idealista/prom2teams/tree/2.3.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.2.3...2.3.0)

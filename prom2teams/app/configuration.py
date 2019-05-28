@@ -22,6 +22,7 @@ def _config_command_line():
     parser.add_argument('-l', '--logfilepath', help='log file path', required=False)
     parser.add_argument('-v', '--loglevel', help='log level', required=False)
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
+    parser.add_argument('-s', '--labelsexcluded', help='prometheus custom labels to be ignored', required=False)
     return parser.parse_args()
 
 
@@ -43,6 +44,8 @@ def _update_application_configuration(application, configuration):
         if 'Port' in configuration['HTTP Server']:
             _port = configuration['HTTP Server']['Port']
             application.config['PORT'] = _port
+    if 'Labels' in configuration:
+        application.config['LABELS_EXCLUDED'] = tuple(configuration['Labels']['Excluded'].replace(' ', '').split(','))
 
 
 def _config_provided(filepath):

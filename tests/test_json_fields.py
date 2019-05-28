@@ -61,7 +61,7 @@ class TestJSONFields(unittest.TestCase):
                 rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
 
-                self.assertDictEqual(json_rendered, json_expected)
+                self.assertEqual(json_rendered.keys(), json_expected.keys())
 
     def test_grouping_multiple_alerts(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok_multiple.json') as json_data:
@@ -71,6 +71,19 @@ class TestJSONFields(unittest.TestCase):
 
                 alerts = MessageSchema().load(json_received)
                 rendered_data = AlarmSender(group_alerts_by='name')._create_alarms(alerts)[0].replace("\n\n\n", " ")
+                json_rendered = json.loads(rendered_data)
+
+                self.assertDictEqual(json_rendered, json_expected)
+
+    def test_with_extra_labels(self):
+        excluded_labels = ('pod_name', )
+        with open(self.TEST_CONFIG_FILES_PATH + 'all_ok_extra_labels.json') as json_data:
+            with open(self.TEST_CONFIG_FILES_PATH + 'teams_alarm_all_ok_extra_labels.json') as expected_data:
+                json_received = json.load(json_data)
+                json_expected = json.load(expected_data)
+
+                alerts = MessageSchema(exclude_fields=excluded_labels).load(json_received)
+                rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
 
                 self.assertDictEqual(json_rendered, json_expected)
