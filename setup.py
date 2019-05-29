@@ -5,11 +5,8 @@ with open('requirements.txt') as req:
     requirements = req.read().splitlines()
 
 
-with open('README.md') as f:
+with open('README.md', encoding='utf-8') as f:
     readme = f.read()
-
-with open('LICENSE') as f:
-    license = f.read()
 
 
 setup(name='prom2teams',
@@ -17,11 +14,10 @@ setup(name='prom2teams',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
-      long_description_type='text/markdown',
+      long_description_content_type='text/markdown',
       install_requires=requirements,
       setup_requires=[
-        'flake8',
-        'pypandoc'
+        'flake8'
       ],
       scripts=[
           'bin/prom2teams',
@@ -37,7 +33,7 @@ setup(name='prom2teams',
       url='https://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
       author_email='labs@idealista.com',
-      license=license,
+      license='Apache license 2.0',
       packages=find_packages(exclude=('tests', 'docs')),
       keywords='microsoft teams prometheus alert',
       classifiers=[

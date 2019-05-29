@@ -9,6 +9,7 @@ script:
 before_deploy:
   - python3 -m pip install --upgrade setuptools
 deploy:
+  skip_cleanup: true
   provider: pypi
   user: idealista
   password:
