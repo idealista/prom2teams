@@ -17,7 +17,7 @@ setup(name='prom2teams',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
-      long_description_type='text/markdown',
+      long_description_content_type='text/markdown',
       install_requires=requirements,
       setup_requires=[
         'flake8',
