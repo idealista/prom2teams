@@ -9,7 +9,7 @@ with open('README.md', encoding='utf-8') as f:
     readme = f.read()
 
 
-setup(name='prom2teams_2',
+setup(name='prom2teams',
       version='2.3.1',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
