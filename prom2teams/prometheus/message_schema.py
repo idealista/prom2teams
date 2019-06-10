@@ -50,8 +50,8 @@ class AlertSchema(Schema):
     status = fields.Str(default='unknown', missing='unknown')
     labels = fields.Nested('LabelSchema', many=False, unknown=INCLUDE)
     annotations = fields.Nested('AnnotationSchema', many=False, unknown=EXCLUDE)
-    startsAt = fields.Date('%Y-%m-%dT%H:%M:%S.%fZ')
-    endsAt = fields.Date('%Y-%m-%dT%H:%M:%S.%fZ')
+    startsAt = fields.DateTime()
+    endsAt = fields.DateTime()
     generatorURL = fields.Str()
 
 
