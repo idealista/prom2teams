@@ -116,12 +116,7 @@ def config_app(application):
             application.config['TEMPLATE_PATH'] = command_line_args.templatepath
         if command_line_args.groupalertsby:
             application.config['GROUP_ALERTS_BY'] = command_line_args.groupalertsby
-        if  (
-                command_line_args.enablemetrics or (
-                    'PROM2TEAMS_PROMETHEUS_METRICS' in os.environ and 
-                    os.environ['PROM2TEAMS_PROMETHEUS_METRICS'] == "true"
-                )
-            ):
+        if (command_line_args.enablemetrics or os.environ.get('PROM2TEAMS_PROMETHEUS_METRICS',False)):
             from prometheus_flask_exporter import PrometheusMetrics
             metrics = PrometheusMetrics(application)
 
