@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
+## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## Changed
+- *[#128](https://github.com/idealista/prom2teams/pull/128) Allow overriding the config file location in Docker by setting the APP_CONFIG_FILE environment variable @nvx
+
 ## [2.3.3](https://github.com/idealista/prom2teams/tree/2.3.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.2...2.3.3)
 ## Fixed
