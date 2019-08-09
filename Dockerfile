@@ -1,4 +1,4 @@
-FROM python:3.5-alpine
+FROM python:3.6-alpine
 
 LABEL maintainer="labs@idealista.com"
 
@@ -27,6 +27,7 @@ ENV PROM2TEAMS_PORT="8089" \
         PROM2TEAMS_LOGLEVEL="INFO" \
         PROM2TEAMS_CONNECTOR="" \
         PROM2TEAMS_GROUP_ALERTS_BY="" \
-        APP_CONFIG_FILE="/opt/prom2teams/config.ini"
+        APP_CONFIG_FILE="/opt/prom2teams/config.ini" \
+        PROM2TEAMS_PROMETHEUS_METRICS="true"
 
 ENTRYPOINT ["sh", "prom2teams_start.sh"]

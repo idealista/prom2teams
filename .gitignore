@@ -108,3 +108,6 @@ ENV/
 
 # pypi config file
 .pypirc
+
+# Visual Studio Code
+.vscode/

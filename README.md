@@ -47,8 +47,8 @@ $ pip3 install prom2teams
 **Important:** Config path must be provided with at least one Microsoft Teams Connector. Check the options to know how you can supply it.
 
 ```bash
-# To start the server (config file path , group alerts by, log file path, log level and Jinja2 template path are optional arguments):
-$ prom2teams [--configpath <config file path>] [--groupalertsby ("name"|"description"|"instance"|"severity"|"summary")] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
+# To start the server (enable metrics, config file path , group alerts by, log file path, log level and Jinja2 template path are optional arguments):
+$ prom2teams [--enablemetrics] [--configpath <config file path>] [--groupalertsby ("name"|"description"|"instance"|"severity"|"summary")] [--logfilepath <log file path>] [--loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)] [--templatepath <Jinja2 template file path>]
 
 # To show the help message:
 $ prom2teams --help
@@ -60,6 +60,13 @@ export APP_CONFIG_FILE=<config file path>
 $ prom2teams
 ```
 **Note:** Grouping alerts works since v2.2.1
+
+### Prom2teams Prometheus metrics
+
+Prom2teams uses Flask and, to have Prom2teams monitored we use @rycus66's [Prometheus Flask Exporter](https://github.com/rycus86/prometheus_flask_exporter). This will enable an endpoint in `/metrics` where you could find interesting metrics to monitor such as number of responses with a certain status. To enable this endpoint, just either:
+
+- Use the `--enablemetrics` or `-m` flag when launching prom2teams.
+- Set the environment variable `PROM2TEAMS_PROMETHEUS_METRICS=true`.
 
 ### Docker image
 
