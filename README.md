@@ -63,7 +63,7 @@ $ prom2teams
 
 ### Prom2teams Prometheus metrics
 
-Prom2teams uses Flask and, to have Prom2teams monitored we use @rycus66's [Prometheus Flask Exporter](https://github.com/rycus86/prometheus_flask_exporter). This will enable an endpoint in `/metrics` where you could find interesting metrics to monitor such as number of responses with a certain status. To enable this endpoint, just either:
+Prom2teams uses Flask and, to have the service monitored, we use @rycus66's [Prometheus Flask Exporter](https://github.com/rycus86/prometheus_flask_exporter). This will enable an endpoint in `/metrics` where you could find interesting metrics to monitor such as number of responses with a certain status. To enable this endpoint, just either:
 
 - Use the `--enablemetrics` or `-m` flag when launching prom2teams.
 - Set the environment variable `PROM2TEAMS_PROMETHEUS_METRICS=true`.
