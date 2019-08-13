@@ -12,7 +12,6 @@ except ImportError:
 if __name__ == "__main__":
     host = application.config['HOST']
     port = int(application.config['PORT'])
-    # application.run(host=host, port=port, extra_files="/opt/prom2teams/config.ini")
     run_simple(hostname=host, port=port, application=application, use_reloader=True,
-               reloader_type='stat', reloader_interval=5, extra_files="/opt/prom2teams/config.ini")
+               reloader_type='stat', reloader_interval=5, extra_files=[application.config['APP_CONFIG_FILE']])
 
