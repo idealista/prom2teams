@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ## Added
+- *[#104](https://github.com/idealista/prom2teams/issues/104) Add ability to reload config without restarting* @jnogol @miguel-chacon
 - *[#129](https://github.com/idealista/prom2teams/issues/129) Add prometheus_flask_exporter* @jnogol
 ## Changed
 - *[#128](https://github.com/idealista/prom2teams/pull/128) Allow overriding the config file location in Docker by setting the APP_CONFIG_FILE environment variable* @nvx
