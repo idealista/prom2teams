@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+
+## [2.4.0](https://github.com/idealista/prom2teams/tree/2.4.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.3...2.4.0)
 ## Added
 - *[#104](https://github.com/idealista/prom2teams/issues/104) Add ability to reload config without restarting* @jnogol @miguel-chacon
 - *[#129](https://github.com/idealista/prom2teams/issues/129) Add prometheus_flask_exporter* @jnogol
