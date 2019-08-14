@@ -99,6 +99,7 @@ def config_app(application):
         # Load the file specified by the APP_CONFIG_FILE environment variable
         # Variables defined here will override those in the default configuration
         if 'APP_CONFIG_FILE' in os.environ:
+            application.config['APP_CONFIG_FILE'] = os.environ.get('APP_CONFIG_FILE')
             config_provided = _config_provided(os.getenv('APP_CONFIG_FILE'))
             _update_application_configuration(application, config_provided)
 
@@ -106,6 +107,7 @@ def config_app(application):
         # Variables defined here will override previous configuration
         command_line_args = _config_command_line()
         if command_line_args.configpath:
+            application.config['APP_CONFIG_FILE'] = command_line_args.configpath
             config_provided = _config_provided(command_line_args.configpath)
             _update_application_configuration(application, config_provided)
         if command_line_args.loglevel:
