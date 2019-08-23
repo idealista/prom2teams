@@ -6,6 +6,7 @@ metadata:
 {{ include "prom2teams.labels" . | indent 4 }}
   annotations:
     "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": test-success,test-failure
 spec:
   containers:
     - name: wget
