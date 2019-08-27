@@ -1,6 +1,7 @@
 import logging.config
+import os
 
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, send_from_directory
 
 from prom2teams.app.configuration import config_app, setup_logging
 from .versions.v1 import api_v1
@@ -11,6 +12,12 @@ from .versions.v2.namespace import ns as ns_v2
 log = logging.getLogger('prom2teams_app')
 
 app = Flask(__name__)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 def register_api(application, api, namespace, blueprint):
