@@ -1,5 +1,6 @@
 class MicrosoftTeamsRequestException(Exception):
-    pass
+    def __init__(self, msg, code=None):
+        self.code = code
 
 
 class MissingConnectorConfigKeyException(Exception):
