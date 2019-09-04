@@ -4,8 +4,7 @@ LABEL maintainer="labs@idealista.com"
 
 EXPOSE 8089
 
-RUN apk add gcc libc-dev linux-headers --update-cache \
-    && rm -rf /var/cache/apk/*
+RUN apk add gcc libc-dev linux-headers --no-cache
 
 WORKDIR /opt/prom2teams
 
