@@ -13,6 +13,12 @@ log = logging.getLogger('prom2teams_app')
 app = Flask(__name__)
 
 
+def error_handler(e):
+    msg = 'An unhandled exception occurred. {}'.format(e)
+    log.exception(msg)
+    return str(e), e.code
+
+
 def register_api(application, api, namespace, blueprint):
     api.init_app(blueprint)
     api.add_namespace(namespace)
@@ -27,6 +33,7 @@ def init_app(application):
     blueprint_v2 = Blueprint('api_v2', __name__, url_prefix=application.config['API_V2_URL_PREFIX'])
     register_api(application, api_v1, ns_v1, blueprint_v1)
     register_api(application, api_v2, ns_v2, blueprint_v2)
+    application.register_error_handler(500, error_handler)
 
 
 init_app(app)
