@@ -13,5 +13,6 @@ def post(teams_webhook_url, message):
                             ' Returned status code: {}.' \
                             ' Returned data: {}'
         raise MicrosoftTeamsRequestException(exception_msg.format(teams_webhook_url,
-                                             str(response.status_code),
-                                             str(response.text)))
+                                                                  str(response.status_code),
+                                                                  str(response.text)),
+                                             code=response.status_code)

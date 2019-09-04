@@ -3,10 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+
 ##Fixed
-*[#139](https://github.com/idealista/prom2teams/issues/139) Add route for favicon* @miguel-chacon
+- *[#139](https://github.com/idealista/prom2teams/issues/139) Add route for favicon* @miguel-chacon
+- *Missing internal errors in flask exporter metrics* @miguel-chacon
 ## Changed
-*Minor improve Dockerfile* @miguel-chacon
+- *Minor improve Dockerfile* @miguel-chacon
 
 ## [2.4.0](https://github.com/idealista/prom2teams/tree/2.4.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.3.3...2.4.0)
