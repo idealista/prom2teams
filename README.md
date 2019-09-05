@@ -95,7 +95,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 #### Configuration
 
-The following table lists the configurable parameters of the Prom2Teams chart and their default values.
+The following table lists the configurable parameters of the prom2teams chart and their default values.
 
 | Parameter                                       | Description                                                                                                        | Default
 | ---                                             | ---                                                                                                                | ---
