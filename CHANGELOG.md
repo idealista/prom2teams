@@ -4,7 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
-##Fixed
+## [2.5.0](https://github.com/idealista/prom2teams/tree/2.5.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.4.0...2.5.0)
+## Added
+- *[#109](https://github.com/idealista/prom2teams/issues/109) Add Helm chart* @Aaron-ML
+## Fixed
 - *[#139](https://github.com/idealista/prom2teams/issues/139) Add route for favicon* @miguel-chacon
 - *Missing internal errors in flask exporter metrics* @miguel-chacon
 ## Changed
