@@ -68,6 +68,54 @@ Prom2teams uses Flask and, to have the service monitored, we use @rycus66's [Pro
 - Use the `--enablemetrics` or `-m` flag when launching prom2teams.
 - Set the environment variable `PROM2TEAMS_PROMETHEUS_METRICS=true`.
 
+### Helm chart
+
+#### Installing the Chart
+
+To install the chart with the release name `my-release` run:
+
+```bash
+$ helm install --name my-release /location/of/prom2teams_ROOT/helm
+```
+
+After a few seconds, Prom2Teams should be running.
+
+> **Tip**: List all releases using `helm list`, a release is a name used to track a specific deployment
+
+#### Uninstalling the Chart
+
+To uninstall/delete the `my-release` deployment:
+
+```bash
+$ helm delete my-release
+```
+> **Tip**: Use helm delete --purge my-release to completely remove the release from Helm internal storage
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+#### Configuration
+
+The following table lists the configurable parameters of the Prom2Teams chart and their default values.
+
+| Parameter                                       | Description                                                                                                        | Default
+| ---                                             | ---                                                                                                                | ---
+| `image.repository`                              | The image repository to pull from                                                                                  | `idealista/prom2teams`
+| `image.tag`                                     | The image tag to pull                                                                                              | `2.4.0`
+| `image.pullPolicy`                              | The image pull policy                                                                                              | `IfNotPresent`
+| `resources.requests.cpu`                        | CPU requested for being run in a node                                                                              | `100m`
+| `resources.requests.memory`                     | Memory requested for being run in a node                                                                           | `128Mi`
+| `resources.limits.cpu`                          | CPU limit                                                                                                          | `200m`
+| `resources.limits.memory`                       | Memory limit                                                                                                       | `200Mi`
+| `service.type`                                  | Service Map (NodePort/ClusterIP)                                                                                   | `ClusterIP`
+| `service.port`                                  | Service Port                                                                                                       | `8089`
+| `prom2teams.host`                               | IP to bind to                                                                                                      | `0.0.0.0`
+| `prom2teams.port`                               | Port to bind to                                                                                                    | `8089`
+| `prom2teams.connector`                          | Connector URL                                                                                                      | `<empty>`
+| `prom2teams.group_alerts_by`                    | Group_alerts_by field                                                                                              | `<empty>`
+| `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
+| `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
+| `prom2teams.config`                             | Config (specific to Helm)                                                                                          | `/opt/prom2teams/helmconfig/config.ini`
+
 ### Docker image
 
 Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/prom2teams). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
