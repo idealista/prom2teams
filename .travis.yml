@@ -1,18 +1,29 @@
 language: python
+
 python:
   - '3.5'
   - '3.6'
+  - '3.7'
+
 install:
   - pip install -r requirements.txt
+
 script:
   - python -m unittest discover tests
+
 before_deploy:
   - python3 -m pip install --upgrade setuptools
-deploy:
-  skip_cleanup: true
-  provider: pypi
-  user: idealista
-  password:
-    secure: vGEjnrN5N3KlYHA/3LC+uJpW2lr1sZCUahNz0OjycNg/oKB1CZuQx0TuiXF/i8DnqnYpfW+tpFEjSwa2TqJIKhrQFf9yLUblr/Ky9H8VXzyLWI+DN3t3EbCg9QWRGuC7RJm57PZkjfMR6RewHNqpjAlzkRE4kLP7CItJYJNOapXDpUIGccPucubprPs0AGL0roNG8fhs9goyeHD05es6OCS1v1LO9j91mDMno+XH2yNwSFmVHRFbzdZP+jHqx8L4dI+mlOIK2iATW1JTCyGWRHBqfb8w7Pi97r4qWpl76OduFH8b6Ldg5adIFgXFzyTUpZUNmenFLji9FwxXUWTQHCtRWzSx6SfN1ebaaqyCA84+p12pEXXee2xLhw04pWLrHHk22FnleEcL+Us80s50+lWCZz0MiakyTCVE+0YJuW/CT25RNGZvOvtrqyZCXFi2OO2Nu8NIbCKjvehNKpXCFdJLBBJcUAOmNz667ELEs8OTzFqxzJwykkxW+zwvxNc3/T5P1v1q8lUbxml3qSKfzvmyirXH1v0D/GMXuQdDqw3oBdjJb304bSsiWJ0l1YCYRkl7fV9bnO0WboEqJG6HJGX3Pt1GgQIrIu/DnBZOnUiSFwaqH4nh1pyYzEHqTAxPsmIaVtYkTgJOkoZXZLtLv0CefB5jo3SmLF1g3qGDRCc=
-  on:
-    tags: true
+
+jobs:
+  include:
+    - stage: Deploy to PyPI
+      script: skip
+      deploy:
+        skip_cleanup: true
+        provider: pypi
+        user: idealista
+        password:
+          secure: vGEjnrN5N3KlYHA/3LC+uJpW2lr1sZCUahNz0OjycNg/oKB1CZuQx0TuiXF/i8DnqnYpfW+tpFEjSwa2TqJIKhrQFf9yLUblr/Ky9H8VXzyLWI+DN3t3EbCg9QWRGuC7RJm57PZkjfMR6RewHNqpjAlzkRE4kLP7CItJYJNOapXDpUIGccPucubprPs0AGL0roNG8fhs9goyeHD05es6OCS1v1LO9j91mDMno+XH2yNwSFmVHRFbzdZP+jHqx8L4dI+mlOIK2iATW1JTCyGWRHBqfb8w7Pi97r4qWpl76OduFH8b6Ldg5adIFgXFzyTUpZUNmenFLji9FwxXUWTQHCtRWzSx6SfN1ebaaqyCA84+p12pEXXee2xLhw04pWLrHHk22FnleEcL+Us80s50+lWCZz0MiakyTCVE+0YJuW/CT25RNGZvOvtrqyZCXFi2OO2Nu8NIbCKjvehNKpXCFdJLBBJcUAOmNz667ELEs8OTzFqxzJwykkxW+zwvxNc3/T5P1v1q8lUbxml3qSKfzvmyirXH1v0D/GMXuQdDqw3oBdjJb304bSsiWJ0l1YCYRkl7fV9bnO0WboEqJG6HJGX3Pt1GgQIrIu/DnBZOnUiSFwaqH4nh1pyYzEHqTAxPsmIaVtYkTgJOkoZXZLtLv0CefB5jo3SmLF1g3qGDRCc=
+        on:
+          tags: true
+        skip_existing: true
