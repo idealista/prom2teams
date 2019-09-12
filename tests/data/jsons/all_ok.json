@@ -9,7 +9,6 @@
         "device": "rootfs",
         "fstype": "rootfs",
         "instance": "cs30.evilcorp",
-        "job": "fsociety",
         "mountpoint": "/",
         "severity": "severe"
       },
