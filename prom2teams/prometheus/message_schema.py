@@ -53,6 +53,7 @@ class AlertSchema(Schema):
     startsAt = fields.DateTime()
     endsAt = fields.DateTime()
     generatorURL = fields.Str()
+    fingerprint = fields.Str()
 
 
 class LabelSchema(Schema):
