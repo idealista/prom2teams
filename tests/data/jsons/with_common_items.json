@@ -19,7 +19,8 @@
           },
           "startsAt": "2019-01-28T20:26:23.868893Z",
           "endsAt": "2019-01-28T20:27:23.868893Z",
-          "generatorURL": "http://ot-mon-prometheus-operator-prometheus.monitoring:9090/graph?g0.expr=100+%2A+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_throttled_periods_total%5B5m%5D%29%29+%2F+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_periods_total%5B5m%5D%29%29+%3E+25\u0026g0.tab=1"
+          "generatorURL": "http://ot-mon-prometheus-operator-prometheus.monitoring:9090/graph?g0.expr=100+%2A+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_throttled_periods_total%5B5m%5D%29%29+%2F+sum+by%28container_name%2C+pod_name%2C+namespace%29+%28increase%28container_cpu_cfs_periods_total%5B5m%5D%29%29+%3E+25\u0026g0.tab=1",
+          "fingerprint": "dd19ae3d4e06ac55"
         }
       ],
       "groupLabels": {},
