@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ## Fixed
+- *[#146](https://github.com/idealista/prom2teams/issues/146) Missing 'job' label* @miguel-chacon
 - *[#144](https://github.com/idealista/prom2teams/issues/144) Fix PyPI deploy* @miguel-chacon
 
 ## [2.5.0](https://github.com/idealista/prom2teams/tree/2.5.0)
