@@ -29,6 +29,10 @@
                     "value": "resolved"
                 },
                 {
+                    "name": "job",
+                    "value": "fsociety"
+                },
+                {
                     "name": "prometheus",
                     "value": "keep"
                 }
