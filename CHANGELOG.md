@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## Added
+- *[#148](https://github.com/idealista/prom2teams/issues/148) Adapt template changes in Alertmanager 0.19* @miguel-chacon
 ## Fixed
 - *[#146](https://github.com/idealista/prom2teams/issues/146) Missing 'job' label* @miguel-chacon
 - *[#144](https://github.com/idealista/prom2teams/issues/144) Fix PyPI deploy* @miguel-chacon
