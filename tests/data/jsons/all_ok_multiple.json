@@ -9,7 +9,6 @@
         "device": "rootfs",
         "fstype": "rootfs",
         "instance": "cs30.evilcorp",
-        "job": "fsociety",
         "mountpoint": "/",
         "severity": "severe"
       },
@@ -19,7 +18,8 @@
       },
       "startsAt": "2017-05-09T07:01:37.803000000Z",
       "endsAt": "2017-05-09T07:08:37.818Z",
-      "generatorURL": "my.prometheusserver.url"
+      "generatorURL": "my.prometheusserver.url",
+      "fingerprint": "dd19ae3d4e06ac55"
     },
     {
       "status": "resolved",
@@ -28,7 +28,6 @@
         "device": "rootfs",
         "fstype": "rootfs",
         "instance": "cs31.evilcorp",
-        "job": "fsociety",
         "mountpoint": "/",
         "severity": "critical"
       },
@@ -38,7 +37,8 @@
       },
       "startsAt": "2017-05-09T07:01:37.803000Z",
       "endsAt": "2017-05-09T07:08:37.81827Z",
-      "generatorURL": "my.prometheusserver.url"
+      "generatorURL": "my.prometheusserver.url",
+      "fingerprint": "dd19ae3d4e06ac55"
     }
   ],
   "externalURL": "my.prometheusalertmanager.url",

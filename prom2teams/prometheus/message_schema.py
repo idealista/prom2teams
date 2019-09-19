@@ -25,7 +25,7 @@ class MessageSchema(Schema):
         log.debug('JSON received is:\n%s', str(message))
         prom_alerts = []
 
-        base_labels = ('alertname', 'device', 'fstype', 'instance', 'job', 'mountpoint', 'severity')
+        base_labels = ('alertname', 'device', 'fstype', 'instance', 'mountpoint', 'severity')
         excluded = base_labels + self.exclude_fields
 
         for alert in message['alerts']:
@@ -53,6 +53,7 @@ class AlertSchema(Schema):
     startsAt = fields.DateTime()
     endsAt = fields.DateTime()
     generatorURL = fields.Str()
+    fingerprint = fields.Str()
 
 
 class LabelSchema(Schema):
