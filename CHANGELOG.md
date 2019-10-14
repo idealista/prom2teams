@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ## Fixed
 - *[#151](https://github.com/idealista/prom2teams/issues/151) Favicon not included in source distribution* @miguel-chacon
+## Added
+- *Log full message on error* @miguel-chacon
 
 ## [2.5.1](https://github.com/idealista/prom2teams/tree/2.5.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.0...2.5.1)
