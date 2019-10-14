@@ -4,3 +4,4 @@ include requirements.txt
 include bin/wsgi.py
 include */config/*
 recursive-include */resources/ *
+recursive-include */app/static/ *

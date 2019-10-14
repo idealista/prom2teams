@@ -24,7 +24,7 @@ setup(name='prom2teams',
           'bin/prom2teams_uwsgi'
       ],
       package_data={
-        '': ['*.ini', '*.j2', 'static/favicon.ico'],
+        '': ['*.ini', '*.j2', '*.ico'],
       },
       include_package_data=True,
       data_files=[
