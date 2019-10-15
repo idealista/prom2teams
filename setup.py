@@ -10,7 +10,7 @@ with open('README.md', encoding='utf-8') as f:
 
 
 setup(name='prom2teams',
-      version='2.5.1',
+      version='2.5.2',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
@@ -24,7 +24,7 @@ setup(name='prom2teams',
           'bin/prom2teams_uwsgi'
       ],
       package_data={
-        '': ['*.ini', '*.j2', 'static/favicon.ico'],
+        '': ['*.ini', '*.j2', '*.ico'],
       },
       include_package_data=True,
       data_files=[
