@@ -15,7 +15,7 @@ def map_prom_alerts_to_teams_alarms(alerts):
     for same_status_alerts in alerts:
         for alert in alerts[same_status_alerts]:
             alarm = TeamsAlarm(alert.name, alert.status.lower(), alert.severity,
-                               alert.summary, alert.instance, alert.description, alert.extra_labels)
+                               alert.summary, alert.instance, alert.description, alert.extra_labels, alert.extra_annotations)
             json_alarm = schema.dump(alarm)
             teams_alarms.append(json_alarm)
     return teams_alarms
@@ -36,12 +36,15 @@ def map_and_group(alerts, group_alerts_by):
                                                                       teams_visualization(features["status"]),
                                                                       teams_visualization(features["summary"]))
             extra_labels = dict()
+            extra_annotations = dict()
             for element in grouped_alerts[alert]:
                 if hasattr(element, 'extra_labels'):
                     extra_labels = {**extra_labels, **element.extra_labels}
+                if hasattr(element, 'extra_annotations'):
+                    extra_annotations = {**extra_annotations, **element.extra_annotations}
 
             alarm = TeamsAlarm(name, status.lower(), severity, summary,
-                               instance, description, extra_labels)
+                               instance, description, extra_labels, extra_annotations)
             json_alarm = schema.dump(alarm)
             teams_alarms.append(json_alarm)
     return teams_alarms

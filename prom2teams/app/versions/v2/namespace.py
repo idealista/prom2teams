@@ -15,7 +15,7 @@ class AlertReceiver(Resource):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'])
+        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'], exclude_annotations=app.config['ANNOTATIONS_EXCLUDED'])
         if app.config['TEMPLATE_PATH']:
             self.sender = AlarmSender(app.config['TEMPLATE_PATH'], app.config['GROUP_ALERTS_BY'])
         else:

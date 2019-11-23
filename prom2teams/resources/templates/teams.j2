@@ -34,6 +34,10 @@
         }{% if msg_text.extra_labels %}{% for key in msg_text.extra_labels %},{
             "name": "{{ key }}",
             "value": "{{ msg_text.extra_labels[key] }}"
+        }{% endfor %}{% endif %}
+        {% if msg_text.extra_annotations %}{% for key in msg_text.extra_annotations %},{
+            "name": "{{ key }}",
+            "value": "{{ msg_text.extra_annotations[key] }}"
         }{% endfor %}{% endif %}],
           "markdown": true
     }]

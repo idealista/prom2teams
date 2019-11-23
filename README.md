@@ -203,6 +203,9 @@ Field: <Field to group alerts by> # alerts won't be grouped by default
 
 [Labels]
 Excluded: <Coma separated list of labels to ignore>
+
+[Annotations]
+Excluded: <Comma separated list of annotations to ignore>
 ```
 
 **Note:** Grouping alerts works since v2.2.0
@@ -227,7 +230,7 @@ prom2teams provides a [default template](prom2teams/resources/templates/teams.j2
 Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned.
 
-All non-mandatory fields and not in excluded list are injected in `extra_labels` key.
+All non-mandatory labels not in excluded list are injected in `extra_labels` key. All non-mandatory annotations not in excluded list are injected in `extra_annotations` key.
 
 #### Swagger UI
 
