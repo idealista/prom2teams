@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.5.3](https://github.com/idealista/prom2teams/tree/2.5.3)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.2...2.5.3)
+## Fixed
+- *[#138](https://github.com/idealista/prom2teams/issues/138) Add ExtraAnnotations field extraction* @Aaron-ML
+
 ## [2.5.2](https://github.com/idealista/prom2teams/tree/2.5.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.1...2.5.2)
 ## Fixed
