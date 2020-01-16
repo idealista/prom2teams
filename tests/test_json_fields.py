@@ -7,7 +7,6 @@ from prom2teams.app.sender import AlarmSender
 
 
 class TestJSONFields(unittest.TestCase):
-
     TEST_CONFIG_FILES_PATH = 'tests/data/jsons/'
 
     def test_json_with_all_fields(self):
@@ -87,6 +86,19 @@ class TestJSONFields(unittest.TestCase):
                 json_rendered = json.loads(rendered_data)
 
                 self.assertDictEqual(json_rendered, json_expected)
+
+    def test_with_extra_annotations(self):
+        excluded_annotations = ('message', )
+        with open(self.TEST_CONFIG_FILES_PATH + 'all_ok_extra_annotations.json') as json_data:
+            with open(self.TEST_CONFIG_FILES_PATH + 'teams_alarm_all_ok_extra_annotations.json') as expected_data:
+               json_received = json.load(json_data)
+               json_expected = json.load(expected_data)
+
+               alerts = MessageSchema(exclude_annotations=excluded_annotations).load(json_received)
+               rendered_data = AlarmSender()._create_alarms(alerts)[0]
+               json_rendered = json.loads(rendered_data)
+
+               self.assertDictEqual(json_rendered, json_expected)
 
 
 if __name__ == '__main__':

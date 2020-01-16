@@ -27,3 +27,6 @@ TEMPLATE_PATH = None
 
 # Labels
 LABELS_EXCLUDED = ()
+
+# Annotations
+ANNOTATIONS_EXCLUDED = ()

@@ -1,0 +1,29 @@
+{
+  "receiver": "test_webhook",
+  "status": "resolved",
+  "alerts": [
+    {
+      "status": "resolved",
+      "labels": {
+        "alertname": "DiskSpace",
+        "device": "rootfs",
+        "fstype": "rootfs",
+        "instance": "cs30.evilcorp",
+        "mountpoint": "/",
+        "severity": "severe"
+      },
+      "annotations": {
+        "description": "disk usage 93% on rootfs device",
+        "summary": "Disk usage alert on CS30.evilcorp",
+        "runbook_url": "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage",
+        "message": "Evil Corp has a strict SLO regarding customer-facing outages involving the rootfs device"
+      },
+      "startsAt": "2017-05-09T07:01:37.803000Z",
+      "endsAt": "2017-05-09T07:08:37.818278Z",
+      "generatorURL": "my.prometheusserver.url",
+      "fingerprint": "dd19ae3d4e06ac55"
+    }
+  ],
+  "externalURL": "my.prometheusalertmanager.url",
+  "version": "4"
+}
