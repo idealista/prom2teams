@@ -3,9 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+
+## [2.5.4](https://github.com/idealista/prom2teams/tree/2.5.4)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.3...2.5.4)
 ## Fixed
 - *[#162](https://github.com/idealista/prom2teams/issues/162) Fix werkzeug version to 0.16.1 (1.0.0 breaks current prom2teams version)* @frantsao
-
 
 ## [2.5.3](https://github.com/idealista/prom2teams/tree/2.5.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.2...2.5.3)
