@@ -76,7 +76,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 ### Pull Requests
 
 * Fill in [the required template](PULL_REQUEST_TEMPLATE.md)
-* Any pull request should has **idealista:develop** as base branch.
+* Any pull request should have **idealista:develop** as base branch.
 
 ### Changelog
 
