@@ -37,6 +37,13 @@ class TestJSONFields(unittest.TestCase):
             alarm = map_prom_alerts_to_teams_alarms(alerts)[0]
             self.assertEqual('unknown', str(alarm['instance']))
 
+    def test_fingerprint(self):
+        with open(self.TEST_CONFIG_FILES_PATH + 'all_ok.json') as json_data:
+            json_received = json.load(json_data)
+            alerts = MessageSchema().load(json_received)
+            alarm = map_prom_alerts_to_teams_alarms(alerts)[0]
+            self.assertEqual('dd19ae3d4e06ac55', str(alarm['fingerprint']))
+
     def test_compose_all(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok.json') as json_data:
             with open(self.TEST_CONFIG_FILES_PATH + 'teams_alarm_all_ok.json') as expected_data:
