@@ -9,6 +9,10 @@ from prom2teams.app.sender import AlarmSender
 class TestJSONFields(unittest.TestCase):
     TEST_CONFIG_FILES_PATH = 'tests/data/jsons/'
 
+    def __init__(self, *args, **kwargs):
+        super(TestJSONFields, self).__init__(*args, **kwargs)
+        self.maxDiff = None
+
     def test_json_with_all_fields(self):
         with open(self.TEST_CONFIG_FILES_PATH + 'all_ok.json') as json_data:
             json_received = json.load(json_data)
