@@ -1,5 +1,6 @@
 import unittest
 import json
+import sys
 
 from prom2teams.teams.alarm_mapper import map_prom_alerts_to_teams_alarms
 from prom2teams.prometheus.message_schema import MessageSchema
@@ -88,6 +89,16 @@ class TestJSONFields(unittest.TestCase):
                 alerts = MessageSchema(exclude_fields=excluded_labels).load(json_received)
                 rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
+
+                # account for unsorted dicts in python 3.5
+                if sys.version_info[0] == 3 and sys.version_info[1] == 5:
+                    facts = json_rendered['sections'][0]['facts']
+                    (extra_label1, extra_label2) = facts[-2:]
+                    # if the names are not in alphabetical order
+                    if extra_label2['name'] != 'prometheus':
+                        # switch the fact order
+                        facts[-1] = extra_label1
+                        facts[-2] = extra_label2
 
                 self.assertDictEqual(json_rendered, json_expected)
 
