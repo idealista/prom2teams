@@ -6,7 +6,7 @@ from prom2teams.app import exceptions
 
 
 class TestServer(unittest.TestCase):
-    TEST_CONFIG_FILES_PATH = 'tests/data/'
+    TEST_CONFIG_FILES_PATH = './tests/data/'
     DEFAULT_CONFIG_RELATIVE_PATH = './prom2teams/config.ini'
 
     def test_get_config_with_invalid_path(self):

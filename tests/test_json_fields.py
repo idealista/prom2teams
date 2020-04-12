@@ -9,7 +9,7 @@ from prom2teams.app.sender import AlarmSender
 from deepdiff import DeepDiff
 
 class TestJSONFields(unittest.TestCase):
-    TEST_CONFIG_FILES_PATH = 'tests/data/json_files/'
+    TEST_CONFIG_FILES_PATH = './tests/data/json_files/'
 
     def test_json_with_all_fields(self):
         with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'all_ok.json')) as json_data:
