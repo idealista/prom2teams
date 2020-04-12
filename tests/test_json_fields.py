@@ -6,6 +6,8 @@ from prom2teams.teams.alarm_mapper import map_prom_alerts_to_teams_alarms
 from prom2teams.prometheus.message_schema import MessageSchema
 from prom2teams.app.sender import AlarmSender
 
+from deepdiff import DeepDiff
+
 class TestJSONFields(unittest.TestCase):
     TEST_CONFIG_FILES_PATH = 'tests/data/json_files/'
 
@@ -47,7 +49,8 @@ class TestJSONFields(unittest.TestCase):
                 rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
 
-                self.assertDictEqual(json_rendered, json_expected)
+                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+                self.assertTrue(not diff)
 
     def test_with_common_items(self):
         self.maxDiff = None
@@ -72,7 +75,8 @@ class TestJSONFields(unittest.TestCase):
                 rendered_data = AlarmSender(group_alerts_by='name')._create_alarms(alerts)[0].replace("\n\n\n", " ")
                 json_rendered = json.loads(rendered_data)
 
-                self.assertEqual(json.dumps(json_rendered, sort_keys=True), json.dumps(json_expected, sort_keys=True))
+                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+                self.assertTrue(not diff)
 
     def test_with_extra_labels(self):
         excluded_labels = ('pod_name', )
@@ -85,7 +89,8 @@ class TestJSONFields(unittest.TestCase):
                 rendered_data = AlarmSender()._create_alarms(alerts)[0]
                 json_rendered = json.loads(rendered_data)
 
-                self.assertEqual(json.dumps(json_rendered, sort_keys=True), json.dumps(json_expected, sort_keys=True))
+                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+                self.assertTrue(not diff)
 
     def test_with_extra_annotations(self):
         excluded_annotations = ('message', )
@@ -98,7 +103,8 @@ class TestJSONFields(unittest.TestCase):
                rendered_data = AlarmSender()._create_alarms(alerts)[0]
                json_rendered = json.loads(rendered_data)
 
-               self.assertEqual(json.dumps(json_rendered, sort_keys=True), json.dumps(json_expected, sort_keys=True))
+               diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+               self.assertTrue(not diff)
 
 if __name__ == '__main__':
     unittest.main()

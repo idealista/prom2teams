@@ -2,12 +2,6 @@ from prom2teams.teams.teams_alarm_schema import TeamsAlarm, TeamsAlarmSchema
 from collections import defaultdict
 
 
-def map_alarm_to_json(alarm):
-    schema = TeamsAlarmSchema()
-    result = schema.dump(alarm)
-    return result
-
-
 def map_prom_alerts_to_teams_alarms(alerts):
     alerts = group_alerts(alerts, 'status')
     teams_alarms = []
