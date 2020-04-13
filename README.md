@@ -1,9 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.png)](https://travis-ci.org/idealista/prom2teams) 
+[![Build Status](https://travis-ci.org/idealista/prom2teams.svg?branch=master)](https://travis-ci.org/idealista/prom2teams)
 [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+[![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 [![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
-
 # prom2teams
 
 <img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
@@ -14,9 +14,13 @@
 	- [Prerequisities](#prerequisites)
 	- [Installing](#installing)
 - [Usage](#usage)
+  - [Docker Image](#docker-image)
+  - [Helm Chart](#helm-chart)
   - [Config file](#config-file)
 	- [Configuring Prometheus](#configuring-prometheus)
 	- [Templating](#templating)
+- [Documentation](#documentation)
+  - [Swagger UI](#swagger-ui)
 - [Testing](#testing)
 - [Built With](#built-with)
 - [Versioning](#versioning)
@@ -61,12 +65,29 @@ $ prom2teams
 ```
 **Note:** Grouping alerts works since v2.2.1
 
-### Prom2teams Prometheus metrics
+### Docker image
 
-Prom2teams uses Flask and, to have the service monitored, we use @rycus66's [Prometheus Flask Exporter](https://github.com/rycus86/prometheus_flask_exporter). This will enable an endpoint in `/metrics` where you could find interesting metrics to monitor such as number of responses with a certain status. To enable this endpoint, just either:
+Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/prom2teams). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
 
-- Use the `--enablemetrics` or `-m` flag when launching prom2teams.
-- Set the environment variable `PROM2TEAMS_PROMETHEUS_METRICS=true`.
+There are two things you need to bear in mind when creating a Prom2teams container:
+
+- The connector URL must be passed as the environment variable `PROM2TEAMS_CONNECTOR`
+- In case you want to group alerts, you need to pass the field as the environment variable `PROM2TEAMS_GROUP_ALERTS_BY`
+- You need to map container's Prom2teams port to one on your host.
+
+So a sample Docker run command would be:
+
+```bash
+$ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
+```
+
+#### Provide custom config file
+
+If you prefer to use your own config file, you just need to provide it as a Docker volume to the container and map it to `/opt/prom2teams/config.ini`. Sample:
+
+```bash
+$ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 8089:8089 idealista/prom2teams:VERSION
+```
 
 ### Helm chart
 
@@ -115,30 +136,6 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
 | `prom2teams.config`                             | Config (specific to Helm)                                                                                          | `/opt/prom2teams/helmconfig/config.ini`
-
-### Docker image
-
-Every new Prom2teams release, a new Docker image is built in our [Dockerhub](https://hub.docker.com/r/idealista/prom2teams). We strongly recommend you to use the images with the version tag, though it will be possible to use them without it.
-
-There are two things you need to bear in mind when creating a Prom2teams container:
-
-- The connector URL must be passed as the environment variable `PROM2TEAMS_CONNECTOR`
-- In case you want to group alerts, you need to pass the field as the environment variable `PROM2TEAMS_GROUP_ALERTS_BY`
-- You need to map container's Prom2teams port to one on your host.
-
-So a sample Docker run command would be:
-
-```bash
-$ docker run -it -d -e PROM2TEAMS_GROUP_ALERTS_BY=FIELD_YOU_WANT_TO_GROUP_BY -e PROM2TEAMS_CONNECTOR="CONNECTOR_URL" -p 8089:8089 idealista/prom2teams:VERSION
-```
-
-#### Provide custom config file
-
-If you prefer to use your own config file, you just need to provide it as a Docker volume to the container and map it to `/opt/prom2teams/config.ini`. Sample:
-
-```bash
-$ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 8089:8089 idealista/prom2teams:VERSION
-```
 
 ### Production
 
@@ -223,6 +220,13 @@ The url is formed by the host and port defined in the previous step.
 url: 0.0.0.0:8089/v2/<Connector1>
 ```
 
+### Prom2teams Prometheus metrics
+
+Prom2teams uses Flask and, to have the service monitored, we use @rycus66's [Prometheus Flask Exporter](https://github.com/rycus86/prometheus_flask_exporter). This will enable an endpoint in `/metrics` where you could find interesting metrics to monitor such as number of responses with a certain status. To enable this endpoint, just either:
+
+- Use the `--enablemetrics` or `-m` flag when launching prom2teams.
+- Set the environment variable `PROM2TEAMS_PROMETHEUS_METRICS=true`.
+
 ### Templating
 
 prom2teams provides a [default template](prom2teams/resources/templates/teams.j2) built with [Jinja2](http://jinja.pocoo.org/docs/2.10/) to render messages in Microsoft Teams. This template could be overrided using the 'templatepath' argument ('--templatepath <Jinja2 template file path>') during the application start.
@@ -235,7 +239,8 @@ All non-mandatory labels not in excluded list are injected in `extra_labels` key
 Alertmanager fingerprints are available in the `fingerprint` key.  Fingerprints
 are supported by Alertmanager 0.19.0 or greater.
 
-#### Swagger UI
+## Documentation
+### Swagger UI
 
 Accessing to `<Host>:<Port>` (e.g. `localhost:8089`) in a web browser shows the API v1 documentation.
 
