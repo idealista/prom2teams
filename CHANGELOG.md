@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## Changed
 - *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
 
 ## Fixed
