@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 - *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
 
+## Fixed
+- *[#177](https://github.com/idealista/prom2teams/issues/177) Fixing unit tests when using Python <= 3.6* @dortegau
+
 ## [2.5.4](https://github.com/idealista/prom2teams/tree/2.5.4)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.3...2.5.4)
 ## Fixed
