@@ -7,3 +7,4 @@ pyyaml==5.1
 uwsgi==2.0.16
 prometheus_flask_exporter==0.9.0
 werkzeug==0.16.1
+DeepDiff==4.3.0
