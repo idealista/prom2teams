@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
 ## [2.5.5](https://github.com/idealista/prom2teams/tree/2.5.5)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.4...2.5.5)
 ## Changed
 - *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
 
