@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.4...2.5.5)
 ## Changed
 - *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
+
 ## Fixed
 - *[#158](https://github.com/idealista/prom2teams/issues/158) Fixing Travis Badge (pointing to master branch) and reordering TOC* @dortegau
 - *[#177](https://github.com/idealista/prom2teams/issues/177) Fixing unit tests when using Python <= 3.6* @dortegau
