@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import os
 
-with open('/opt/prom2teams/config.ini', 'r') as file:
+config = (os.environ['APP_CONFIG'])
+
+with open(config, 'r') as file:
   filedata = file.read()
 
 filedata = filedata.replace("prom2teamsport", os.environ.get("PROM2TEAMS_PORT"))
