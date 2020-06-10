@@ -2,6 +2,12 @@
 {{- if not (has .Values.prom2teams.loglevel $valid) -}}
 {{- fail "Invalid log level"}}
 {{- end -}}
+{{- if and .Values.prom2teams.connector (hasKey .Values.prom2teams.connectors "Connector") -}}
+{{- fail "Invalid configuration: prom2teams.connectors can't have a connector named Connector when prom2teams.connector is set"}}
+{{- end -}}
+{{- if and (not .Values.prom2teams.connector) (not .Values.prom2teams.connectors) -}}
+{{- fail "Invalid configuration: At least one connector must be provided"}}
+{{- end -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
