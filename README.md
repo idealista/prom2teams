@@ -10,23 +10,30 @@
 
 **prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
-- [Getting Started](#getting-started)
-	- [Prerequisities](#prerequisites)
-	- [Installing](#installing)
-- [Usage](#usage)
-  - [Docker Image](#docker-image)
-  - [Helm Chart](#helm-chart)
-  - [Config file](#config-file)
-	- [Configuring Prometheus](#configuring-prometheus)
-	- [Templating](#templating)
-- [Documentation](#documentation)
-  - [Swagger UI](#swagger-ui)
-- [Testing](#testing)
-- [Built With](#built-with)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
-- [Contributing](#contributing)
+- [prom2teams](#prom2teams)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [Usage](#usage)
+    - [Docker image](#docker-image)
+      - [Provide custom config file](#provide-custom-config-file)
+    - [Helm chart](#helm-chart)
+      - [Installing the Chart with Helm 3](#installing-the-chart-with-helm-3)
+      - [Uninstalling the Chart](#uninstalling-the-chart)
+      - [Configuration](#configuration)
+    - [Production](#production)
+    - [Config file](#config-file)
+    - [Configuring Prometheus](#configuring-prometheus)
+    - [Prom2teams Prometheus metrics](#prom2teams-prometheus-metrics)
+    - [Templating](#templating)
+  - [Documentation](#documentation)
+    - [Swagger UI](#swagger-ui)
+  - [Testing](#testing)
+  - [Built With](#built-with)
+  - [Versioning](#versioning)
+  - [Authors](#authors)
+  - [License](#license)
+  - [Contributing](#contributing)
 
 ## Getting Started
 
@@ -91,12 +98,13 @@ $ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 80
 
 ### Helm chart
 
-#### Installing the Chart
+#### Installing the Chart with Helm 3
 
-To install the chart with the release name `my-release` run:
+To install the chart with the release name `prom2teams` run:
 
 ```bash
-$ helm install --name my-release /location/of/prom2teams_ROOT/helm
+export connector=<my-connector-url>
+helm install prom2teams -n sre-monitoring helm/ --set prom2teams.connector=${connector}
 ```
 
 After a few seconds, Prom2Teams should be running.
@@ -105,10 +113,10 @@ After a few seconds, Prom2Teams should be running.
 
 #### Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `prom2teams` deployment:
 
 ```bash
-$ helm delete my-release
+$ helm delete prom2teams
 ```
 > **Tip**: Use helm delete --purge my-release to completely remove the release from Helm internal storage
 
