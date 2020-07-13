@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.5.6](https://github.com/idealista/prom2teams/tree/2.5.6)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.5...2.5.6)
+## Fixed
 - *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
 
 ## [2.5.5](https://github.com/idealista/prom2teams/tree/2.5.5)
