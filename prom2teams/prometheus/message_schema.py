@@ -5,7 +5,8 @@ log = logging.getLogger('prom2teams')
 
 
 class MessageSchema(Schema):
-
+    class Meta:
+        unknown = EXCLUDE
     def __init__(self, exclude_fields=tuple(), exclude_annotations=tuple()):
         super().__init__()
         self.exclude_fields = exclude_fields
@@ -68,7 +69,8 @@ class AlertSchema(Schema):
     endsAt = fields.DateTime()
     generatorURL = fields.Str()
     fingerprint = fields.Str()
-
+    class Meta:
+        unknown = EXCLUDE
 
 class LabelSchema(Schema):
     alertname = fields.Str(default='unknown', missing='unknown')

@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+- *[#189] https://github.com/idealista/prom2teams/issues/189 Fixed handling alerts with truncated fields* @dgalcantara
 
+## [2.5.6](https://github.com/idealista/prom2teams/tree/2.5.6)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.5...2.5.6)
+## Fixed
 - *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
 
 ## [2.5.5](https://github.com/idealista/prom2teams/tree/2.5.5)
