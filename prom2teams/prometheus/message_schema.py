@@ -7,7 +7,7 @@ log = logging.getLogger('prom2teams')
 class MessageSchema(Schema):
     class Meta:
         unknown = EXCLUDE
-    def __init__(self, exclude_fields=tuple(), exclude_annotations=tuple()):
+    def __init__(self, exclude_fields=tuple(), exclude_annotations=tuple(), unknown=EXCLUDE):
         super().__init__()
         self.exclude_fields = exclude_fields
         self.exclude_annotations = exclude_annotations
