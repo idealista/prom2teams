@@ -4,7 +4,7 @@ from flask_restplus import Resource
 from prom2teams.app.sender import AlarmSender
 from prom2teams.prometheus.message_schema import MessageSchema
 from .model import *
-
+from marshmallow import EXCLUDE
 ns = api_v2.namespace(name='', description='Version 2 connections')
 
 
@@ -15,7 +15,7 @@ class AlertReceiver(Resource):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'], exclude_annotations=app.config['ANNOTATIONS_EXCLUDED'])
+        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'], exclude_annotations=app.config['ANNOTATIONS_EXCLUDED'], unknown=EXCLUDE)
         if app.config['TEMPLATE_PATH']:
             self.sender = AlarmSender(app.config['TEMPLATE_PATH'], app.config['GROUP_ALERTS_BY'])
         else:
