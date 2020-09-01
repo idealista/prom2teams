@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.5.8](https://github.com/idealista/prom2teams/tree/2.5.8)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.7...2.5.8)
+### Fixed
+* [#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working
 
 ## [2.5.7](https://github.com/idealista/prom2teams/tree/2.5.7)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.6...2.5.7)
