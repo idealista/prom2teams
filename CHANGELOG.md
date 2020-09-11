@@ -4,16 +4,21 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [2.6.0](https://github.com/idealista/prom2teams/tree/2.6.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.8...2.6.0)
+### Fixed
+* *[#210](https://github.com/idealista/prom2teams/issues/210) Fix bug introduced in 2.5.6 version and add support for alertmanager 0.21.0* @pablogcaldito
+
 ## [2.5.8](https://github.com/idealista/prom2teams/tree/2.5.8)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.7...2.5.8)
 ### Fixed
-* [#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working
+* *[#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working* @vicsufer
 
 ## [2.5.7](https://github.com/idealista/prom2teams/tree/2.5.7)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.6...2.5.7)
 ## Fixed
-- *[#202] https://github.com/idealista/prom2teams/issues/202 Fix error publishing 2.5.7 release* @pablogcaldito
-- *[#189] https://github.com/idealista/prom2teams/issues/189 Fixed handling alerts with truncated fields* @dgalcantara
+- *[#202](https://github.com/idealista/prom2teams/issues/202) Fix error publishing 2.5.7 release* @pablogcaldito
+- *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
 
 ## [2.5.6](https://github.com/idealista/prom2teams/tree/2.5.6)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.5...2.5.6)
