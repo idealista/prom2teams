@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+
+## [2.6.0](https://github.com/idealista/prom2teams/tree/2.6.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.8...2.6.0)
 ### Fixed
 * *[#210](https://github.com/idealista/prom2teams/issues/210) Fix bug introduced in 2.5.6 version and add support for alertmanager 0.21.0* @pablogcaldito
 
