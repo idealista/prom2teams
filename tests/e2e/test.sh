@@ -89,6 +89,10 @@
 echo "Creating containers..."
 docker-compose up --build -d > /dev/null 2>&1
 
+echo "Creating expectations and responses..."
+
+
+
 echo "Running tests..."
 sleep 10
 # Alertmanager 0.21.0 request
@@ -113,7 +117,7 @@ else
 fi
 
 echo "Destroying containers..."
-docker-compose down > /dev/null 2>&1
+#docker-compose down > /dev/null 2>&1
 
 if [ "$passing" -eq 1 ]
 then
