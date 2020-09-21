@@ -90,11 +90,20 @@ echo "Creating containers..."
 docker-compose up --build -d > /dev/null 2>&1
 
 echo "Creating expectations and responses..."
-
+sleep 10
+curl -v -X PUT "http://localhost:1080/mockserver/expectation" -d '{
+  "httpRequest" : {
+    "method" : "POST",
+    "path" : "/api/test"
+  },
+  "httpResponse" : {
+    "statusCode": 200,
+    "body" : "1"
+  }
+}'
 
 
 echo "Running tests..."
-sleep 10
 # Alertmanager 0.21.0 request
 test1=$(curl -s -X POST "http://localhost:8089/v2/connector" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"receiver\": \"test\", \"status\": \"firing\", \"alerts\": [ { \"status\": \"firing\", \"labels\": { \"alertname\": \"NodeExporter\", \"env\": \"production\", \"instance\": \"node1.summit\", \"job\": \"node_exporter\", \"notify_room\": \"test\", \"severity\": \"critical\", \"type\": \"nodeexporter\" }, \"annotations\": { \"description\": \"Node exporter down on node1.summit\", \"summary\": \"Node exporter down on node1.summit\" }, \"startsAt\": \"2020-09-16T07:38:01.586706006Z\", \"endsAt\": \"0001-01-01T00:00:00Z\", \"generatorURL\": \"\", \"fingerprint\": \"e4ad109767ee663e\" } ], \"groupLabels\": { \"alertname\": \"NodeExporter\" }, \"commonLabels\": { \"alertname\": \"NodeExporter\", \"job\": \"node_exporter\", \"severity\": \"critical\", \"type\": \"nodeexporter\" }, \"commonAnnotations\": {}, \"externalURL\": \"http://localhost:9093\", \"version\": \"4\", \"groupKey\": \"{}/{notify_room=~\\\"^(?:.*test.*)$\\\"}:{alertname=\\\"NodeExporter\\\"}\", \"truncatedAlerts\": 0}")
 # Alertmanager 0.20.0 request
@@ -117,7 +126,7 @@ else
 fi
 
 echo "Destroying containers..."
-#docker-compose down > /dev/null 2>&1
+docker-compose down > /dev/null 2>&1
 
 if [ "$passing" -eq 1 ]
 then

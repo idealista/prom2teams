@@ -7,11 +7,7 @@ services:
     ports:
       - "8089:8089"
     environment:
-  # scenario 1: our real teams webhook
-      - PROM2TEAMS_CONNECTOR=https://outlook.office.com/webhook/e1df7554-8a24-42cf-ae16-700ecdb3a8a8@d78b7929-c2a3-4897-ae9a-7d8f8dc1a1cf/IncomingWebhook/028930bb95814ce68cdf7fb6cf51efe9/f8b7423b-7335-4e8a-a5c9-86ca5571e892
-
-  # sceneario 2: flask api simulating webhook
-#      - PROM2TEAMS_CONNECTOR=http://mockserver:1080/api/test
+      - PROM2TEAMS_CONNECTOR=http://mockserver:1080/api/test
   mockserver:
     image: mockserver/mockserver:mockserver-5.11.1
     ports:
