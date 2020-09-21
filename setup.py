@@ -45,6 +45,8 @@ setup(name='prom2teams',
         'Intended Audience :: System Administrators',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6'
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8'
       ],
       zip_safe=False)
