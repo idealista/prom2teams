@@ -254,6 +254,8 @@ To run the test suite you should type the following:
 ```bash
 // After cloning prom2teams :)
 $ python3 -m unittest discover tests
+$ cd tests/e2e
+$ ./test.sh
 ```
 
 ## Built With
