@@ -32,7 +32,7 @@
 
 ### Prerequisites
 
-The application has been tested with _Prometheus 2.2.1_, _Python 3.5.0_ and _pip 9.0.1_.
+The application has been tested with _Prometheus 2.2.1_, _Python 3.7.0_ and _pip 9.0.1_.
 
 Newer versions of _Prometheus/Python/pip_ should work but could also present issues.
 
@@ -177,7 +177,7 @@ env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 
 Consider not provide `chdir` property neither `module` property.
 
-Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.5/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
+Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.7/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
 
 Another approach is to provide yourself the `module` file [module example](bin/wsgi.py) and the `bin` uwsgi call [uwsgi example](bin/prom2teams_uwsgi)
 
@@ -265,6 +265,8 @@ To run the test suite you should type the following:
 ```bash
 // After cloning prom2teams :)
 $ python3 -m unittest discover tests
+$ cd tests/e2e
+$ ./test.sh
 ```
 
 ## Built With
