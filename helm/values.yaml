@@ -4,7 +4,7 @@
 
 image:
   repository: idealista/prom2teams
-  tag: 2.5.2
+  tag:
   pullPolicy: IfNotPresent
 
 resources:
@@ -22,7 +22,8 @@ service:
 prom2teams:
   host: 0.0.0.0
   port: 8089
-  connector: 
+  connector:
+  connectors: {}
   group_alerts_by:
   loglevel: INFO
   templatepath: /opt/prom2teams/helmconfig/teams.j2
