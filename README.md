@@ -247,6 +247,9 @@ If such a field is not included a default value of 'unknown' is assigned.
 
 All non-mandatory labels not in excluded list are injected in `extra_labels` key. All non-mandatory annotations not in excluded list are injected in `extra_annotations` key.
 
+Alertmanager fingerprints are available in the `fingerprint` key.  Fingerprints
+are supported by Alertmanager 0.19.0 or greater.
+
 ## Documentation
 ### Swagger UI
 
