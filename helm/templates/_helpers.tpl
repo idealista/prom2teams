@@ -38,6 +38,7 @@ Common labels
 app.kubernetes.io/name: {{ include "prom2teams.name" . }}
 helm.sh/chart: {{ include "prom2teams.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+release: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}

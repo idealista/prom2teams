@@ -107,10 +107,20 @@ After a few seconds, Prom2Teams should be running.
 
 To uninstall/delete the `my-release` deployment:
 
+##### Helm 2
+
 ```bash
 $ helm delete my-release
 ```
 > **Tip**: Use helm delete --purge my-release to completely remove the release from Helm internal storage
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+##### Helm 3
+
+```bash
+$ helm uninstall my-release
+```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
@@ -121,7 +131,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | Parameter                                       | Description                                                                                                        | Default
 | ---                                             | ---                                                                                                                | ---
 | `image.repository`                              | The image repository to pull from                                                                                  | `idealista/prom2teams`
-| `image.tag`                                     | The image tag to pull                                                                                              | `2.4.0`
+| `image.tag`                                     | The image tag to pull                                                                                              | `<empty>`
 | `image.pullPolicy`                              | The image pull policy                                                                                              | `IfNotPresent`
 | `resources.requests.cpu`                        | CPU requested for being run in a node                                                                              | `100m`
 | `resources.requests.memory`                     | Memory requested for being run in a node                                                                           | `128Mi`
@@ -132,6 +142,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.host`                               | IP to bind to                                                                                                      | `0.0.0.0`
 | `prom2teams.port`                               | Port to bind to                                                                                                    | `8089`
 | `prom2teams.connector`                          | Connector URL                                                                                                      | `<empty>`
+| `prom2teams.connectors`                         | A map where the keys are the connector names and the values are the connector webhook urls                         | `{}`
 | `prom2teams.group_alerts_by`                    | Group_alerts_by field                                                                                              | `<empty>`
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
@@ -235,6 +246,9 @@ Some fields are considered mandatory when received from Alert Manager.
 If such a field is not included a default value of 'unknown' is assigned.
 
 All non-mandatory labels not in excluded list are injected in `extra_labels` key. All non-mandatory annotations not in excluded list are injected in `extra_annotations` key.
+
+Alertmanager fingerprints are available in the `fingerprint` key.  Fingerprints
+are supported by Alertmanager 0.19.0 or greater.
 
 ## Documentation
 ### Swagger UI
