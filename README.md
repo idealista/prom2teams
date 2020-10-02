@@ -32,7 +32,7 @@
 
 ### Prerequisites
 
-The application has been tested with _Prometheus 2.2.1_, _Python 3.5.0_ and _pip 9.0.1_.
+The application has been tested with _Prometheus 2.2.1_, _Python 3.7.0_ and _pip 9.0.1_.
 
 Newer versions of _Prometheus/Python/pip_ should work but could also present issues.
 
@@ -107,10 +107,20 @@ After a few seconds, Prom2Teams should be running.
 
 To uninstall/delete the `my-release` deployment:
 
+##### Helm 2
+
 ```bash
 $ helm delete my-release
 ```
 > **Tip**: Use helm delete --purge my-release to completely remove the release from Helm internal storage
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+##### Helm 3
+
+```bash
+$ helm uninstall my-release
+```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
@@ -121,7 +131,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | Parameter                                       | Description                                                                                                        | Default
 | ---                                             | ---                                                                                                                | ---
 | `image.repository`                              | The image repository to pull from                                                                                  | `idealista/prom2teams`
-| `image.tag`                                     | The image tag to pull                                                                                              | `2.4.0`
+| `image.tag`                                     | The image tag to pull                                                                                              | `<empty>`
 | `image.pullPolicy`                              | The image pull policy                                                                                              | `IfNotPresent`
 | `resources.requests.cpu`                        | CPU requested for being run in a node                                                                              | `100m`
 | `resources.requests.memory`                     | Memory requested for being run in a node                                                                           | `128Mi`
@@ -132,6 +142,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.host`                               | IP to bind to                                                                                                      | `0.0.0.0`
 | `prom2teams.port`                               | Port to bind to                                                                                                    | `8089`
 | `prom2teams.connector`                          | Connector URL                                                                                                      | `<empty>`
+| `prom2teams.connectors`                         | A map where the keys are the connector names and the values are the connector webhook urls                         | `{}`
 | `prom2teams.group_alerts_by`                    | Group_alerts_by field                                                                                              | `<empty>`
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
@@ -166,7 +177,7 @@ env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 
 Consider not provide `chdir` property neither `module` property.
 
-Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.5/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
+Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.7/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
 
 Another approach is to provide yourself the `module` file [module example](bin/wsgi.py) and the `bin` uwsgi call [uwsgi example](bin/prom2teams_uwsgi)
 
@@ -254,6 +265,8 @@ To run the test suite you should type the following:
 ```bash
 // After cloning prom2teams :)
 $ python3 -m unittest discover tests
+$ cd tests/e2e
+$ ./test.sh
 ```
 
 ## Built With
