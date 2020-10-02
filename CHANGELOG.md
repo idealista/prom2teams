@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+
 ## Added
 - *[#170](https://github.com/idealista/prom2teams/issues/170) Allow specifying multiple connectors* @krmichel
 
@@ -21,9 +22,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Fixed
 * *[#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working* @vicsufer
 
+
 ## [2.5.7](https://github.com/idealista/prom2teams/tree/2.5.7)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.6...2.5.7)
 ## Fixed
+- *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
+- *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
 - *[#202](https://github.com/idealista/prom2teams/issues/202) Fix error publishing 2.5.7 release* @pablogcaldito
 - *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
 
