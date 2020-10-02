@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## Added
+- *[#172](https://github.com/idealista/prom2teams/pull/172) Add fingerprint field to template data*
 
 ## Added
 - *[#170](https://github.com/idealista/prom2teams/issues/170) Allow specifying multiple connectors* @krmichel
