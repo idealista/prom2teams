@@ -4,7 +4,7 @@ from flask_restplus import Resource
 from prom2teams.app.sender import AlarmSender
 from prom2teams.prometheus.message_schema import MessageSchema
 from .model import *
-
+from marshmallow import EXCLUDE
 ns = api_v2.namespace(name='', description='Version 2 connections')
 
 
