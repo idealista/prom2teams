@@ -38,6 +38,14 @@ spec:
           env:
           - name: APP_CONFIG_FILE
             value: {{ .Values.prom2teams.config }}
+          - name: PROM2TEAMS_PORT
+            value: {{ .Values.prom2teams.port }}
+          - name: PROM2TEAMS_HOST
+            value: {{ .Values.prom2teams.ip }}
+          - name: PROM2TEAMS_CONNECTOR
+            value: {{ .Values.prom2teams.connector }}
+          - name: PROM2TEAMS_GROUP_ALERTS_BY
+            value: {{ .Values.prom2teams.group_alerts_by }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
