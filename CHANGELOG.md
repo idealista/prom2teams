@@ -3,10 +3,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
-## Added
-- *[#172](https://github.com/idealista/prom2teams/pull/172) Add fingerprint field to template data*
 
-## Added
+
+## [3.0.0](https://github.com/idealista/prom2teams/tree/3.0.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.7.0...3.0.0)
+### Breaking changes
+Now connector field is mandatory in helm chart is mantatory.
+
+### Added
+- *[#172](https://github.com/idealista/prom2teams/pull/172) Add fingerprint field to template data* @mdelagrange
 - *[#170](https://github.com/idealista/prom2teams/issues/170) Allow specifying multiple connectors* @krmichel
 
 ## [2.7.0](https://github.com/idealista/prom2teams/tree/2.7.0)
