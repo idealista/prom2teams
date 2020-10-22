@@ -15,14 +15,15 @@ class AlertReceiver(Resource):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'], exclude_annotations=app.config['ANNOTATIONS_EXCLUDED'])
-        if app.config['TEMPLATE_PATH']:
-            self.sender = AlarmSender(app.config['TEMPLATE_PATH'], app.config['GROUP_ALERTS_BY'])
-        else:
-            self.sender = AlarmSender(group_alerts_by=app.config['GROUP_ALERTS_BY'])
+        self.schema = MessageSchema(exclude_fields=app.config['LABELS_EXCLUDED'],
+                                    exclude_annotations=app.config['ANNOTATIONS_EXCLUDED'])
+        self.sender = AlarmSender(template_path=app.config.get('TEMPLATE_PATH'),
+                                  group_alerts_by=app.config['GROUP_ALERTS_BY'],
+                                  teams_client_config=app.config.get('TEAMS_CLIENT_CONFIG'))
 
     @api_v2.expect(message)
     def post(self, connector):
         alerts = self.schema.load(request.get_json())
-        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS'][connector])
+        self.sender.send_alarms(
+            alerts, app.config['MICROSOFT_TEAMS'][connector])
         return 'OK', 201

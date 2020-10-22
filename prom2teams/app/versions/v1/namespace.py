@@ -17,17 +17,16 @@ class AlertReceiver(Resource):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.schema = MessageSchema()
-        if 'TEMPLATE_PATH' in app.config:
-            self.sender = AlarmSender(app.config['TEMPLATE_PATH'])
-        else:
-            self.sender = AlarmSender()
+        self.sender = AlarmSender(template_path=app.config.get('TEMPLATE_PATH'),
+                                  teams_client_config=app.config.get('TEAMS_CLIENT_CONFIG'))
 
     @api_v1.expect(message)
     def post(self):
         _show_deprecated_warning("Call to deprecated function. It will be removed in future versions. "
                                  "Please view the README file.")
         alerts = self.schema.load(request.get_json())
-        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS']['Connector'])
+        self.sender.send_alarms(
+            alerts, app.config['MICROSOFT_TEAMS']['Connector'])
         return 'OK', 201
 
 

@@ -31,6 +31,12 @@ def _config_command_line():
 def _update_application_configuration(application, configuration):
     if 'Microsoft Teams' in configuration:
         application.config['MICROSOFT_TEAMS'] = configuration['Microsoft Teams']
+    if 'Microsoft Teams Client' in configuration:
+        application.config['TEAMS_CLIENT_CONFIG'] = {
+            'RETRY_ENABLE': configuration.getboolean('Microsoft Teams Client', 'RetryEnable'),
+            'RETRY_WAIT_TIME': configuration.getint('Microsoft Teams Client', 'RetryWaitTime'),
+            'MAX_PAYLOAD': configuration.getint('Microsoft Teams Client', 'MaxPayload')
+        }
     if 'Template' in configuration and 'Path' in configuration['Template']:
         application.config['TEMPLATE_PATH'] = configuration['Template']['Path']
     if 'Log' in configuration and 'Level' in configuration['Log']:
