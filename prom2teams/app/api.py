@@ -48,9 +48,7 @@ def init_app(application):
     register_api(application, api_v1, ns_v1, blueprint_v1)
     register_api(application, api_v2, ns_v2, blueprint_v2)
     application.register_error_handler(500, error_handler)
+    application.config['FINISH_INIT'] = True
 
 init_app(app)
-import time
-time.sleep(10)
-app.config['FINISH_INIT'] = True
 log.info('{} started on {}:{}'.format(app.config['APP_NAME'], app.config['HOST'], app.config['PORT']))
