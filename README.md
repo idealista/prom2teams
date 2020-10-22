@@ -32,7 +32,7 @@
 
 ### Prerequisites
 
-The application has been tested with _Prometheus 2.2.1_, _Python 3.7.0_ and _pip 9.0.1_.
+The application has been tested with _Prometheus 2.2.1_, _Python 3.8.0_ and _pip 9.0.1_.
 
 Newer versions of _Prometheus/Python/pip_ should work but could also present issues.
 
@@ -188,7 +188,7 @@ Another approach is to provide yourself the `module` file [module example](bin/w
 
 The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
 
-```
+```ini
 [Microsoft Teams]
 # At least one connector is required here
 Connector: <webhook url>
@@ -214,6 +214,11 @@ Excluded: <Coma separated list of labels to ignore>
 
 [Annotations]
 Excluded: <Comma separated list of annotations to ignore>
+
+[Teams Client]
+RetryEnable: <Enables teams client retry policy> # defaults to false
+RetryWaitTime: <Wait time between retries> # default: 60 secs
+MaxPayload: <Teams client payload limit in bytes> # default: 24KB
 ```
 
 **Note:** Grouping alerts works since v2.2.0
@@ -273,7 +278,7 @@ $ ./test.sh
 ```
 
 ## Built With
-![Python 3.6.2](https://img.shields.io/badge/Python-3.6.2-green.svg)
+![Python 3.8.0](https://img.shields.io/badge/Python-3.8.0-green.svg)
 ![pip 9.0.1](https://img.shields.io/badge/pip-9.0.1-green.svg)
 
 ## Versioning
