@@ -34,7 +34,7 @@ class TeamsClient:
         def simple_post(teams_webhook_url, message):
             self._do_post(teams_webhook_url, message)
 
-        logger.debug(f'The message that will be sent is: {message}')
+        logger.debug('The message that will be sent is: ' + message)
         if self.retry:
             post_with_retry(teams_webhook_url, message)
         else:

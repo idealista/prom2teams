@@ -39,12 +39,14 @@ def _map_group(alert_group, compose, payload_limit):
     combined_alerts = []
     teams_alarms = []
     for alert in alert_group:
-        combined_alerts.append(alert)
-        json_alarm = schema.dump(_combine_alerts_to_alarm(combined_alerts))
+        json_alarm = schema.dump(_combine_alerts_to_alarm([*combined_alerts, alert]))
         if len(compose(json_alarm).encode('utf-8')) > payload_limit:
-            teams_alarms.append(json_alarm)
+            teams_alarms.append(schema.dump(_combine_alerts_to_alarm([alert])))
+            teams_alarms.append(schema.dump(_combine_alerts_to_alarm(combined_alerts)))
             combined_alerts.clear()
             json_alarm = None
+        else:
+            combined_alerts.append(alert)
 
     if json_alarm:
         teams_alarms.append(json_alarm)
