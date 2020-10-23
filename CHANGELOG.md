@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ### Added
-- *Add /alive and /ready endpoints* @vicsufer
+- *[#225] Add /alive and /ready endpoints* @vicsufer
 - *[#222](https://github.com/idealista/prom2teams/pull/222) Add restrictive security context since the workload doesn't need more permissions to work.* @azman0101
 
 
