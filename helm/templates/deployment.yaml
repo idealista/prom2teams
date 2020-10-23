@@ -37,13 +37,13 @@ spec:
               mountPath: /opt/prom2teams/helmconfig/
           env:
           - name: APP_CONFIG_FILE
-            value: {{ .Values.prom2teams.config }}
+            value: {{ .Values.prom2teams.config | quote }}
           - name: PROM2TEAMS_PORT
-            value: {{ .Values.prom2teams.port | quote}}
+            value: {{ .Values.prom2teams.port | quote }}
           - name: PROM2TEAMS_HOST
-            value: {{ .Values.prom2teams.ip | quote}}
+            value: {{ .Values.prom2teams.ip | quote }}
           - name: PROM2TEAMS_CONNECTOR
-            value: {{ .Values.prom2teams.connector }}
+            value: {{ .Values.prom2teams.connector | quote }}
           - name: PROM2TEAMS_GROUP_ALERTS_BY
             value: {{ .Values.prom2teams.group_alerts_by | quote}}
           resources:
@@ -60,6 +60,17 @@ spec:
               port: "{{ .values.prom2teams.port }}"
             initialDelaySeconds: 20
             periodSeconds: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.securityContext.enabled }}
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -72,3 +83,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+    {{- if .Values.securityContext.enabled }}
+      securityContext:
+        runAsNonRoot: {{ if eq (int .Values.securityContext.runAsUser) 0 }}false{{ else }}true{{ end }}
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+    {{- end }}
+
