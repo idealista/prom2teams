@@ -24,6 +24,5 @@ class AlertReceiver(Resource):
     @api_v2.expect(message)
     def post(self, connector):
         alerts = self.schema.load(request.get_json())
-        self.sender.send_alarms(
-            alerts, app.config['MICROSOFT_TEAMS'][connector])
+        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS'][connector])
         return 'OK', 201

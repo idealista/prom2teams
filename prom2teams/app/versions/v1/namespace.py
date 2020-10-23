@@ -25,8 +25,7 @@ class AlertReceiver(Resource):
         _show_deprecated_warning("Call to deprecated function. It will be removed in future versions. "
                                  "Please view the README file.")
         alerts = self.schema.load(request.get_json())
-        self.sender.send_alarms(
-            alerts, app.config['MICROSOFT_TEAMS']['Connector'])
+        self.sender.send_alarms(alerts, app.config['MICROSOFT_TEAMS']['Connector'])
         return 'OK', 201
 
 

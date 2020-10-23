@@ -1,0 +1,14 @@
+requests==2.20.1
+flask-restplus==0.12.1
+marshmallow==3.0.0rc6
+jinja2==2.10.1
+Flask==1.0.2
+pyyaml==5.1
+uwsgi==2.0.16
+prometheus_flask_exporter==0.9.0
+werkzeug==0.16.1
+DeepDiff==4.3.0
+zipp==1.2.0
+MarkupSafe==1.1.1
+pyrsistent==0.16.0
+tenacity==6.2.0
