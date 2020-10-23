@@ -49,15 +49,17 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           readinessProbe:
-            tcpSocket:
+            httpGet:
+              path: /ready
               port: 8089
             initialDelaySeconds: 20
             periodSeconds: 10
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /alive
               port: 8089
             initialDelaySeconds: 20
-            periodSeconds: 20
+            periodSeconds: 10
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
