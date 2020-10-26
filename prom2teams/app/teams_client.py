@@ -5,7 +5,7 @@ from tenacity import retry, wait_fixed, after_log
 
 from .exceptions import MicrosoftTeamsRequestException
 
-logger = logging.getLogger('prom2teams')
+log = logging.getLogger('prom2teams')
 
 
 class TeamsClient:
@@ -27,14 +27,14 @@ class TeamsClient:
         self.wait_time = config['RETRY_WAIT_TIME']
 
     def post(self, teams_webhook_url, message):
-        @retry(wait=wait_fixed(self.wait_time), after=after_log(logger, logging.WARN))
+        @retry(wait=wait_fixed(self.wait_time), after=after_log(log, logging.WARN))
         def post_with_retry(teams_webhook_url, message):
             self._do_post(teams_webhook_url, message)
 
         def simple_post(teams_webhook_url, message):
             self._do_post(teams_webhook_url, message)
 
-        logger.debug('The message that will be sent is: ' + message)
+        log.debug('The message that will be sent is: ' + message)
         if self.retry:
             post_with_retry(teams_webhook_url, message)
         else:
