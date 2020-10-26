@@ -10,6 +10,9 @@
 
 **prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
+It presents grouping of alerts, labels/annotations exclusion and a Teams' alarm retry policy among its key features.
+
+
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisites)
 	- [Installing](#installing)
