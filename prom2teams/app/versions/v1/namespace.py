@@ -17,10 +17,8 @@ class AlertReceiver(Resource):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.schema = MessageSchema()
-        if 'TEMPLATE_PATH' in app.config:
-            self.sender = AlarmSender(app.config['TEMPLATE_PATH'])
-        else:
-            self.sender = AlarmSender()
+        self.sender = AlarmSender(template_path=app.config.get('TEMPLATE_PATH'),
+                                  teams_client_config=app.config.get('TEAMS_CLIENT_CONFIG'))
 
     @api_v1.expect(message)
     def post(self):

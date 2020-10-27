@@ -113,5 +113,18 @@ class TestJSONFields(unittest.TestCase):
                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
                self.assertTrue(not diff)
 
+    def test_with_too_long_payload(self):
+        with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'all_ok_multiple.json')) as json_data:
+            with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'teams_alarm_all_ok_splited.json')) as expected_data:
+                json_received = json.load(json_data)
+                json_expected = json.load(expected_data)
+
+                alerts = MessageSchema().load(json_received)
+                rendered_data = '[' + ','.join([a.replace("\n\n\n", " ") for a in AlarmSender(group_alerts_by='name', teams_client_config={'MAX_PAYLOAD': 800})._create_alarms(alerts)]) + ']'
+                json_rendered = json.loads(rendered_data)
+
+                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+                self.assertTrue(not diff)
+
 if __name__ == '__main__':
     unittest.main()
