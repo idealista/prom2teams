@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+### Added
+- *[#225] Add /alive and /ready endpoints* @vicsufer
 
 ## [3.1.0](https://github.com/idealista/prom2teams/tree/3.1.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.0.0...3.1.0)
@@ -11,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 - *[#222](https://github.com/idealista/prom2teams/pull/222) Add restrictive security context since the workload doesn't need more permissions to work.* @azman0101
 - *[#226](https://github.com/idealista/prom2teams/pull/226) Retrying policy* @blalop
+
 
 
 ## [3.0.0](https://github.com/idealista/prom2teams/tree/3.0.0)
@@ -23,7 +26,7 @@ Now connector field is mandatory in helm chart is mantatory.
 - *[#170](https://github.com/idealista/prom2teams/issues/170) Allow specifying multiple connectors* @krmichel
 
 ## [2.7.0](https://github.com/idealista/prom2teams/tree/2.7.0)
-[Full Changelog](https://github.com/idealista/prom2teams/compare/2.6.0...2.7.0)
+[Full Changelog](https://github.com- *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau/idealista/prom2teams/compare/2.6.0...2.7.0)
 ### Added
 * *[#213](https://github.com/idealista/prom2teams/issues/213) Add end to end tests* @pablogcaldito
 
@@ -38,9 +41,7 @@ Now connector field is mandatory in helm chart is mantatory.
 * *[#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working* @vicsufer
 
 
-## [2.5.7](https://github.com/idealista/prom2teams/tree/2.5.7)
-[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.6...2.5.7)
-## Fixed
+## [2.5.7](https://github.com/id- *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
 - *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
 - *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
 - *[#202](https://github.com/idealista/prom2teams/issues/202) Fix error publishing 2.5.7 release* @pablogcaldito
