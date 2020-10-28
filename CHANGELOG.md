@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [3.1.0](https://github.com/idealista/prom2teams/tree/3.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.0.0...3.1.0)
+### Fixed
+- *[#219](https://github.com/idealista/prom2teams/pull/219) Add timeouts to webhook request to prevent hanging tcp connections in case of network errors* @DanSipola
+### Added
+- *[#222](https://github.com/idealista/prom2teams/pull/222) Add restrictive security context since the workload doesn't need more permissions to work.* @azman0101
+- *[#226](https://github.com/idealista/prom2teams/pull/226) Retrying policy* @blalop
+
 
 ## [3.0.0](https://github.com/idealista/prom2teams/tree/3.0.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.7.0...3.0.0)

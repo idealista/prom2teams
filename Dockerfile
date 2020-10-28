@@ -1,4 +1,4 @@
-FROM python:3.7-alpine AS builder
+FROM python:3.8-alpine AS builder
 WORKDIR /prom2teams
 COPY LICENSE \
         MANIFEST.in \
@@ -11,7 +11,7 @@ COPY bin/ bin
 RUN apk add gcc libc-dev yaml-dev linux-headers --no-cache \
         && python setup.py bdist_wheel
 
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 LABEL maintainer="labs@idealista.com"
 EXPOSE 8089
 WORKDIR /opt/prom2teams

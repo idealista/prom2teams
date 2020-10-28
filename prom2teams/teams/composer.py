@@ -26,8 +26,10 @@ class TemplateComposer(metaclass=_Singleton):
 
     DEFAULT_TEMPLATE_PATH = os.path.abspath(os.path.join(root, 'resources/templates/teams.j2'))
 
-    def __init__(self, template_path=DEFAULT_TEMPLATE_PATH):
+    def __init__(self, template_path=None):
         log.info(template_path)
+        if template_path is None:
+            template_path = TemplateComposer.DEFAULT_TEMPLATE_PATH
         if not os.path.isfile(template_path):
             raise MissingTemplatePathException('Template {} not exists'.format(template_path))
 
@@ -37,7 +39,8 @@ class TemplateComposer(metaclass=_Singleton):
         environment = Environment(loader=loader, trim_blocks=True)
         self.template = environment.get_template(template_name)
 
-    def compose_all(self, alarms_json):
-        rendered_templates = [self.template.render(status=json_alarm['status'], msg_text=json_alarm)
-                              for json_alarm in alarms_json]
-        return rendered_templates
+    def compose(self, json_alert):
+        return self.template.render(status=json_alert['status'], msg_text=json_alert)
+
+    def compose_all(self, json_alerts):
+        return [self.compose(json_alert) for json_alert in json_alerts]
