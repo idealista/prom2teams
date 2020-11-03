@@ -213,7 +213,7 @@ Path: <Jinja2 template path> # default: app resources template
 Field: <Field to group alerts by> # alerts won't be grouped by default
 
 [Labels]
-Excluded: <Coma separated list of labels to ignore>
+Excluded: <Comma separated list of labels to ignore>
 
 [Annotations]
 Excluded: <Comma separated list of annotations to ignore>
