@@ -4,7 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ### Added
-- *[#225] Add /alive and /ready endpoints* @vicsufer
+- *[#225](https://github.com/idealista/prom2teams/pull/225) Add /alive and /ready endpoints* @vicsufer
+
+## Changed
+- *[#155](https://github.com/idealista/prom2teams/issues/155) Using Alert instead of Alarm in the entire code base* @dortegau
 
 ## [3.1.0](https://github.com/idealista/prom2teams/tree/3.1.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.0.0...3.1.0)
@@ -13,8 +16,6 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 - *[#222](https://github.com/idealista/prom2teams/pull/222) Add restrictive security context since the workload doesn't need more permissions to work.* @azman0101
 - *[#226](https://github.com/idealista/prom2teams/pull/226) Retrying policy* @blalop
-
-
 
 ## [3.0.0](https://github.com/idealista/prom2teams/tree/3.0.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.7.0...3.0.0)
@@ -145,7 +146,7 @@ Now connector field is mandatory in helm chart is mantatory.
 ## [2.2.1](https://github.com/idealista/prom2teams/tree/2.2.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.2...2.2.1)
 ## Added
-- *[#80](https://github.com/idealista/prom2teams/pull/79) Add the possibility of group alarms by alertname* @manuhortet
+- *[#80](https://github.com/idealista/prom2teams/pull/79) Add the possibility of group alerts by alertname* @manuhortet
 - *[#84](https://github.com/idealista/prom2teams/issues/84) View received message when debugging* @jnogol
 - *Update Flask version to v1.0.2* @manuhortet @jnogol
 
@@ -201,7 +202,7 @@ Now connector field is mandatory in helm chart is mantatory.
 - *[#32](https://github.com/idealista/prom2teams/issues/32) Set default value for "instance" in alerts* @maglo
 
 ### Fixed
-- *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alarms* @jnogol
+- *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alerts* @jnogol
 
 ## [1.1.3](https://github.com/idealista/prom2teams/tree/1.1.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.2...1.1.3)

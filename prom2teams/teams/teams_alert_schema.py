@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields, INCLUDE
 
 
-class TeamsAlarmSchema(Schema):
+class TeamsAlertSchema(Schema):
     class Meta:
         unknown = INCLUDE
     status = fields.Str()
@@ -25,7 +25,7 @@ class TeamsAlarmSchema(Schema):
     )
 
 
-class TeamsAlarm:
+class TeamsAlert:
     def __init__(self, name, status, severity, summary, instance, description, fingerprint, extra_labels, extra_annotations):
         self.name = name
         self.status = status
