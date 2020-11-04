@@ -1,14 +1,19 @@
-![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
+<div align="center">
+  <img alt="logo" src="https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif">
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.svg?branch=master)](https://travis-ci.org/idealista/prom2teams)
-[![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
-[![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
-# prom2teams
+  [![Build Status](https://travis-ci.org/idealista/prom2teams.svg?branch=master)](https://travis-ci.org/idealista/prom2teams)
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=idealista_prom2teams&metric=alert_status)](https://sonarcloud.io/dashboard?id=idealista_prom2teams)
+  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+  [![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
+</div>
 
-<img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
+# prom2teams: Prometheus Alertmanager/Microsoft Teams integration
 
-**prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
+</p>
+
+**prom2teams** is a service built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
 
 It presents grouping of alerts, labels/annotations exclusion and a Teams' alert retry policy among its key features.
 
@@ -207,7 +212,7 @@ Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
 Path: <log file path>  # default: /var/log/prom2teams/prom2teams.log
 
 [Template]
-Path: <Jinja2 template path> # default: app resources template
+Path: <Jinja2 template path> # default: app resources default template (./prom2teams/resources/templates/teams.j2)
 
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
@@ -275,6 +280,7 @@ To run the test suite you should type the following:
 
 ```bash
 // After cloning prom2teams :)
+$ pip install -r requirements.txt
 $ python3 -m unittest discover tests
 $ cd tests/e2e
 $ ./test.sh
