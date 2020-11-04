@@ -3,11 +3,11 @@
     "@context": "http://schema.org/extensions",
     "themeColor": " 2DC72D ",
     "summary": "(Resolved) Disk usage alert on CS30.evilcorp",
-    "title": "Prometheus alarm (Resolved) ",
+    "title": "Prometheus alert (Resolved) ",
     "sections": [{
         "activityTitle": "Disk usage alert on CS30.evilcorp",
         "facts": [{
-            "name": "Alarm",
+            "name": "Alert",
             "value": "DiskSpace"
         },{
             "name": "In host",

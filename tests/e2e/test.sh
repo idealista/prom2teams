@@ -18,11 +18,11 @@ create_expectations_and_responses(){
         "@context": "http://schema.org/extensions",
         "themeColor": " 8C1A1A ",
         "summary": "Node exporter down on node1.summit",
-        "title": "Prometheus alarm ",
+        "title": "Prometheus alert ",
         "sections": [{
             "activityTitle": "Node exporter down on node1.summit",
             "facts": [{
-                "name": "Alarm",
+                "name": "Alert",
                 "value": "NodeExporter"
             },{
                 "name": "In host",
@@ -69,11 +69,11 @@ create_expectations_and_responses(){
         "@context": "http://schema.org/extensions",
         "themeColor": " 8C1A1A ",
         "summary": "Node exporter down on node2.summit",
-        "title": "Prometheus alarm ",
+        "title": "Prometheus alert ",
         "sections": [{
             "activityTitle": "Node exporter down on node2.summit",
             "facts": [{
-                "name": "Alarm",
+                "name": "Alert",
                 "value": "NodeExporter"
             },{
                 "name": "In host",
@@ -127,11 +127,11 @@ run_tests(){
         "@context": "http://schema.org/extensions",
         "themeColor": " 8C1A1A ",
         "summary": "Node exporter down on node1.summit",
-        "title": "Prometheus alarm ",
+        "title": "Prometheus alert ",
         "sections": [{
             "activityTitle": "Node exporter down on node1.summit",
             "facts": [{
-                "name": "Alarm",
+                "name": "Alert",
                 "value": "NodeExporter"
             },{
                 "name": "In host",
@@ -177,11 +177,11 @@ run_tests(){
         "@context": "http://schema.org/extensions",
         "themeColor": " 8C1A1A ",
         "summary": "Node exporter down on node2.summit",
-        "title": "Prometheus alarm ",
+        "title": "Prometheus alert ",
         "sections": [{
             "activityTitle": "Node exporter down on node2.summit",
             "facts": [{
-                "name": "Alarm",
+                "name": "Alert",
                 "value": "NodeExporter"
             },{
                 "name": "In host",
