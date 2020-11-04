@@ -13,3 +13,4 @@ tests/
 CHANGELOG.md
 debug.log
 logo.gif
+sonar-project.properties
