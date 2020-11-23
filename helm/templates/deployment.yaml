@@ -39,7 +39,7 @@ spec:
           - name: APP_CONFIG_FILE
             value: {{ .Values.prom2teams.config }}
           - name: PROM2TEAMS_PORT
-            value: {{ .Values.prom2teams.port }}
+            value: {{ .Values.prom2teams.port | quote}}
           - name: PROM2TEAMS_HOST
             value: {{ .Values.prom2teams.ip }}
           - name: PROM2TEAMS_CONNECTOR
