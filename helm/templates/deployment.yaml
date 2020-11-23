@@ -44,7 +44,8 @@ spec:
             value: {{ .Values.prom2teams.ip | quote }}
           - name: PROM2TEAMS_CONNECTOR
             value: {{ .Values.prom2teams.connector | quote }}
-          - name: PROM2TEAMS_GROUP_ALERTS_BY value: {{ .Values.prom2teams.group_alerts_by | quote}}
+          - name: PROM2TEAMS_GROUP_ALERTS_BY
+            value: {{ .Values.prom2teams.group_alerts_by | quote}}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           readinessProbe:
