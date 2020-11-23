@@ -10,6 +10,7 @@ class TeamsAlarmSchema(Schema):
     instance = fields.Str()
     description = fields.Str()
     name = fields.Str()
+    fingerprint = fields.Str()
     extra_labels = fields.Dict(
         keys=fields.Str(),
         values=fields.Str(),
@@ -25,12 +26,13 @@ class TeamsAlarmSchema(Schema):
 
 
 class TeamsAlarm:
-    def __init__(self, name, status, severity, summary, instance, description, extra_labels, extra_annotations):
+    def __init__(self, name, status, severity, summary, instance, description, fingerprint, extra_labels, extra_annotations):
         self.name = name
         self.status = status
         self.severity = severity
         self.summary = summary
         self.instance = instance
         self.description = description
+        self.fingerprint = fingerprint
         self.extra_labels = extra_labels
         self.extra_annotations = extra_annotations

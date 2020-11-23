@@ -5,7 +5,8 @@ log = logging.getLogger('prom2teams')
 
 
 class MessageSchema(Schema):
-
+    class Meta:
+        unknown = INCLUDE
     def __init__(self, exclude_fields=tuple(), exclude_annotations=tuple()):
         super().__init__()
         self.exclude_fields = exclude_fields
@@ -38,6 +39,7 @@ class MessageSchema(Schema):
             name = alert['labels']['alertname']
             description = alert['annotations']['description']
             severity = alert['labels']['severity']
+            fingerprint = alert.get('fingerprint', None)
             extra_labels = dict()
             extra_annotations = dict()
 
@@ -55,7 +57,7 @@ class MessageSchema(Schema):
                 if key not in excluded_annotations and annotation_is_not_dict:
                     extra_annotations[key] = annotation
 
-            alert = PrometheusAlert(name, status, severity, summary, instance, description, extra_labels, extra_annotations)
+            alert = PrometheusAlert(name, status, severity, summary, instance, description, fingerprint, extra_labels, extra_annotations)
             prom_alerts.append(alert)
         return prom_alerts
 
@@ -68,7 +70,8 @@ class AlertSchema(Schema):
     endsAt = fields.DateTime()
     generatorURL = fields.Str()
     fingerprint = fields.Str()
-
+    class Meta:
+        unknown = EXCLUDE
 
 class LabelSchema(Schema):
     alertname = fields.Str(default='unknown', missing='unknown')
@@ -86,12 +89,13 @@ class AnnotationSchema(Schema):
 
 
 class PrometheusAlert:
-    def __init__(self, name, status, severity, summary, instance, description, extra_labels=None, extra_annotations=None):
+    def __init__(self, name, status, severity, summary, instance, description, fingerprint, extra_labels=None, extra_annotations=None):
         self.name = name
         self.status = status
         self.severity = severity
         self.summary = summary
         self.instance = instance
         self.description = description
+        self.fingerprint = fingerprint
         self.extra_labels = extra_labels
         self.extra_annotations = extra_annotations

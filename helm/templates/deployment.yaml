@@ -26,28 +26,50 @@ spec:
             name: prom2teams-config
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8089
+              containerPort: "{{ .values.prom2teams.port }}"
               protocol: TCP
           volumeMounts:
             - name: config
               mountPath: /opt/prom2teams/helmconfig/
           env:
           - name: APP_CONFIG_FILE
-            value: {{ .Values.prom2teams.config }}
+            value: {{ .Values.prom2teams.config | quote }}
           - name: PROM2TEAMS_PORT
-            value: {{ .Values.prom2teams.port | quote}}
+            value: {{ .Values.prom2teams.port | quote }}
           - name: PROM2TEAMS_HOST
-            value: {{ .Values.prom2teams.ip }}
+            value: {{ .Values.prom2teams.ip | quote }}
           - name: PROM2TEAMS_CONNECTOR
-            value: {{ .Values.prom2teams.connector }}
-          - name: PROM2TEAMS_GROUP_ALERTS_BY
-            value: {{ .Values.prom2teams.group_alerts_by }}
+            value: {{ .Values.prom2teams.connector | quote }}
+          - name: PROM2TEAMS_GROUP_ALERTS_BY value: {{ .Values.prom2teams.group_alerts_by | quote}}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: "{{ .values.prom2teams.port }}"
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /alive
+              port: "{{ .values.prom2teams.port }}"
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.securityContext.enabled }}
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -60,3 +82,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+    {{- if .Values.securityContext.enabled }}
+      securityContext:
+        runAsNonRoot: {{ if eq (int .Values.securityContext.runAsUser) 0 }}false{{ else }}true{{ end }}
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+    {{- end }}
+
