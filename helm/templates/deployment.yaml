@@ -30,7 +30,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: "{{ .values.prom2teams.port }}"
+              containerPort: "{{ .Values.prom2teams.port }}"
               protocol: TCP
           volumeMounts:
             - name: config
@@ -50,13 +50,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /ready
-              port: "{{ .values.prom2teams.port }}"
+              port: "{{ .Values.prom2teams.port }}"
             initialDelaySeconds: 20
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /alive
-              port: "{{ .values.prom2teams.port }}"
+              port: "{{ .Values.prom2teams.port }}"
             initialDelaySeconds: 20
             periodSeconds: 10
           resources:
