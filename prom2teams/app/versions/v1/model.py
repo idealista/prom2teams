@@ -3,7 +3,8 @@ from . import api_v1
 
 annotations = api_v1.model('annotations', {
     'description': fields.String(default='disk usage 93% on rootfs device'),
-    'summary': fields.String(default='Disk usage alert on CS30.evilcorp')
+    'summary': fields.String(default='Disk usage alert on CS30.evilcorp'),
+    'runbook_url':  fields.String(default='')
 })
 
 labels = api_v1.model('labels', {

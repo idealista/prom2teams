@@ -29,7 +29,7 @@ class MessageSchema(Schema):
 
         base_labels = ('alertname', 'device', 'fstype', 'instance', 'mountpoint', 'severity')
         excluded = base_labels + self.exclude_fields
-        base_annotations = ('description', 'summary')
+        base_annotations = ('description', 'summary', 'runbook_url')
         excluded_annotations = base_annotations + self.exclude_annotations
 
         for alert in message['alerts']:
@@ -39,6 +39,7 @@ class MessageSchema(Schema):
             name = alert['labels']['alertname']
             description = alert['annotations']['description']
             severity = alert['labels']['severity']
+            runbook_url = alert['annotations'].get('runbook_url', '')
             fingerprint = alert.get('fingerprint', None)
             extra_labels = dict()
             extra_annotations = dict()
@@ -57,7 +58,7 @@ class MessageSchema(Schema):
                 if key not in excluded_annotations and annotation_is_not_dict:
                     extra_annotations[key] = annotation
 
-            alert = PrometheusAlert(name, status, severity, summary, instance, description, fingerprint, extra_labels, extra_annotations)
+            alert = PrometheusAlert(name, status, severity, summary, instance, description, fingerprint, runbook_url, extra_labels, extra_annotations)
             prom_alerts.append(alert)
         return prom_alerts
 
@@ -89,7 +90,7 @@ class AnnotationSchema(Schema):
 
 
 class PrometheusAlert:
-    def __init__(self, name, status, severity, summary, instance, description, fingerprint, extra_labels=None, extra_annotations=None):
+    def __init__(self, name, status, severity, summary, instance, description, fingerprint, runbook_url, extra_labels=None, extra_annotations=None):
         self.name = name
         self.status = status
         self.severity = severity
@@ -97,5 +98,6 @@ class PrometheusAlert:
         self.instance = instance
         self.description = description
         self.fingerprint = fingerprint
+        self.runbook_url = runbook_url
         self.extra_labels = extra_labels
         self.extra_annotations = extra_annotations

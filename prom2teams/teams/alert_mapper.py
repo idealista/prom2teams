@@ -3,7 +3,7 @@ from collections import defaultdict, OrderedDict
 from prom2teams.teams.teams_alert_schema import TeamsAlert, TeamsAlertSchema
 
 GROUPABLE_FIELDS = ['name', 'description', 'instance',
-                    'severity', 'status', 'summary', 'fingerprint']
+                    'severity', 'status', 'summary', 'fingerprint', 'runbook_url']
 EXTRA_FIELDS = ['extra_labels', 'extra_annotations']
 FIELD_SEPARATOR = ',\n\n\n'
 
@@ -16,7 +16,7 @@ def map_prom_alerts_to_teams_alerts(alerts):
         for alert in alerts[same_status_alerts]:
             alert = TeamsAlert(alert.name, alert.status.lower(), alert.severity,
                                alert.summary, alert.instance, alert.description,
-                               alert.fingerprint, alert.extra_labels,
+                               alert.fingerprint, alert.runbook_url, alert.extra_labels,
                                alert.extra_annotations)
             json_alert = schema.dump(alert)
             teams_alerts.append(json_alert)
@@ -62,7 +62,7 @@ def _combine_alerts_to_alert(alerts):
 
 def _map_dict_alert_to_alert(alert):
     return TeamsAlert(alert['name'], alert['status'].lower(), alert['severity'], alert['summary'],
-                      alert['instance'], alert['description'], alert['fingerprint'],
+                      alert['instance'], alert['description'], alert['fingerprint'], alert['runbook_url'],
                       alert['extra_labels'], alert['extra_annotations'])
 
 
