@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ### Added
 - *[#225](https://github.com/idealista/prom2teams/pull/225) Add /alive and /ready endpoints* @vicsufer
+- *[#241](https://github.com/idealista/prom2teams/issues/241) Add action on runbook_url annotation* @jperera
 
 ## Changed
 - *[#155](https://github.com/idealista/prom2teams/issues/155) Using Alert instead of Alarm in the entire code base* @dortegau
