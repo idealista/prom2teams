@@ -27,6 +27,10 @@
         {
           "name": "Status",
           "value": "resolved"
+        },
+        {
+          "name": "runbook_url",
+          "value": "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage"
         }
       ],
       "markdown": true

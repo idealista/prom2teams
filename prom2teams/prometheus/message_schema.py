@@ -29,7 +29,7 @@ class MessageSchema(Schema):
 
         base_labels = ('alertname', 'device', 'fstype', 'instance', 'mountpoint', 'severity')
         excluded = base_labels + self.exclude_fields
-        base_annotations = ('description', 'summary', 'runbook_url')
+        base_annotations = ('description', 'summary')
         excluded_annotations = base_annotations + self.exclude_annotations
 
         for alert in message['alerts']:
