@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [3.2.0](https://github.com/idealista/prom2teams/tree/3.2.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.1.0...3.2.0)
 ### Added
 - *[#225](https://github.com/idealista/prom2teams/pull/225) Add /alive and /ready endpoints* @vicsufer
 - *[#241](https://github.com/idealista/prom2teams/issues/241) Add action on runbook_url annotation* @jperera
