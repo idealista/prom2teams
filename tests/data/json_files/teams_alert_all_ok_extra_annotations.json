@@ -35,5 +35,15 @@
       ],
       "markdown": true
     }
+  ],
+  "potentialAction": [
+    {
+      "@context": "http://schema.org",
+      "@type": "ViewAction",
+      "name": "Runbook",
+      "target": [
+        "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage"
+      ]
+    }
   ]
 }

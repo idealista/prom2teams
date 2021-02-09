@@ -41,4 +41,17 @@
         }{% endfor %}{% endif %}],
           "markdown": true
     }]
+    {% if msg_text.runbook_url %}
+    ,
+    "potentialAction": [
+        {
+            "@context": "http://schema.org",
+            "@type": "ViewAction",
+            "name": "Runbook",
+            "target": [
+                "{{ msg_text.runbook_url }}"
+            ]
+        }
+    ]
+    {% endif %}
 }
