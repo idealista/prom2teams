@@ -1,7 +1,7 @@
 <div align="center">
   <img alt="logo" src="https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif">
 
-  [![Build Status](https://travis-ci.org/idealista/prom2teams.svg?branch=master)](https://travis-ci.org/idealista/prom2teams)
+  [![Build Status](https://travis-ci.com/idealista/prom2teams.svg?branch=master)](https://travis-ci.com/idealista/prom2teams)
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=idealista_prom2teams&metric=alert_status)](https://sonarcloud.io/dashboard?id=idealista_prom2teams)
   [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
   [![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
