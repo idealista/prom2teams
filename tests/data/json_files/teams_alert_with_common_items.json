@@ -3,13 +3,13 @@
     "@context": "http://schema.org/extensions",
     "themeColor": " 2DC72D ",
     "summary": "(Resolved) CPU throttling",
-    "title": "Prometheus alarm (Resolved) ",
+    "title": "Prometheus alert (Resolved) ",
     "sections": [
         {
             "activityTitle": "CPU throttling",
             "facts": [
                 {
-                    "name": "Alarm",
+                    "name": "Alert",
                     "value": "CPUThrottlingHigh"
                 },
                 {
@@ -46,6 +46,16 @@
                 }
             ],
             "markdown": true
+        }
+    ],
+    "potentialAction": [
+        {
+            "@context": "http://schema.org",
+            "@type": "ViewAction",
+            "name": "Runbook",
+            "target": [
+                "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage"
+            ]
         }
     ]
 }
