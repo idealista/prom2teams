@@ -40,7 +40,7 @@ class MessageSchema(Schema):
             description = alert['annotations']['description']
             severity = alert['labels']['severity']
             runbook_url = alert['annotations'].get('runbook_url', '')
-            fingerprint = alert.get('fingerprint', None)
+            fingerprint = alert.get('fingerprint', '')
             extra_labels = dict()
             extra_annotations = dict()
 

@@ -46,6 +46,18 @@ class TestJSONFields(unittest.TestCase):
             alert = map_prom_alerts_to_teams_alerts(alerts)[0]
             self.assertEqual('dd19ae3d4e06ac55', str(alert['fingerprint']))
 
+    def test_without_fingerprint(self):
+        with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'without_fingerprint.json')) as json_data:
+            with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'teams_without_fingerprint.json')) as expected_data:
+                json_received = json.load(json_data)
+                json_expected = json.load(expected_data)
+
+                alerts = MessageSchema().load(json_received)
+                rendered_data = AlertSender()._create_alerts(alerts)[0]
+                json_rendered = json.loads(rendered_data)
+
+                self.assertEqual(json_rendered.keys(), json_expected.keys())
+
     def test_compose_all(self):
         with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'all_ok.json')) as json_data:
             with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'teams_alert_all_ok.json')) as expected_data:

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+### Fixed
+- *[#225](https://github.com/idealista/prom2teams/issues/250) Fix error when fingerprint is missing @jperera
+### Changed
+- *[#244](https://github.com/idealista/prom2teams/issues/244) Change travis-ci.org by travis-ci.com in README @Crozzers
 ## [3.2.0](https://github.com/idealista/prom2teams/tree/3.2.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.1.0...3.2.0)
 ### Added
