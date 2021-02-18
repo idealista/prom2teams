@@ -10,7 +10,7 @@ with open('README.md', encoding='utf-8') as f:
 
 
 setup(name='prom2teams',
-      version='3.2.0',
+      version='3.2.1',
       description='Project that redirects Prometheus Alert Manager '
       'notifications to Microsoft Teams',
       long_description=readme,
