@@ -18,7 +18,7 @@
 It presents grouping of alerts, labels/annotations exclusion and a Teams' alert retry policy among its key features.
 
 
-- [prom2teams](#prom2teams)
+- [prom2teams: Prometheus Alertmanager/Microsoft Teams integration](#prom2teams-prometheus-alertmanagermicrosoft-teams-integration)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installing](#installing)
@@ -28,6 +28,8 @@ It presents grouping of alerts, labels/annotations exclusion and a Teams' alert 
     - [Helm chart](#helm-chart)
       - [Installing the Chart with Helm 3](#installing-the-chart-with-helm-3)
       - [Uninstalling the Chart](#uninstalling-the-chart)
+        - [Helm 2](#helm-2)
+        - [Helm 3](#helm-3)
       - [Configuration](#configuration)
     - [Production](#production)
     - [Config file](#config-file)
@@ -112,7 +114,7 @@ To install the chart with the release name `prom2teams` run:
 
 ```bash
 export connector=<my-connector-url>
-helm install prom2teams -n sre-monitoring helm/ --set prom2teams.connector=${connector}
+helm install prom2teams -n sre-monitoring helm/ --set prom2teams.connector=${connector} --set securityContext.enabled=false
 ```
 
 After a few seconds, Prom2Teams should be running.
