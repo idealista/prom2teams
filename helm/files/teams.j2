@@ -13,11 +13,11 @@
     "@context": "http://schema.org/extensions",
     "themeColor": "{% if status=='resolved' %} {{ theme_colors.resolved }} {% else %} {{ theme_colors[msg_text.severity] }} {% endif %}",
     "summary": "{% if status=='resolved' %}(Resolved) {% endif %}{{ msg_text.summary }}",
-    "title": "Prometheus alarm {% if status=='resolved' %}(Resolved) {% elif status=='unknown' %} (status unknown) {% endif %}",
+    "title": "Prometheus alert {% if status=='resolved' %}(Resolved) {% elif status=='unknown' %} (status unknown) {% endif %}",
     "sections": [{
         "activityTitle": "{{ msg_text.summary }}",
         "facts": [{% if msg_text.name %}{
-            "name": "Alarm",
+            "name": "Alert",
             "value": "{{ msg_text.name }}"
         },{% endif %}{% if msg_text.instance %}{
             "name": "In host",

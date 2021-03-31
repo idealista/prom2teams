@@ -3,6 +3,66 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [3.2.1](https://github.com/idealista/prom2teams/tree/3.2.1)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.0...3.2.1)
+### Fixed
+- *[#225](https://github.com/idealista/prom2teams/issues/250) Fix error when fingerprint is missing @jperera
+### Changed
+- *[#244](https://github.com/idealista/prom2teams/issues/244) Change travis-ci.org by travis-ci.com in README @Crozzers
+## [3.2.0](https://github.com/idealista/prom2teams/tree/3.2.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.1.0...3.2.0)
+### Added
+- *[#225](https://github.com/idealista/prom2teams/pull/225) Add /alive and /ready endpoints* @vicsufer
+- *[#241](https://github.com/idealista/prom2teams/issues/241) Add action on runbook_url annotation* @jperera
+
+## Changed
+- *[#155](https://github.com/idealista/prom2teams/issues/155) Using Alert instead of Alarm in the entire code base* @dortegau
+
+## [3.1.0](https://github.com/idealista/prom2teams/tree/3.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.0.0...3.1.0)
+### Fixed
+- *[#219](https://github.com/idealista/prom2teams/pull/219) Add timeouts to webhook request to prevent hanging tcp connections in case of network errors* @DanSipola
+### Added
+- *[#222](https://github.com/idealista/prom2teams/pull/222) Add restrictive security context since the workload doesn't need more permissions to work.* @azman0101
+- *[#226](https://github.com/idealista/prom2teams/pull/226) Retrying policy* @blalop
+
+## [3.0.0](https://github.com/idealista/prom2teams/tree/3.0.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.7.0...3.0.0)
+### Breaking changes
+Now connector field is mandatory in helm chart is mantatory.
+
+### Added
+- *[#175](https://github.com/idealista/prom2teams/issues/175) Building docker image using multi-stage build feature* @dortegau
+- *[#172](https://github.com/idealista/prom2teams/pull/172) Add fingerprint field to template data* @mdelagrange
+- *[#170](https://github.com/idealista/prom2teams/issues/170) Allow specifying multiple connectors* @krmichel
+
+## [2.7.0](https://github.com/idealista/prom2teams/tree/2.7.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.6.0...2.7.0)
+### Added
+* *[#213](https://github.com/idealista/prom2teams/issues/213) Add end to end tests* @pablogcaldito
+
+## [2.6.0](https://github.com/idealista/prom2teams/tree/2.6.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.8...2.6.0)
+### Fixed
+* *[#210](https://github.com/idealista/prom2teams/issues/210) Fix bug introduced in 2.5.6 version and add support for alertmanager 0.21.0* @pablogcaldito
+
+## [2.5.8](https://github.com/idealista/prom2teams/tree/2.5.8)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.7...2.5.8)
+### Fixed
+* *[#201](https://github.com/idealista/prom2teams/issues/201) /metrics server not working* @vicsufer
+
+## [2.5.7](https://github.com/idealista/prom2teams/tree/2.5.7)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.6...2.5.7)
+## Fixed
+- *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
+- *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
+- *[#202](https://github.com/idealista/prom2teams/issues/202) Fix error publishing 2.5.7 release* @pablogcaldito
+- *[#189](https://github.com/idealista/prom2teams/issues/189) Fixed handling alerts with truncated fields* @dgalcantara
+
+## [2.5.6](https://github.com/idealista/prom2teams/tree/2.5.6)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.5...2.5.6)
+## Fixed
+- *[#190](https://github.com/idealista/prom2teams/pull/190) Fixed handling of additional json properties of alertmanager 0.21.0* @lazyBisa
 
 ## [2.5.5](https://github.com/idealista/prom2teams/tree/2.5.5)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.5.4...2.5.5)
@@ -97,7 +157,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [2.2.1](https://github.com/idealista/prom2teams/tree/2.2.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/2.1.2...2.2.1)
 ## Added
-- *[#80](https://github.com/idealista/prom2teams/pull/79) Add the possibility of group alarms by alertname* @manuhortet
+- *[#80](https://github.com/idealista/prom2teams/pull/79) Add the possibility of group alerts by alertname* @manuhortet
 - *[#84](https://github.com/idealista/prom2teams/issues/84) View received message when debugging* @jnogol
 - *Update Flask version to v1.0.2* @manuhortet @jnogol
 
@@ -153,7 +213,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#32](https://github.com/idealista/prom2teams/issues/32) Set default value for "instance" in alerts* @maglo
 
 ### Fixed
-- *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alarms* @jnogol
+- *[#26](https://github.com/idealista/prom2teams/issues/26) Able to handle multiple received alerts* @jnogol
 
 ## [1.1.3](https://github.com/idealista/prom2teams/tree/1.1.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/1.1.2...1.1.3)

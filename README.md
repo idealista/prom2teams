@@ -1,14 +1,22 @@
-![Logo](https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif)
+<div align="center">
+  <img alt="logo" src="https://raw.githubusercontent.com/idealista/prom2teams/master/logo.gif">
 
-[![Build Status](https://travis-ci.org/idealista/prom2teams.svg?branch=master)](https://travis-ci.org/idealista/prom2teams)
-[![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
-[![Docker Automated build](https://img.shields.io/docker/automated/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
-# prom2teams
+  [![Build Status](https://travis-ci.com/idealista/prom2teams.svg?branch=master)](https://travis-ci.com/idealista/prom2teams)
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=idealista_prom2teams&metric=alert_status)](https://sonarcloud.io/dashboard?id=idealista_prom2teams)
+  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+  [![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
+</div>
 
-<img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
+# prom2teams: Prometheus Alertmanager/Microsoft Teams integration
 
-**prom2teams** is a Web server built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/idealista/prom2teams/master/assets/example.png" alt="Alert example" style="width: 600px;"/>
+</p>
+
+**prom2teams** is a service built with Python that receives alert notifications from a previously configured [Prometheus Alertmanager](https://github.com/prometheus/alertmanager) instance and forwards it to [Microsoft Teams](https://teams.microsoft.com/) using defined connectors.
+
+It presents grouping of alerts, labels/annotations exclusion and a Teams' alert retry policy among its key features.
+
 
 - [prom2teams](#prom2teams)
   - [Getting Started](#getting-started)
@@ -39,7 +47,7 @@
 
 ### Prerequisites
 
-The application has been tested with _Prometheus 2.2.1_, _Python 3.5.0_ and _pip 9.0.1_.
+The application has been tested with _Prometheus 2.2.1_, _Python 3.8.0_ and _pip 9.0.1_.
 
 Newer versions of _Prometheus/Python/pip_ should work but could also present issues.
 
@@ -115,10 +123,20 @@ After a few seconds, Prom2Teams should be running.
 
 To uninstall/delete the `prom2teams` deployment:
 
+##### Helm 2
+
 ```bash
 $ helm delete prom2teams
 ```
 > **Tip**: Use helm delete --purge my-release to completely remove the release from Helm internal storage
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+##### Helm 3
+
+```bash
+$ helm uninstall my-release
+```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
@@ -129,7 +147,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | Parameter                                       | Description                                                                                                        | Default
 | ---                                             | ---                                                                                                                | ---
 | `image.repository`                              | The image repository to pull from                                                                                  | `idealista/prom2teams`
-| `image.tag`                                     | The image tag to pull                                                                                              | `2.4.0`
+| `image.tag`                                     | The image tag to pull                                                                                              | `<empty>`
 | `image.pullPolicy`                              | The image pull policy                                                                                              | `IfNotPresent`
 | `resources.requests.cpu`                        | CPU requested for being run in a node                                                                              | `100m`
 | `resources.requests.memory`                     | Memory requested for being run in a node                                                                           | `128Mi`
@@ -140,6 +158,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.host`                               | IP to bind to                                                                                                      | `0.0.0.0`
 | `prom2teams.port`                               | Port to bind to                                                                                                    | `8089`
 | `prom2teams.connector`                          | Connector URL                                                                                                      | `<empty>`
+| `prom2teams.connectors`                         | A map where the keys are the connector names and the values are the connector webhook urls                         | `{}`
 | `prom2teams.group_alerts_by`                    | Group_alerts_by field                                                                                              | `<empty>`
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
@@ -174,7 +193,7 @@ env = APP_CONFIG_FILE=/etc/default/prom2teams.ini
 
 Consider not provide `chdir` property neither `module` property.
 
-Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.5/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
+Also you can set the `module` file, by doing a symbolic link: `sudo mkdir -p /usr/local/etc/prom2teams/ && sudo ln -sf /usr/local/lib/python3.7/dist-packages/usr/local/etc/prom2teams/wsgi.py /usr/local/etc/prom2teams/wsgi.py` (check your dist-packages folder)
 
 Another approach is to provide yourself the `module` file [module example](bin/wsgi.py) and the `bin` uwsgi call [uwsgi example](bin/prom2teams_uwsgi)
 
@@ -185,7 +204,7 @@ Another approach is to provide yourself the `module` file [module example](bin/w
 
 The config file is an [INI file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure) and should have the structure described below:
 
-```
+```ini
 [Microsoft Teams]
 # At least one connector is required here
 Connector: <webhook url>
@@ -201,16 +220,21 @@ Level: <loglevel (DEBUG|INFO|WARNING|ERROR|CRITICAL)> # default: DEBUG
 Path: <log file path>  # default: /var/log/prom2teams/prom2teams.log
 
 [Template]
-Path: <Jinja2 template path> # default: app resources template
+Path: <Jinja2 template path> # default: app resources default template (./prom2teams/resources/templates/teams.j2)
 
 [Group Alerts]
 Field: <Field to group alerts by> # alerts won't be grouped by default
 
 [Labels]
-Excluded: <Coma separated list of labels to ignore>
+Excluded: <Comma separated list of labels to ignore>
 
 [Annotations]
 Excluded: <Comma separated list of annotations to ignore>
+
+[Teams Client]
+RetryEnable: <Enables teams client retry policy> # defaults to false
+RetryWaitTime: <Wait time between retries> # default: 60 secs
+MaxPayload: <Teams client payload limit in bytes> # default: 24KB
 ```
 
 **Note:** Grouping alerts works since v2.2.0
@@ -244,6 +268,9 @@ If such a field is not included a default value of 'unknown' is assigned.
 
 All non-mandatory labels not in excluded list are injected in `extra_labels` key. All non-mandatory annotations not in excluded list are injected in `extra_annotations` key.
 
+Alertmanager fingerprints are available in the `fingerprint` key.  Fingerprints
+are supported by Alertmanager 0.19.0 or greater.
+
 ## Documentation
 ### Swagger UI
 
@@ -261,11 +288,14 @@ To run the test suite you should type the following:
 
 ```bash
 // After cloning prom2teams :)
+$ pip install -r requirements.txt
 $ python3 -m unittest discover tests
+$ cd tests/e2e
+$ ./test.sh
 ```
 
 ## Built With
-![Python 3.6.2](https://img.shields.io/badge/Python-3.6.2-green.svg)
+![Python 3.8.0](https://img.shields.io/badge/Python-3.8.0-green.svg)
 ![pip 9.0.1](https://img.shields.io/badge/pip-9.0.1-green.svg)
 
 ## Versioning

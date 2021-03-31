@@ -18,7 +18,7 @@ def _config_command_line():
                                                  'and sends it to Microsoft Teams using configured connectors ')
 
     parser.add_argument('-c', '--configpath', help='config INI file path', required=False)
-    parser.add_argument('-g', '--groupalertsby', help='group alerts with same attribute into one alarm', required=False)
+    parser.add_argument('-g', '--groupalertsby', help='group alerts with same attribute into one alert', required=False)
     parser.add_argument('-l', '--logfilepath', help='log file path', required=False)
     parser.add_argument('-v', '--loglevel', help='log level', required=False)
     parser.add_argument('-t', '--templatepath', help='Jinja2 template file path', required=False)
@@ -31,6 +31,12 @@ def _config_command_line():
 def _update_application_configuration(application, configuration):
     if 'Microsoft Teams' in configuration:
         application.config['MICROSOFT_TEAMS'] = configuration['Microsoft Teams']
+    if 'Microsoft Teams Client' in configuration:
+        application.config['TEAMS_CLIENT_CONFIG'] = {
+            'RETRY_ENABLE': configuration.getboolean('Microsoft Teams Client', 'RetryEnable'),
+            'RETRY_WAIT_TIME': configuration.getint('Microsoft Teams Client', 'RetryWaitTime'),
+            'MAX_PAYLOAD': configuration.getint('Microsoft Teams Client', 'MaxPayload')
+        }
     if 'Template' in configuration and 'Path' in configuration['Template']:
         application.config['TEMPLATE_PATH'] = configuration['Template']['Path']
     if 'Log' in configuration and 'Level' in configuration['Log']:
@@ -122,6 +128,7 @@ def config_app(application):
         if command_line_args.groupalertsby:
             application.config['GROUP_ALERTS_BY'] = command_line_args.groupalertsby
         if command_line_args.enablemetrics or os.environ.get('PROM2TEAMS_PROMETHEUS_METRICS', False):
+            os.environ["DEBUG_METRICS"] = "True"
             from prometheus_flask_exporter import PrometheusMetrics
             metrics = PrometheusMetrics(application)
 

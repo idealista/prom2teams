@@ -1,0 +1,17 @@
+
+---
+version: '3'
+services:
+  prom2teams:
+    build: ../..
+    ports:
+      - "8089:8089"
+    environment:
+      - PROM2TEAMS_CONNECTOR=http://mockserver:1080/api/test
+  mockserver:
+    image: mockserver/mockserver:mockserver-5.11.1
+    ports:
+      - "1080:1080"
+    environment:
+      MOCKSERVER_MAX_EXPECTATIONS: 100
+      MOCKSERVER_MAX_HEADER_SIZE: 8192
