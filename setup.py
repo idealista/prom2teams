@@ -28,7 +28,7 @@ setup(name='prom2teams',
       },
       include_package_data=True,
       data_files=[
-          ('/usr/local/etc/prom2teams', ['bin/wsgi.py'])
+          (os.path.join(sys.prefix, 'etc/prom2teams'), ['bin/wsgi.py'])
       ],
       url='https://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
