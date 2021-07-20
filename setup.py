@@ -1,5 +1,8 @@
 from setuptools import setup, find_packages
 
+data_files_prefix = "/usr/local"
+if sys.prefix != sys.base_prefix: # this is a venv
+    data_files_prefix = sys.prefix
 
 with open('requirements.txt') as req:
     requirements = req.read().splitlines()
@@ -28,7 +31,7 @@ setup(name='prom2teams',
       },
       include_package_data=True,
       data_files=[
-          (os.path.join(sys.prefix, 'etc/prom2teams'), ['bin/wsgi.py'])
+          (os.path.join(data_files_prefix, '/etc/prom2teams'), ['bin/wsgi.py'])
       ],
       url='https://github.com/idealista/prom2teams',
       author='Idealista, S.A.U',
