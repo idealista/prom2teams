@@ -1,6 +1,7 @@
 from collections import defaultdict, OrderedDict
 
 from prom2teams.teams.teams_alert_schema import TeamsAlert, TeamsAlertSchema
+from prom2teams.teams.teams_alert_validation import remove_double_quotes_from_teams_alert
 
 GROUPABLE_FIELDS = ['name', 'description', 'instance',
                     'severity', 'status', 'summary', 'fingerprint', 'runbook_url']
@@ -18,6 +19,7 @@ def map_prom_alerts_to_teams_alerts(alerts):
                                alert.summary, alert.instance, alert.description,
                                alert.fingerprint, alert.runbook_url, alert.extra_labels,
                                alert.extra_annotations)
+            alert = remove_double_quotes_from_teams_alert(alert)
             json_alert = schema.dump(alert)
             teams_alerts.append(json_alert)
     return teams_alerts
