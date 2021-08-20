@@ -67,8 +67,8 @@ class AlertSchema(Schema):
     status = fields.Str(default='unknown', missing='unknown')
     labels = fields.Nested('LabelSchema', many=False, unknown=INCLUDE)
     annotations = fields.Nested('AnnotationSchema', many=False, unknown=INCLUDE)
-    startsAt = fields.DateTime()
-    endsAt = fields.DateTime()
+    startsAt = fields.DateTime(format='rfc')
+    endsAt = fields.DateTime(format='rfc')
     generatorURL = fields.Str()
     fingerprint = fields.Str()
     class Meta:
