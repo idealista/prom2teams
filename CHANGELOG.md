@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [3.2.3](https://github.com/idealista/prom2teams/tree/3.2.3)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.2...3.2.3)
+### Fixed
+- *[#271](https://github.com/idealista/prom2teams/pull/271) Sending a message with double quotes in TeamsAlert fields breaks MS Teams communication* @earthquakesan
+
 ## [3.2.2](https://github.com/idealista/prom2teams/tree/3.2.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.1...3.2.2)
 ### Changed
