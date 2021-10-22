@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.2...3.2.3)
 ### Fixed
 - *[#271](https://github.com/idealista/prom2teams/pull/271) Sending a message with double quotes in TeamsAlert fields breaks MS Teams communication* @earthquakesan
+- *[#275](https://github.com/idealista/prom2teams/pull/275) Fix error handling when exception thrown, to return HTTP 500 @srl295
 
 ## [3.2.2](https://github.com/idealista/prom2teams/tree/3.2.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.1...3.2.2)
