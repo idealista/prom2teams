@@ -46,6 +46,10 @@ spec:
             value: {{ .Values.prom2teams.connector | quote }}
           - name: PROM2TEAMS_GROUP_ALERTS_BY
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
+          {{- if .Values.servicemonitor.enabled }}
+          - name: PROM2TEAMS_PROMETHEUS_METRICS
+            value: "true"
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if .Values.securityContext.enabled }}

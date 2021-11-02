@@ -44,3 +44,10 @@ securityContext:
   fsGroup: 65534
   # readOnlyRootFilesystem is a flag to enable readOnlyRootFilesystem for the Hazelcast security context
   readOnlyRootFilesystem: true
+
+# Service Monitor properties
+servicemonitor:
+  # enabled is a flag to enable Service Monitor resource 
+  enabled: false
+  # interval is the Service Monitor scrape interval to scrape metrics
+  interval: 15s

@@ -1,0 +1,21 @@
+{{- if .Values.servicemonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prom2teams.fullname" . }}
+  labels: 
+{{ include "prom2teams.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels: 
+{{ include "prom2teams.labels" . | indent 6 }}
+  endpoints:
+    - port: http
+      path: "/metrics"
+      {{- if .Values.servicemonitor.interval }}
+      interval: {{ .Values.servicemonitor.interval }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+{{- end }}
