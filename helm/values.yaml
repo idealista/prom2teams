@@ -31,6 +31,7 @@ prom2teams:
   loglevel: INFO
   templatepath: /opt/prom2teams/helmconfig/teams.j2
   config: /opt/prom2teams/helmconfig/config.ini
+  extraEnv: {}
 
 # Security Context properties
 securityContext:
