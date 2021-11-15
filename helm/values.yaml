@@ -31,6 +31,7 @@ prom2teams:
   loglevel: INFO
   templatepath: /opt/prom2teams/helmconfig/teams.j2
   config: /opt/prom2teams/helmconfig/config.ini
+  prometheus_metrics_enabled: false
 
 # Security Context properties
 securityContext:
@@ -47,7 +48,8 @@ securityContext:
 
 # Service Monitor properties
 servicemonitor:
-  # enabled is a flag to enable Service Monitor resource 
+  # enabled is a flag to enable Service Monitor resource
+  # You should also set prom2teams.prometheus_metrics_enabled: true
   enabled: false
   # interval is the Service Monitor scrape interval to scrape metrics
   interval: 15s
