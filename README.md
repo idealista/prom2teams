@@ -155,6 +155,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
 | `prom2teams.config`                             | Config (specific to Helm)                                                                                          | `/opt/prom2teams/helmconfig/config.ini`
+| `prom2teams.extraEnv`                           | Dictionary of arbitrary additional environment variables for deployment (eg. `HTTP_PROXY`)                         | `<empty>`
 
 ### Production
 

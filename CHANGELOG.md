@@ -3,8 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+### Fixed
+- *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
-- Add servicemonitor resource and metrics sharing to helm-chart
+- *[#281](https://github.com/idealista/prom2teams/pull/281) Allow to add arbitrary envvars to deployment* @dkobras
+- *[#280](https://github.com/idealista/prom2teams/pull/280) Add servicemonitor resource and metrics sharing to helm-chart @Thunderbolt32
 
 ## [3.2.3](https://github.com/idealista/prom2teams/tree/3.2.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.2...3.2.3)

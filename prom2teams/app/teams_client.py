@@ -47,7 +47,7 @@ class TeamsClient:
                 ' Returned status code: {}.\n' \
                 ' Returned data: {}\n' \
                 ' Sent message: {}\n'
-            exception_msg.format(teams_webhook_url,
+            exception_msg = exception_msg.format(teams_webhook_url,
                                  str(response.status_code),
                                  str(response.text),
                                  str(message))

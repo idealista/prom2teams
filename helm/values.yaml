@@ -32,6 +32,7 @@ prom2teams:
   templatepath: /opt/prom2teams/helmconfig/teams.j2
   config: /opt/prom2teams/helmconfig/config.ini
   prometheus_metrics_enabled: false
+  extraEnv: {}
 
 # Security Context properties
 securityContext:

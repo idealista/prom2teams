@@ -48,6 +48,10 @@ spec:
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
           - name: PROM2TEAMS_PROMETHEUS_METRICS
             value: {{ .Values.prom2teams.prometheus_metrics_enabled | quote }}
+          {{- range $key, $value := .Values.prom2teams.extraEnv }}
+          - name: "{{ $key }}"
+            value: "{{ $value }}"
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if .Values.securityContext.enabled }}
