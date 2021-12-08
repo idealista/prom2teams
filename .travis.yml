@@ -35,7 +35,7 @@ jobs:
     - stage: Deploy to PyPI
       script: skip
       deploy:
-        cleanup: true
+        cleanup: false
         provider: pypi
         username: idealista
         password:
