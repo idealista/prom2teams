@@ -1,14 +1,15 @@
 os: linux
-dist: xenial
+dist: bionic
 language: python
 
 services:
   - docker
 
 python:
-  - '3.6'
   - '3.7'
   - '3.8'
+  - '3.9'
+  - '3.10'
 
 env:
   - DOCKER_COMPOSE_VERSION=1.27.3
