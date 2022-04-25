@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 ### Fixed
+- *[#290](https://github.com/idealista/prom2teams/pull/290) Fixed .travis.yml config file to solve warnings when triggering TravisCI builds.* @ommarmol
 - *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
 - *[#281](https://github.com/idealista/prom2teams/pull/281) Allow to add arbitrary envvars to deployment* @dkobras
