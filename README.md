@@ -3,7 +3,7 @@
 
   [![Build Status](https://travis-ci.com/idealista/prom2teams.svg?branch=master)](https://travis-ci.com/idealista/prom2teams)
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=idealista_prom2teams&metric=alert_status)](https://sonarcloud.io/dashboard?id=idealista_prom2teams)
-  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
   [![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 </div>
 
@@ -99,12 +99,35 @@ $ docker run -it -d -v pathToTheLocalConfigFile:/opt/prom2teams/config.ini -p 80
 
 ### Helm chart
 
-#### Installing the Chart
+#### Chart repository
+
+The chart is published as a repository using GitHub Pages at https://idealista.github.io/prom2teams.
+
+Add the chart repository:
+```bash
+helm repo add prom2teams https://idealista.github.io/prom2teams
+```
+
+List published charts:
+```bash
+helm repo update
+helm search repo -l prom2teams/prom2teams
+```
+
+#### Installing the Chart from local path
 
 To install the chart with the release name `my-release` run:
 
 ```bash
-$ helm install --name my-release /location/of/prom2teams_ROOT/helm
+$ helm install  my-release prom2teams/prom2teams --version 0.2.0
+```
+
+#### Installing the Chart from local path
+
+To install the chart with the release name `my-release` run:
+
+```bash
+$ helm install my-release /location/of/prom2teams_ROOT/helm
 ```
 
 After a few seconds, Prom2Teams should be running.
@@ -201,7 +224,7 @@ The config file is an [INI file](https://docs.python.org/3/library/configparser.
 [Microsoft Teams]
 # At least one connector is required here
 Connector: <webhook url>
-AnotherConnector: <webhook url>   
+AnotherConnector: <webhook url>
 ...
 
 [HTTP Server]
@@ -238,7 +261,7 @@ The [webhook receiver](https://prometheus.io/docs/alerting/configuration/#<webho
 
 The url is formed by the host and port defined in the previous step.
 
-**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.   
+**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.
 
 ```
 // The prom2teams endpoint to send HTTP POST requests to.
