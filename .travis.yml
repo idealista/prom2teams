@@ -18,7 +18,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  - pip install --upgrade setuptools 
   - pip install -r requirements.txt
 
 script:
