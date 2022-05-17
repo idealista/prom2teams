@@ -13,3 +13,4 @@ MarkupSafe==1.1.1
 pyrsistent==0.16.0
 tenacity==6.2.0
 itsdangerous==2.0.1 
+importlib-metadata==4.11.3
