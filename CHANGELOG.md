@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
 
+## [3.3.0](https://github.com/idealista/prom2teams/tree/3.3.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.3...3.3.0)
 ### Fixed
 - *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
