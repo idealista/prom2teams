@@ -6,7 +6,7 @@ services:
 python:
   - '3.8'
   - '3.9'
-  - '3.10'
+  - '3.10.4'
 
 env:
   - DOCKER_COMPOSE_VERSION=1.27.3
