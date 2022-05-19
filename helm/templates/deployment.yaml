@@ -46,6 +46,10 @@ spec:
             value: {{ .Values.prom2teams.connector | quote }}
           - name: PROM2TEAMS_GROUP_ALERTS_BY
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
+          {{- range $key, $value := .Values.prom2teams.extraEnv }}
+          - name: "{{ $key }}"
+            value: "{{ $value }}"
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if .Values.securityContext.enabled }}

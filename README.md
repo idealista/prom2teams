@@ -155,6 +155,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.loglevel`                           | Loglevel                                                                                                           | `INFO`
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
 | `prom2teams.config`                             | Config (specific to Helm)                                                                                          | `/opt/prom2teams/helmconfig/config.ini`
+| `prom2teams.extraEnv`                           | Dictionary of arbitrary additional environment variables for deployment (eg. `HTTP_PROXY`)                         | `<empty>`
 
 ### Production
 
@@ -224,6 +225,7 @@ Excluded: <Comma separated list of labels to ignore>
 Excluded: <Comma separated list of annotations to ignore>
 
 [Teams Client]
+RequestTimeout: <Configures the request timeout> # defaults to 30 secs
 RetryEnable: <Enables teams client retry policy> # defaults to false
 RetryWaitTime: <Wait time between retries> # default: 60 secs
 MaxPayload: <Teams client payload limit in bytes> # default: 24KB

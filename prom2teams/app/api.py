@@ -29,7 +29,7 @@ def ready():
 def error_handler(e):
     msg = 'An unhandled exception occurred. {}'.format(e)
     log.exception(msg)
-    return str(e), e.code
+    return str(e), 500
 
 
 
