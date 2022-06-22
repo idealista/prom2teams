@@ -43,3 +43,13 @@ jobs:
         on:
           tags: true
         skip_existing: true
+    - stage: Deploy to DockerHub
+      before_deploy:
+      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+      - docker build -t prom2teams .
+      - docker tag prom2teams $DOCKER_USERNAME/prom2teams:$TRAVIS_TAG
+      deploy:
+        provider: script
+        script: docker push $DOCKER_USERNAME/prom2teams:$TRAVIS_TAG
+        on:
+          tags: true
