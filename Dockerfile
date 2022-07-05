@@ -17,13 +17,22 @@ EXPOSE 8089
 WORKDIR /opt/prom2teams
 COPY docker/rootfs .
 COPY --from=builder /prom2teams/dist .
-RUN apk add gcc libc-dev yaml-dev linux-headers --no-cache \
+COPY bin/wsgi.py ./wsgi.py
+RUN apk add gcc libc-dev yaml-dev linux-headers pcre pcre-dev --no-cache \
 	&& pip install prom2teams*.whl
+RUN addgroup -g "101" -S prom2teams && \
+        adduser -S prom2teams -G prom2teams -u "101" && \
+        mkdir -p /var/log/prom2teams && \
+        chown -R prom2teams:prom2teams /var/log/prom2teams && \
+        chown -R prom2teams:prom2teams /opt/prom2teams
+USER prom2teams
 ENV PROM2TEAMS_PORT="8089" \
         PROM2TEAMS_HOST="0.0.0.0" \
         PROM2TEAMS_LOGLEVEL="INFO" \
         PROM2TEAMS_CONNECTOR="" \
         PROM2TEAMS_GROUP_ALERTS_BY="" \
         APP_CONFIG_FILE="/opt/prom2teams/config.ini" \
-        PROM2TEAMS_PROMETHEUS_METRICS="true"
+        PROM2TEAMS_PROMETHEUS_METRICS="true" \
+        UWSGI_PROCESSES="1" \
+        UWSGI_THREADS="1"
 ENTRYPOINT ["sh", "prom2teams_start.sh"]

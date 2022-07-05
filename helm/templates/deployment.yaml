@@ -41,11 +41,13 @@ spec:
           - name: PROM2TEAMS_PORT
             value: {{ .Values.prom2teams.port | quote }}
           - name: PROM2TEAMS_HOST
-            value: {{ .Values.prom2teams.ip | quote }}
+            value: {{ .Values.prom2teams.host | quote }}
           - name: PROM2TEAMS_CONNECTOR
             value: {{ .Values.prom2teams.connector | quote }}
           - name: PROM2TEAMS_GROUP_ALERTS_BY
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
+          - name: PROM2TEAMS_LOGLEVEL
+            value: {{ .Values.prom2teams.loglevel }}
           {{- range $key, $value := .Values.prom2teams.extraEnv }}
           - name: "{{ $key }}"
             value: "{{ $value }}"
