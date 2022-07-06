@@ -18,8 +18,10 @@ with open('/opt/prom2teams/uwsgi.ini', 'r') as file:
 
 uwsgi_filedata = uwsgi_filedata.replace("uwsgiprocesses", os.environ.get("UWSGI_PROCESSES"))
 uwsgi_filedata = uwsgi_filedata.replace("uwsgithreads", os.environ.get("UWSGI_THREADS"))
-uwsgi_filedata = uwsgi_filedata.replace("prom2teamsport", os.environ.get("PROM2TEAMS_PORT"))
-uwsgi_filedata = uwsgi_filedata.replace("prom2teamshost", os.environ.get("PROM2TEAMS_HOST"))
+uwsgi_filedata = uwsgi_filedata.replace("uwsgiport", os.environ.get("UWSGI_PORT"))
+uwsgi_filedata = uwsgi_filedata.replace("uwsgihost", os.environ.get("UWSGI_HOST"))
+uwsgi_filedata = uwsgi_filedata.replace("uwsgiprotocol", os.environ.get("UWSGI_PROTOCOL"))
+
 
 with open('/opt/prom2teams/uwsgi.ini', 'w') as file:
   file.write(uwsgi_filedata)

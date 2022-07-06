@@ -27,12 +27,15 @@ RUN addgroup -g "101" -S prom2teams && \
         chown -R prom2teams:prom2teams /opt/prom2teams
 USER prom2teams
 ENV PROM2TEAMS_PORT="8089" \
-        PROM2TEAMS_HOST="0.0.0.0" \
+        PROM2TEAMS_HOST="localhost" \
         PROM2TEAMS_LOGLEVEL="INFO" \
         PROM2TEAMS_CONNECTOR="" \
         PROM2TEAMS_GROUP_ALERTS_BY="" \
         APP_CONFIG_FILE="/opt/prom2teams/config.ini" \
         PROM2TEAMS_PROMETHEUS_METRICS="true" \
         UWSGI_PROCESSES="1" \
-        UWSGI_THREADS="1"
+        UWSGI_THREADS="1" \
+        UWSGI_PORT="8089" \
+        UWSGI_HOST="0.0.0.0" \
+        UWSGI_PROTOCOL="http" 
 ENTRYPOINT ["sh", "prom2teams_start.sh"]
