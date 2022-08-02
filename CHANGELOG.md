@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [3.3.0](https://github.com/idealista/prom2teams/tree/3.3.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.3...3.3.0)
 ### Fixed
+- *[#290](https://github.com/idealista/prom2teams/pull/290) Fixed .travis.yml config file and added to requirements.txt some missing dependencies.* @ommarmol
 - *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
 - *[#281](https://github.com/idealista/prom2teams/pull/281) Allow to add arbitrary envvars to deployment* @dkobras
