@@ -33,6 +33,7 @@ def _update_application_configuration(application, configuration):
         application.config['MICROSOFT_TEAMS'] = configuration['Microsoft Teams']
     if 'Microsoft Teams Client' in configuration:
         application.config['TEAMS_CLIENT_CONFIG'] = {
+            'TIMEOUT': configuration.getint('Microsoft Teams Client', 'RequestTimeout'),
             'RETRY_ENABLE': configuration.getboolean('Microsoft Teams Client', 'RetryEnable'),
             'RETRY_WAIT_TIME': configuration.getint('Microsoft Teams Client', 'RetryWaitTime'),
             'MAX_PAYLOAD': configuration.getint('Microsoft Teams Client', 'MaxPayload')

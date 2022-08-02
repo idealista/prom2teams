@@ -2,13 +2,15 @@ os: linux
 dist: bionic
 language: python
 
+dist: focal
+
 services:
   - docker
 
 python:
-  - '3.7'
   - '3.8'
   - '3.9'
+  - '3.10'
 
 env:
   - DOCKER_COMPOSE_VERSION=1.27.3
@@ -42,3 +44,14 @@ jobs:
         on:
           tags: true
         skip_existing: true
+    - stage: Deploy to DockerHub
+      before_deploy:
+      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+      - docker build -t prom2teams .
+      - docker tag prom2teams $DOCKER_USERNAME/prom2teams:latest
+      - docker tag prom2teams $DOCKER_USERNAME/prom2teams:$TRAVIS_TAG
+      deploy:
+        provider: script
+        script: docker push $DOCKER_USERNAME/prom2teams:$TRAVIS_TAG && docker push $DOCKER_USERNAME/prom2teams:latest
+        on:
+          tags: true
