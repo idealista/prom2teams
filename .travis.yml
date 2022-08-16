@@ -46,6 +46,7 @@ jobs:
         skip_existing: true
     - stage: Deploy to DockerHub
       before_deploy:
+      - cd ../..
       - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
       - docker build -t prom2teams .
       - docker tag prom2teams $DOCKER_USERNAME/prom2teams:latest
