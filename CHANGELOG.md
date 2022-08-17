@@ -3,10 +3,18 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [4.0.0](https://github.com/idealista/prom2teams/tree/4.0.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.3.0...4.0.0)
+### Fixed
+- *[#301](https://github.com/idealista/prom2teams/pull/301) Update image to use uWSGI* @santi-eidu
+### Added
+- *[#297](https://github.com/idealista/prom2teams/issues/297) Add travis job to upload docker image to Dockerhub* @santi-eidu
+- *[#296](https://github.com/idealista/prom2teams/issues/296) Release 3.3.0 missing on Docker Hub* @santi-eidu
 
 ## [3.3.0](https://github.com/idealista/prom2teams/tree/3.3.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.3...3.3.0)
 ### Fixed
+- *[#290](https://github.com/idealista/prom2teams/pull/290) Fixed .travis.yml config file and added to requirements.txt some missing dependencies.* @ommarmol
 - *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
 - *[#281](https://github.com/idealista/prom2teams/pull/281) Allow to add arbitrary envvars to deployment* @dkobras
