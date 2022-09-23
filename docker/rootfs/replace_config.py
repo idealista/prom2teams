@@ -9,6 +9,7 @@ filedata = filedata.replace("prom2teamshost", os.environ.get("PROM2TEAMS_HOST"))
 filedata = filedata.replace("prom2teamsconnector", os.environ.get("PROM2TEAMS_CONNECTOR"))
 filedata = filedata.replace("prom2teamsgroupalertsby", os.environ.get("PROM2TEAMS_GROUP_ALERTS_BY"))
 filedata = filedata.replace("prom2teamslogslevel", os.environ.get("PROM2TEAMS_LOGLEVEL"))
+filedata = filedata.replace("prom2teamstemplatepath", os.environ.get("PROM2TEAMS_TEMPLATEPATH"))
 
 with open('/opt/prom2teams/config.ini', 'w') as file:
   file.write(filedata)

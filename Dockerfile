@@ -31,6 +31,7 @@ ENV PROM2TEAMS_PORT="8089" \
         PROM2TEAMS_LOGLEVEL="INFO" \
         PROM2TEAMS_CONNECTOR="" \
         PROM2TEAMS_GROUP_ALERTS_BY="" \
+        PROM2TEAMS_TEMPLATEPATH="/opt/prom2teams/helmconfig/teams.j2" \
         APP_CONFIG_FILE="/opt/prom2teams/config.ini" \
         PROM2TEAMS_PROMETHEUS_METRICS="true" \
         UWSGI_PROCESSES="1" \
