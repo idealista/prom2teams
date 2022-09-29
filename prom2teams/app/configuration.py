@@ -130,9 +130,13 @@ def config_app(application):
             application.config['GROUP_ALERTS_BY'] = command_line_args.groupalertsby
         if command_line_args.enablemetrics or os.environ.get('PROM2TEAMS_PROMETHEUS_METRICS', False):
             os.environ["DEBUG_METRICS"] = "True"
-            from prometheus_flask_exporter.multiprocess import UWsgiPrometheusMetrics
-            metrics = UWsgiPrometheusMetrics(application)
-            metrics.start_http_server(int(os.getenv('PROMETHEUS_MULTIPROC_PORT')))
+            if application.config['ENV'] == "werkzeug":
+                from prometheus_flask_exporter import PrometheusMetrics
+                metrics = PrometheusMetrics(application)
+            else:
+                from prometheus_flask_exporter.multiprocess import UWsgiPrometheusMetrics
+                metrics = UWsgiPrometheusMetrics(application)
+                metrics.start_http_server(int(os.getenv('PROMETHEUS_MULTIPROC_PORT')))
         if 'MICROSOFT_TEAMS' not in application.config:
             raise MissingConnectorConfigKeyException('missing connector key in config')
 

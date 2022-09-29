@@ -10,6 +10,7 @@ except ImportError:
     from prom2teams.app.api import app as application
 
 if __name__ == "__main__":
+    application.config['ENV'] = "werkzeug"
     host = application.config['HOST']
     port = int(application.config['PORT'])
     run_simple(hostname=host, port=port, application=application, use_reloader=True,
