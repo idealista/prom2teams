@@ -10,8 +10,11 @@ filedata = filedata.replace("prom2teamsconnector", os.environ.get("PROM2TEAMS_CO
 filedata = filedata.replace("prom2teamsgroupalertsby", os.environ.get("PROM2TEAMS_GROUP_ALERTS_BY"))
 filedata = filedata.replace("prom2teamslogslevel", os.environ.get("PROM2TEAMS_LOGLEVEL"))
 
-with open('/opt/prom2teams/config.ini', 'w') as file:
-  file.write(filedata)
+try:
+  with open('/opt/prom2teams/config.ini', 'w') as file:
+    file.write(filedata)
+except:
+    pass
 
 with open('/opt/prom2teams/uwsgi.ini', 'r') as file:
   uwsgi_filedata = file.read()
@@ -22,6 +25,8 @@ uwsgi_filedata = uwsgi_filedata.replace("uwsgiport", os.environ.get("UWSGI_PORT"
 uwsgi_filedata = uwsgi_filedata.replace("uwsgihost", os.environ.get("UWSGI_HOST"))
 uwsgi_filedata = uwsgi_filedata.replace("uwsgiprotocol", os.environ.get("UWSGI_PROTOCOL"))
 
-
-with open('/opt/prom2teams/uwsgi.ini', 'w') as file:
-  file.write(uwsgi_filedata)
+try:
+  with open('/opt/prom2teams/uwsgi.ini', 'w') as file:
+    file.write(uwsgi_filedata)
+except:
+    pass
