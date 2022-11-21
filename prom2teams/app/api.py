@@ -2,8 +2,10 @@ import logging.config
 import os
 
 from flask import Flask, Blueprint, send_from_directory
+from marshmallow.exceptions import ValidationError
 
 from prom2teams.app.configuration import config_app, setup_logging
+from .exceptions import MicrosoftTeamsRequestException
 from .versions.v1 import api_v1
 from .versions.v1.namespace import ns as ns_v1
 from .versions.v2 import api_v2
@@ -13,24 +15,31 @@ log = logging.getLogger('prom2teams_app')
 
 app = Flask(__name__)
 
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+
 @app.route('/alive')
 def alive():
     return "YES", 200
+
 
 @app.route('/ready')
 def ready():
     return ("YES", 200) if app.config['FINISH_INIT'] else ("NO", 503)
 
+
 def error_handler(e):
     msg = 'An unhandled exception occurred. {}'.format(e)
     log.exception(msg)
+    if isinstance(e, MicrosoftTeamsRequestException):
+        return str(e), e.code
+    if isinstance(e, ValidationError):
+        return str(e), 400
     return str(e), 500
-
 
 
 def register_api(application, api, namespace, blueprint):
@@ -49,6 +58,7 @@ def init_app(application):
     register_api(application, api_v2, ns_v2, blueprint_v2)
     application.register_error_handler(500, error_handler)
     application.config['FINISH_INIT'] = True
+
 
 init_app(app)
 log.info('{} started on {}:{}'.format(app.config['APP_NAME'], app.config['HOST'], app.config['PORT']))

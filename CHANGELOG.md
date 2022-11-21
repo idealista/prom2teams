@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [4.2.0](https://github.com/idealista/prom2teams/tree/4.2.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.1.0...4.2.0)
+### Added
+- *[#312](https://github.com/idealista/prom2teams/pull/312) Improve error handler to distinguish between different kind of exceptions* @smartinsempere
+## [4.1.0](https://github.com/idealista/prom2teams/tree/4.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.0.0...4.1.0)
+### Fixed
+- *[#309](https://github.com/idealista/prom2teams/pull/309) Update prom2teams to use flask exporter with uWSGI for metrics when using uWSGI mode* @santi-eidu
 ## [4.0.0](https://github.com/idealista/prom2teams/tree/4.0.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.3.0...4.0.0)
 ### Fixed
