@@ -13,7 +13,7 @@ filedata = filedata.replace("prom2teamslogslevel", os.environ.get("PROM2TEAMS_LO
 try:
   with open('/opt/prom2teams/config.ini', 'w') as file:
     file.write(filedata)
-except:
+except (PermissionError, OSError) as error:
     pass
 
 with open('/opt/prom2teams/uwsgi.ini', 'r') as file:
@@ -28,5 +28,5 @@ uwsgi_filedata = uwsgi_filedata.replace("uwsgiprotocol", os.environ.get("UWSGI_P
 try:
   with open('/opt/prom2teams/uwsgi.ini', 'w') as file:
     file.write(uwsgi_filedata)
-except:
-    pass
+except (PermissionError, OSError) as error:
+  pass
