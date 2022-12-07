@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [4.2.1](https://github.com/idealista/prom2teams/tree/4.2.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/4.2.0...4.2.1)
 ### Fixed
-- *[#307](https://github.com/idealista/prom2teams/pull/307) Update prom2teams replace_config with exception control* @santi-eidu
+- *[#307](https://github.com/idealista/prom2teams/pull/307) Update prom2teams replace_config with tmp config files* @santi-eidu
 ## [4.2.0](https://github.com/idealista/prom2teams/tree/4.2.0)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/4.1.0...4.2.0)
 ### Added
