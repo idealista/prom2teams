@@ -11,10 +11,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prom2teams-config
+  name: {{ include "prom2teams.fullname" . }}
   labels:
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    {{ include "prom2teams.labels" . | nindent 4 }}
 data:
   config.ini: |-
     [HTTP Server]

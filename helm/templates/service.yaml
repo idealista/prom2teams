@@ -4,6 +4,10 @@ metadata:
   name: {{ include "prom2teams.fullname" . }}
   labels:
 {{ include "prom2teams.labels" . | indent 4 }}
+{{- if .Values.service.annotations }}
+  annotations:
+{{ toYaml .Values.service.annotations | indent 4 }}
+{{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,5 +16,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "prom2teams.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- include "prom2teams.selectorLabels" . | nindent 4 }}

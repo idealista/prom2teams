@@ -18,10 +18,16 @@ resources:
 service:
   type: ClusterIP
   port: 8089
+#  annotations:
+#    prometheus.io/scrape: "true"
+#    prometheus.io/port: "8089"
+#    prometheus.io/scheme: http
+#    prometheus.io/path: /metrics
 
 prom2teams:
   host: 0.0.0.0
   port: 8089
+  metrics: false
   connector:
   connectors: {}
   # group_alerts_by can be one of
@@ -33,15 +39,19 @@ prom2teams:
   config: /opt/prom2teams/helmconfig/config.ini
   extraEnv: {}
 
-# Security Context properties
+podAnnotations: {}
+
 securityContext:
-  # enabled is a flag to enable Security Context
-  enabled: true
-  # runAsUser is the user ID used to run the container
+  privileged: false
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
   runAsUser: 101
-  # runAsGroup is the primary group ID used to run all processes within any container of the pod
   runAsGroup: 101
-  # fsGroup is the group ID associated with the container
-  fsGroup: 101
-  # readOnlyRootFilesystem is a flag to enable readOnlyRootFilesystem for the Hazelcast security context
-  readOnlyRootFilesystem: true
+
+podSecurityContext:
+  fsGroup: 2000
+  seccompProfile:
+    type: RuntimeDefault

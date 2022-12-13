@@ -3,34 +3,40 @@ kind: Deployment
 metadata:
   name: {{ include "prom2teams.fullname" . }}
   labels:
-{{ include "prom2teams.labels" . | indent 4 }}
+    {{- include "prom2teams.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "prom2teams.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- include "prom2teams.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app.kubernetes.io/name: {{ include "prom2teams.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- include "prom2teams.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
+      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: config
           configMap:
-            name: prom2teams-config
+            name: {{ include "prom2teams.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8089
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           volumeMounts:
             - name: config
@@ -48,38 +54,31 @@ spec:
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
           - name: PROM2TEAMS_LOGLEVEL
             value: {{ .Values.prom2teams.loglevel }}
+          - name: PROM2TEAMS_PROMETHEUS_METRICS
+            value: {{ .Values.prom2teams.metrics | quote }}
           {{- range $key, $value := .Values.prom2teams.extraEnv }}
           - name: "{{ $key }}"
             value: "{{ $value }}"
           {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        {{- if .Values.securityContext.enabled }}
-          securityContext:
-            privileged: false
-            readOnlyRootFilesystem: false
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-              - ALL
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with .Values.affinity }}
+      {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+      {{- end }}
+      {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- if .Values.securityContext.enabled }}
-      securityContext:
-        runAsNonRoot: {{ if eq (int .Values.securityContext.runAsUser) 0 }}false{{ else }}true{{ end }}
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        runAsGroup: {{ .Values.securityContext.runAsGroup }}
-        fsGroup: {{ .Values.securityContext.fsGroup }}
-    {{- end }}
-
+      {{- end }}
