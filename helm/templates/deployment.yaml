@@ -52,7 +52,7 @@ spec:
           - name: PROM2TEAMS_LOGLEVEL
             value: {{ .Values.prom2teams.loglevel }}
           - name: PROMETHEUS_MULTIPROC_PORT
-            value: {{ .Values.prom2teams.monitoring_port }}
+            value: {{ .Values.prom2teams.monitoring_port | quote }}
           {{- range $key, $value := .Values.prom2teams.extraEnv }}
           - name: "{{ $key }}"
             value: "{{ $value }}"
