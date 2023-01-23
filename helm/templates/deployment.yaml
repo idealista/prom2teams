@@ -32,6 +32,9 @@ spec:
             - name: http
               containerPort: 8089
               protocol: TCP
+            - name: http-metrics
+              containerPort: 9090
+              protocol: TCP
           volumeMounts:
             - name: config
               mountPath: /opt/prom2teams/helmconfig/
@@ -48,6 +51,8 @@ spec:
             value: {{ .Values.prom2teams.group_alerts_by | quote }}
           - name: PROM2TEAMS_LOGLEVEL
             value: {{ .Values.prom2teams.loglevel }}
+          - name: PROMETHEUS_MULTIPROC_PORT
+            value: {{ .Values.prom2teams.monitoring_port }}
           {{- range $key, $value := .Values.prom2teams.extraEnv }}
           - name: "{{ $key }}"
             value: "{{ $value }}"

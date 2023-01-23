@@ -18,10 +18,12 @@ resources:
 service:
   type: ClusterIP
   port: 8089
+  monitoring_port: 9090
 
 prom2teams:
   host: 0.0.0.0
   port: 8089
+  monitoring_port: 9090
   connector:
   connectors: {}
   # group_alerts_by can be one of
