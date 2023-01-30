@@ -11,6 +11,10 @@ spec:
       targetPort: 8089
       protocol: TCP
       name: http
+    - port: {{ .Values.service.monitoring_port }}
+      targetPort: 9090
+      protocol: TCP
+      name: http-metrics
   selector:
     app.kubernetes.io/name: {{ include "prom2teams.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
