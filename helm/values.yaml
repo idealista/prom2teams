@@ -34,6 +34,7 @@ prom2teams:
   templatepath: /opt/prom2teams/helmconfig/teams.j2
   config: /opt/prom2teams/helmconfig/config.ini
   extraEnv: {}
+  j2_template: ""
 
 # Security Context properties
 securityContext:

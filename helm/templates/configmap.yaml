@@ -33,4 +33,4 @@ data:
     Level: {{ .Values.prom2teams.loglevel }}
     [Template]
     Path: {{ .Values.prom2teams.templatepath }}
-  teams.j2: {{ .Files.Get "files/teams.j2" |  quote }}
+  teams.j2: {{ default (.Files.Get "files/teams.j2") .Values.prom2teams.j2_template | quote }}

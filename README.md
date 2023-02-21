@@ -3,7 +3,7 @@
 
   [![Build Status](https://travis-ci.com/idealista/prom2teams.svg?branch=master)](https://travis-ci.com/idealista/prom2teams)
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=idealista_prom2teams&metric=alert_status)](https://sonarcloud.io/dashboard?id=idealista_prom2teams)
-  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/) 
+  [![Docker Build Status](https://img.shields.io/docker/build/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
   [![Docker Hub Pulls](https://img.shields.io/docker/pulls/idealista/prom2teams.svg)](https://hub.docker.com/r/idealista/prom2teams/)
 </div>
 
@@ -18,23 +18,32 @@
 It presents grouping of alerts, labels/annotations exclusion and a Teams' alert retry policy among its key features.
 
 
-- [Getting Started](#getting-started)
-	- [Prerequisities](#prerequisites)
-	- [Installing](#installing)
-- [Usage](#usage)
-  - [Docker Image](#docker-image)
-  - [Helm Chart](#helm-chart)
-  - [Config file](#config-file)
-	- [Configuring Prometheus](#configuring-prometheus)
-	- [Templating](#templating)
-- [Documentation](#documentation)
-  - [Swagger UI](#swagger-ui)
-- [Testing](#testing)
-- [Built With](#built-with)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
-- [Contributing](#contributing)
+- [prom2teams: Prometheus Alertmanager/Microsoft Teams integration](#prom2teams-prometheus-alertmanagermicrosoft-teams-integration)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [Usage](#usage)
+    - [Docker image](#docker-image)
+      - [Provide custom config file](#provide-custom-config-file)
+    - [Helm chart](#helm-chart)
+      - [Installing the Chart](#installing-the-chart)
+      - [Uninstalling the Chart](#uninstalling-the-chart)
+        - [Helm 2](#helm-2)
+        - [Helm 3](#helm-3)
+      - [Configuration](#configuration)
+    - [Production](#production)
+    - [Config file](#config-file)
+    - [Configuring Prometheus](#configuring-prometheus)
+    - [Prom2teams Prometheus metrics](#prom2teams-prometheus-metrics)
+    - [Templating](#templating)
+  - [Documentation](#documentation)
+    - [Swagger UI](#swagger-ui)
+  - [Testing](#testing)
+  - [Built With](#built-with)
+  - [Versioning](#versioning)
+  - [Authors](#authors)
+  - [License](#license)
+  - [Contributing](#contributing)
 
 ## Getting Started
 
@@ -156,6 +165,7 @@ The following table lists the configurable parameters of the Prom2teams chart an
 | `prom2teams.templatepath`                       | Custom Template path (files/teams.j2)                                                                              | `/opt/prom2teams/helmconfig/teams.j2`
 | `prom2teams.config`                             | Config (specific to Helm)                                                                                          | `/opt/prom2teams/helmconfig/config.ini`
 | `prom2teams.extraEnv`                           | Dictionary of arbitrary additional environment variables for deployment (eg. `HTTP_PROXY`)                         | `<empty>`
+| `prom2teams.j2_template`                        | String representation of your own *.j2 template file | `<empty>`
 
 ### Production
 
@@ -201,7 +211,7 @@ The config file is an [INI file](https://docs.python.org/3/library/configparser.
 [Microsoft Teams]
 # At least one connector is required here
 Connector: <webhook url>
-AnotherConnector: <webhook url>   
+AnotherConnector: <webhook url>
 ...
 
 [HTTP Server]
@@ -239,7 +249,7 @@ The [webhook receiver](https://prometheus.io/docs/alerting/configuration/#<webho
 
 The url is formed by the host and port defined in the previous step.
 
-**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.   
+**Note:** In order to keep compatibility with previous versions, v2.0 keep attending the default connector ("Connector") in the endpoint 0.0.0.0:8089. This will be removed in future versions.
 
 ```
 // The prom2teams endpoint to send HTTP POST requests to.
