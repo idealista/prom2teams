@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
   name: {{ include "prom2teams.fullname" . }}
   labels:
 {{ include "prom2teams.labels" . | indent 4 }}
