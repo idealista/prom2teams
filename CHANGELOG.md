@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [4.2.2](https://github.com/idealista/prom2teams/tree/4.2.2)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.2.1...4.2.2)
+### Added
+- *[#325](https://github.com/idealista/prom2teams/pull/325) add metrics port configuration in Helm* @santi-eidu
 ## [4.2.1](https://github.com/idealista/prom2teams/tree/4.2.1)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/4.2.0...4.2.1)
 ### Fixed
