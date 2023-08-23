@@ -3,7 +3,7 @@ flask-restplus==0.12.1
 marshmallow==3.0.0rc6
 jinja2==2.11.3
 Flask==1.0.2
-pyyaml==5.4
+pyyaml==6.0.1
 uwsgi==2.0.20
 prometheus_flask_exporter==0.9.0
 werkzeug==0.16.1
