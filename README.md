@@ -224,7 +224,7 @@ Excluded: <Comma separated list of labels to ignore>
 [Annotations]
 Excluded: <Comma separated list of annotations to ignore>
 
-[Teams Client]
+[Microsoft Teams Client]
 RequestTimeout: <Configures the request timeout> # defaults to 30 secs
 RetryEnable: <Enables teams client retry policy> # defaults to false
 RetryWaitTime: <Wait time between retries> # default: 60 secs

@@ -1,6 +1,10 @@
+from typing import Optional
+
+
 class MicrosoftTeamsRequestException(Exception):
-    def __init__(self, msg, code=None):
+    def __init__(self, message: str, code: Optional[int] = None):
         self.code = code
+        super().__init__(message)
 
 
 class MissingConnectorConfigKeyException(Exception):

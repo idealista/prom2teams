@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if ! command -v docker-compose &> /dev/null
+then
+    echo "The 'docker-compose' command could not be found!"
+    echo "See https://docs.docker.com/compose/install/ for installation instructions."
+    exit 1
+fi
 
 create_containers(){
     echo "Creating containers..."

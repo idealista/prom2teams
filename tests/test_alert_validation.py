@@ -1,5 +1,4 @@
 import unittest
-import os
 
 from prom2teams.teams.teams_alert_validation import remove_double_quotes_from_teams_alert
 from prom2teams.teams.teams_alert_schema import TeamsAlert

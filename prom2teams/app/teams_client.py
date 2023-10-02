@@ -1,4 +1,3 @@
-import json
 import logging
 import requests
 from tenacity import retry, wait_fixed, after_log
@@ -53,5 +52,4 @@ class TeamsClient:
                                  str(response.status_code),
                                  str(response.text),
                                  str(message))
-            raise MicrosoftTeamsRequestException(
-                exception_msg, code=response.status_code)
+            raise MicrosoftTeamsRequestException(message=exception_msg, code=response.status_code)
