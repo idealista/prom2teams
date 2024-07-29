@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+### Changed
+- *[#351](https://github.com/idealista/prom2teams/pull/351) Support new Microsoft Teams workflows* @FrankBlooBM
+
 ## [4.2.2](https://github.com/idealista/prom2teams/tree/4.2.2)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/4.2.1...4.2.2)
 ### Added
