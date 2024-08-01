@@ -1,12 +1,13 @@
-import unittest
-import os
 import json
-
-from prom2teams.teams.alert_mapper import map_prom_alerts_to_teams_alerts
-from prom2teams.prometheus.message_schema import MessageSchema
-from prom2teams.app.sender import AlertSender
+import os
+import unittest
 
 from deepdiff import DeepDiff
+
+from prom2teams.app.sender import AlertSender
+from prom2teams.prometheus.message_schema import MessageSchema
+from prom2teams.teams.alert_mapper import map_prom_alerts_to_teams_alerts
+
 
 class TestJSONFields(unittest.TestCase):
     TEST_CONFIG_FILES_PATH = './tests/data/json_files/'
@@ -115,15 +116,15 @@ class TestJSONFields(unittest.TestCase):
         excluded_annotations = ('message', )
         with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'all_ok_extra_annotations.json')) as json_data:
             with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'teams_alert_all_ok_extra_annotations.json')) as expected_data:
-               json_received = json.load(json_data)
-               json_expected = json.load(expected_data)
+                json_received = json.load(json_data)
+                json_expected = json.load(expected_data)
 
-               alerts = MessageSchema(exclude_annotations=excluded_annotations).load(json_received)
-               rendered_data = AlertSender()._create_alerts(alerts)[0]
-               json_rendered = json.loads(rendered_data)
+                alerts = MessageSchema(exclude_annotations=excluded_annotations).load(json_received)
+                rendered_data = AlertSender()._create_alerts(alerts)[0]
+                json_rendered = json.loads(rendered_data)
 
-               diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
-               self.assertTrue(not diff)
+                diff = DeepDiff(json_rendered, json_expected, ignore_order=True)
+                self.assertTrue(not diff)
 
     def test_with_too_long_payload(self):
         with open(os.path.join(self.TEST_CONFIG_FILES_PATH, 'all_ok_multiple.json')) as json_data:
@@ -132,7 +133,8 @@ class TestJSONFields(unittest.TestCase):
                 json_expected = json.load(expected_data)
 
                 alerts = MessageSchema().load(json_received)
-                rendered_data = '[' + ','.join([a.replace("\n\n\n", " ") for a in AlertSender(group_alerts_by='name', teams_client_config={'MAX_PAYLOAD': 800})._create_alerts(alerts)]) + ']'
+
+                rendered_data = '[' + ','.join([a.replace("\n\n\n", " ") for a in AlertSender(group_alerts_by='name', teams_client_config={'MAX_PAYLOAD': 1600})._create_alerts(alerts)]) + ']'
                 json_rendered = json.loads(rendered_data)
 
                 diff = DeepDiff(json_rendered, json_expected, ignore_order=True)

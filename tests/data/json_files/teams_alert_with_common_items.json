@@ -1,61 +1,68 @@
 {
-    "@type": "MessageCard",
-    "@context": "http://schema.org/extensions",
-    "themeColor": " 2DC72D ",
-    "summary": "(Resolved) CPU throttling",
-    "title": "Prometheus alert (Resolved) ",
-    "sections": [
-        {
-            "activityTitle": "CPU throttling",
-            "facts": [
-                {
-                    "name": "Alert",
-                    "value": "CPUThrottlingHigh"
-                },
-                {
-                    "name": "In host",
-                    "value": "unknown"
-                },
-                {
-                    "name": "Severity",
-                    "value": "warning"
-                },
-                {
-                    "name": "Description",
-                    "value": "unknown"
-                },
-                {
-                    "name": "Status",
-                    "value": "resolved"
-                },
-                {
-                    "name": "container_name",
-                    "value": "config-reloader"
-                },
-                {
-                    "name": "pod_name",
-                    "value": "alertmanager-ot-mon-prometheus-operator-alertmanager-0"
-                },
-                {
-                    "name": "namespace",
-                    "value": "monitoring"
-                },
-                {
-                    "name": "prometheus",
-                    "value": "monitoring/ot-mon-prometheus-operator-prometheus"
-                }
-            ],
-            "markdown": true
-        }
-    ],
-    "potentialAction": [
-        {
-            "@context": "http://schema.org",
-            "@type": "ViewAction",
-            "name": "Runbook",
-            "target": [
-                "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage"
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "msteams": {
+          "width": "Full"
+        },
+        "body": [
+          {
+            "type": "ColumnSet",
+            "style": "good",
+            "columns": [
+              {
+                "type": "Column",
+                "width": "stretch",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Prometheus alert CPUThrottlingHigh (Resolved)",
+                    "weight": "Bolder",
+                    "size": "Large"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "(Resolved) CPU throttling",
+                    "wrap": true
+                  }
+                ]
+              }
             ]
-        }
-    ]
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              { "title": "Alert", "value": "CPUThrottlingHigh" },
+              { "title": "In host", "value": "unknown" },
+              { "title": "Severity", "value": "warning" },
+              { "title": "Description", "value": "unknown" },
+              { "title": "Status", "value": "resolved" },
+              { "title": "container_name", "value": "config-reloader" },
+              {
+                "title": "pod_name",
+                "value": "alertmanager-ot-mon-prometheus-operator-alertmanager-0"
+              },
+              { "title": "namespace", "value": "monitoring" },
+              {
+                "title": "prometheus",
+                "value": "monitoring/ot-mon-prometheus-operator-prometheus"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "title": "View details",
+            "url": "https://cs30-evilcorp-runbooks.com/rootfs-device-high-disk-usage"
+          }
+        ]
+      }
+    }
+  ]
 }

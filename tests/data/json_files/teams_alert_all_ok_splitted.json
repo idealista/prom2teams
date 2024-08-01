@@ -1,72 +1,110 @@
-    [
-        {
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "themeColor": " 2DC72D ",
-            "summary": "(Resolved) Disk usage alert on CS31.evilcorp",
-            "title": "Prometheus alert (Resolved) ",
-            "sections": [
+[
+  {
+    "type": "message",
+    "attachments": [
+      {
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+          "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+          "type": "AdaptiveCard",
+          "version": "1.4",
+          "msteams": {
+            "width": "Full"
+          },
+          "body": [
+            {
+              "type": "ColumnSet",
+              "style": "good",
+              "columns": [
                 {
-                    "activityTitle": "Disk usage alert on CS31.evilcorp",
-                    "facts": [
-                        {
-                            "name": "Alert",
-                            "value": "DiskSpace"
-                        },
-                        {
-                            "name": "In host",
-                            "value": "cs31.evilcorp"
-                        },
-                        {
-                            "name": "Severity",
-                            "value": "critical"
-                        },
-                        {
-                            "name": "Description",
-                            "value": "disk usage 94% on rootfs device"
-                        },
-                        {
-                            "name": "Status",
-                            "value": "resolved"
-                        }
-                    ],
-                    "markdown": true
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Prometheus alert DiskSpace (Resolved)",
+                      "weight": "Bolder",
+                      "size": "Large"
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "(Resolved) Disk usage alert on CS31.evilcorp",
+                      "wrap": true
+                    }
+                  ]
                 }
-            ]
-        },
-        {
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "themeColor": " 2DC72D ",
-            "summary": "(Resolved) Disk usage alert on CS30.evilcorp",
-            "title": "Prometheus alert (Resolved) ",
-            "sections": [
+              ]
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                { "title": "Alert", "value": "DiskSpace" },
+                { "title": "In host", "value": "cs31.evilcorp" },
+                { "title": "Severity", "value": "critical" },
                 {
-                    "activityTitle": "Disk usage alert on CS30.evilcorp",
-                    "facts": [
-                        {
-                            "name": "Alert",
-                            "value": "DiskSpace"
-                        },
-                        {
-                            "name": "In host",
-                            "value": "cs30.evilcorp"
-                        },
-                        {
-                            "name": "Severity",
-                            "value": "severe"
-                        },
-                        {
-                            "name": "Description",
-                            "value": "disk usage 93% on rootfs device"
-                        },
-                        {
-                            "name": "Status",
-                            "value": "resolved"
-                        }
-                    ],
-                    "markdown": true
-                }
-            ]
+                  "title": "Description",
+                  "value": "disk usage 94% on rootfs device"
+                },
+                { "title": "Status", "value": "resolved" }
+              ]
+            }
+          ]
         }
+      }
     ]
+  },
+  {
+    "type": "message",
+    "attachments": [
+      {
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+          "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+          "type": "AdaptiveCard",
+          "version": "1.4",
+          "msteams": {
+            "width": "Full"
+          },
+          "body": [
+            {
+              "type": "ColumnSet",
+              "style": "good",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Prometheus alert DiskSpace (Resolved)",
+                      "weight": "Bolder",
+                      "size": "Large"
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "(Resolved) Disk usage alert on CS30.evilcorp",
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                { "title": "Alert", "value": "DiskSpace" },
+                { "title": "In host", "value": "cs30.evilcorp" },
+                { "title": "Severity", "value": "severe" },
+                {
+                  "title": "Description",
+                  "value": "disk usage 93% on rootfs device"
+                },
+                { "title": "Status", "value": "resolved" }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
