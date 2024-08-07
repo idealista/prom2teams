@@ -2,8 +2,6 @@ os: linux
 dist: bionic
 language: python
 
-dist: focal
-
 services:
   - docker
 
