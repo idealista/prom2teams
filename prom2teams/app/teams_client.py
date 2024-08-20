@@ -44,7 +44,7 @@ class TeamsClient:
 
     def _do_post(self, teams_webhook_url, message):
         response = self.session.post(teams_webhook_url, data=message, timeout=self.timeout)
-        if not response.ok or response.text != '1':
+        if response.status_code != 202 and (response.status_code != 200 or response.text != '1'):
             exception_msg = 'Error performing request to: {}.\n' \
                 ' Returned status code: {}.\n' \
                 ' Returned data: {}\n' \
