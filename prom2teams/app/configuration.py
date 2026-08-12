@@ -60,7 +60,7 @@ def _update_application_configuration(application, configuration):
 
 
 def _config_provided(filepath):
-    config = configparser.ConfigParser()
+    config = configparser.ConfigParser(interpolation=None)
     try:
         with open(filepath) as f_prov:
             config.read_file(f_prov)
