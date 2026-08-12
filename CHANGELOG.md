@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [5.0.1](https://github.com/idealista/prom2teams/tree/5.0.1)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/5.0.0...5.0.1)
+### Fixed
+- *[#366](https://github.com/idealista/prom2teams/issues/366) Fix URL percent-encoding interpolation error when using Power Automate webhook URLs in config* @sperez
+
 ## [5.0.0](https://github.com/idealista/prom2teams/tree/5.0.0)
 ### Changed
 - *[#351](https://github.com/idealista/prom2teams/pull/351) Support new Microsoft Teams workflows* @FrankBlooBM
