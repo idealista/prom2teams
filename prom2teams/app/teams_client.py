@@ -18,7 +18,7 @@ class TeamsClient:
 
     def __init__(self, config=None):
         self.session = requests.Session()
-        self.session.headers.update({'Content-Type': 'application/json'})
+        self.session.headers.update({'Content-Type': 'application/json; charset=utf-8'})
 
         if config is None:
             config = {}
@@ -43,7 +43,7 @@ class TeamsClient:
             simple_post(teams_webhook_url, message)
 
     def _do_post(self, teams_webhook_url, message):
-        response = self.session.post(teams_webhook_url, data=message, timeout=self.timeout)
+        response = self.session.post(teams_webhook_url, data=message.encode('utf-8'), timeout=self.timeout)
         if response.status_code != 202 and (response.status_code != 200 or response.text != '1'):
             exception_msg = 'Error performing request to: {}.\n' \
                 ' Returned status code: {}.\n' \

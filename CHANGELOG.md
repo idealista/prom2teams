@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 [Full Changelog](https://github.com/idealista/prom2teams/compare/5.0.0...5.0.1)
 ### Fixed
 - *[#366](https://github.com/idealista/prom2teams/issues/366) Fix URL percent-encoding interpolation error when using Power Automate webhook URLs in config* @sperez
+- *Fix UTF-8 encoding for Teams webhook requests to support non-ASCII characters in alert messages*
 
 ## [5.0.0](https://github.com/idealista/prom2teams/tree/5.0.0)
 ### Changed
